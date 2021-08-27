@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="cargo_auto_github_lib"><meta name="keywords" content="rust, rustlang, rust-lang, cargo_auto_github_lib"><title>cargo_auto_github_lib - Rust</title><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../ayu.css" disabled ><script id="default-settings"></script><script src="../storage.js"></script><script src="../crates.js"></script><noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="alternate icon" type="image/png" href="../favicon-16x16.png">
+<link rel="alternate icon" type="image/png" href="../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../down-arrow.svg");}</style></head><body class="rustdoc mod crate"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../cargo_auto_github_lib/index.html'><div class='logo-container rust-logo'><img src='../rust-logo.png' alt='logo'></div></a><h2 class="location">Crate cargo_auto_github_lib</h2><div class="block version"><p>Version 0.1.3</p></div><div class="sidebar-elems"><a id="all-types" href="all.html"><p>See all cargo_auto_github_lib's items</p></a><div class="block items"><ul><li><a href="#modules">Modules</a></li><li><a href="#functions">Functions</a></li></ul></div><div id="sidebar-vars" data-name="cargo_auto_github_lib" data-ty="mod" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img src="../brush.svg" width="18" height="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../settings.html" title="settings"><img src="../wheel.svg" width="18" height="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class="fqn"><span class="in-band">Crate <a class="mod" href="#">cargo_auto_github_lib</a><button id="copy-path" onclick="copy_path(this)" title="copy path"><img src="../clipboard.svg" width="19" height="18" alt="Copy item import" title="Copy item import to clipboard"></button></span><span class="out-of-band"><span id="render-detail"><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span><a class="srclink" href="../src/cargo_auto_github_lib/lib.rs.html#2-113" title="goto source code">[src]</a></span></h1><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><h1 id="cargo_auto_github_lib" class="section-header"><a href="#cargo_auto_github_lib">cargo_auto_github_lib</a></h1>
+<p><strong>Library for cargo-auto <code>automation tasks written in rust language</code> with functions for github.</strong><br />
+<em><strong><a href="https://github.com/LucianoBestia/cargo_auto_github_lib">repository</a>; version: 0.1.3  date: 2021-08-27 authors: Luciano Bestia</strong></em></p>
+<p><a href=""><img src="https://img.shields.io/badge/Lines_in_Rust-78-green.svg" alt="Lines in Rust code" /></a>
+<a href=""><img src="https://img.shields.io/badge/Lines_in_Doc_comments-140-blue.svg" alt="Lines in Doc comments" /></a>
+<a href=""><img src="https://img.shields.io/badge/Lines_in_comments-6-purple.svg" alt="Lines in Comments" /></a>
+<a href=""><img src="https://img.shields.io/badge/Lines_in_examples-0-yellow.svg" alt="Lines in examples" /></a>
+<a href=""><img src="https://img.shields.io/badge/Lines_in_tests-0-orange.svg" alt="Lines in tests" /></a></p>
+<p><a href="https://crates.io/crates/cargo_auto_github_lib"><img src="https://img.shields.io/crates/v/cargo_auto_github_lib.svg" alt="crates.io" /></a> <a href="https://docs.rs/cargo_auto_github_lib/"><img src="https://docs.rs/cargo_auto_github_lib/badge.svg" alt="Documentation" /></a> <a href="https://web.crev.dev/rust-reviews/crate/cargo_auto_github_lib/"><img src="https://web.crev.dev/rust-reviews/badge/crev_count/cargo_auto_github_lib.svg" alt="crev reviews" /></a> <a href="https://lib.rs/crates/cargo_auto_github_lib/"><img src="https://img.shields.io/badge/Lib.rs-rust-orange.svg" alt="Lib.rs" /></a> <a href="https://github.com/LucianoBestia/cargo_auto_github_lib/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Licence" /></a> <a href="https://github.com/LucianoBestia/cargo_auto_github_lib/"><img src="https://github.com/LucianoBestia/cargo_auto_github_lib/workflows/RustAction/badge.svg" alt="Rust" /></a></p>
+<h2 id="try-it" class="section-header"><a href="#try-it">Try it</a></h2>
+<p>In your rust project root directory (where the Cargo.toml is)<br />
+first install <a href="https://crates.io/crates/cargo-auto">cargo-auto</a> and generate a new helper project:</p>
+<pre><code class="language-bash">cargo install cargo-auto
+cargo auto new with_lib
+</code></pre>
+<p>In a new editor open the generated directory <code>automation_tasks_rs</code> as an independent rust project. There is already this dependency in <code>Cargo.toml</code>:</p>
+<pre><code class="language-toml">cargo_auto_github_lib=&quot;0.1.*&quot;
+</code></pre>
+<p>Preview the code and observe all the <code>auto_github_*</code> functions from <code>cargo_auto_github_lib</code>.<br />
+Example:</p>
+
+<div class='information'><div class='tooltip ignore'>ⓘ</div></div><div class="example-wrap"><pre class="rust rust-example-rendered ignore">
+<span class="kw">fn</span> <span class="ident">task_github_new_release</span>() {
+    <span class="comment">// async block inside sync code with tokio</span>
+    <span class="kw">let</span> <span class="ident">rt</span> <span class="op">=</span> <span class="ident">tokio::runtime::Runtime::new</span>().<span class="ident">unwrap</span>();
+    <span class="ident">rt</span>.<span class="ident">block_on</span>(<span class="kw">async</span> <span class="kw">move</span> {
+        <span class="comment">// ...</span>
+
+        <span class="kw">let</span> <span class="ident">release_id</span> <span class="op">=</span>  <span class="ident">auto_github_create_new_release</span>(<span class="kw-2">&amp;</span><span class="ident">owner</span>, <span class="kw-2">&amp;</span><span class="ident">repo</span>, <span class="kw-2">&amp;</span><span class="ident">version</span>, <span class="kw-2">&amp;</span><span class="ident">name</span>, <span class="ident">branch</span>, <span class="ident">body_md_text</span>).<span class="kw">await</span>;
+        <span class="macro">println!</span>(<span class="string">&quot;New release created, now uploading release asset. This can take some time if the files are big. Wait...&quot;</span>);
+
+        <span class="comment">// upload asset</span>
+        <span class="kw">let</span> <span class="ident">path_to_file</span> <span class="op">=</span> <span class="macro">format!</span>(
+            <span class="string">&quot;target/release/{package_name}&quot;</span>,
+            <span class="ident">package_name</span> <span class="op">=</span> <span class="ident">package_name</span>()
+        );
+
+        <span class="ident">auto_github_upload_asset_to_release</span>(<span class="kw-2">&amp;</span><span class="ident">owner</span>, <span class="kw-2">&amp;</span><span class="ident">repo</span>, <span class="kw-2">&amp;</span><span class="ident">release_id</span>, <span class="kw-2">&amp;</span><span class="ident">path_to_file</span>).<span class="kw">await</span>;
+        <span class="macro">println!</span>(<span class="string">&quot;Asset uploaded.&quot;</span>);
+    });
+}
+</pre></div>
+<p>You need to have a <a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">github PAT (personal access token)</a> and save it in a environment variable:</p>
+<pre><code class="language-bash">export GITHUB_TOKEN=ghp_111111111111111111111
+</code></pre>
+<p>Run (in your main rust project):</p>
+<pre><code class="language-bash">cargo auto release
+cargo auto github_new_release
+</code></pre>
+<p>With a little luck, it will create a new release in github.</p>
+<h2 id="functions" class="section-header"><a href="#functions">Functions</a></h2>
+<p>All the functions have extensive hep/docs to describe how they work.<br />
+It is nice when you use a code editor with IntelliSense like VSCode.<br />
+Here is a list of some of them:</p>
+<ul>
+<li><code>auto_github_create_new_release()</code> - creates new release on Github</li>
+<li><code>auto_github_upload_asset_to_release()</code> - add asset to the github release</li>
+</ul>
+<h2 id="todo" class="section-header"><a href="#todo">TODO</a></h2>
+<p>Simpler library for github. This one octocrab with Tokio is too complex. I need just a fraction of functionality. Maybe to write it myself. I just need to call some rest api.</p>
+<h2 id="cargo-crev-reviews-and-advisory" class="section-header"><a href="#cargo-crev-reviews-and-advisory">cargo crev reviews and advisory</a></h2>
+<p>We leave in times of danger with <a href="https://en.wikipedia.org/wiki/Supply_chain_attack">supply chain attacks</a>.<br />
+It is recommended to always use <a href="https://github.com/crev-dev/cargo-crev">cargo-crev</a><br />
+to verify the trustworthiness of each of your dependencies.<br />
+Please, spread this info.<br />
+You can also read reviews quickly on the web. Example for the crate <code>num-traits</code>:<br />
+<a href="https://web.crev.dev/rust-reviews/crate/num-traits/">https://web.crev.dev/rust-reviews/crate/num-traits/</a></p>
+<h2 id="open-source-free-and-free-as-a-beer" class="section-header"><a href="#open-source-free-and-free-as-a-beer">open-source free and free as a beer</a></h2>
+<p>My open-source projects are free and free as a beer (MIT license).<br />
+I just love programming.<br />
+But I need also to drink. If you find my projects and tutorials helpful, please buy me a beer or two donating on my <a href="https://www.paypal.com/paypalme/LucianoBestia">paypal</a>. You know the price of a beer in your local bar ;-)<br />
+So I can drink a free beer for your health :-)<br />
+<a href="https://translate.google.com/?hl=en&amp;sl=sl&amp;tl=en&amp;text=Na%20zdravje&amp;op=translate">Na zdravje</a> !</p>
+</div></details><h2 id="modules" class="section-header"><a href="#modules">Modules</a></h2>
+<table><tr class="module-item"><td><a class="mod" href="auto_github_mod/index.html" title="cargo_auto_github_lib::auto_github_mod mod">auto_github_mod</a></td><td class="docblock-short"><p>functions to work with github  </p>
+</td></tr><tr class="module-item"><td><a class="mod" href="utils_mod/index.html" title="cargo_auto_github_lib::utils_mod mod">utils_mod</a></td><td class="docblock-short"><p>various utilities</p>
+</td></tr></table><h2 id="functions-1" class="section-header"><a href="#functions-1">Functions</a></h2>
+<table><tr class="module-item"><td><a class="fn" href="fn.github_create_new_release.html" title="cargo_auto_github_lib::github_create_new_release fn">github_create_new_release</a></td><td class="docblock-short"><p>create new release on Github<br />
+return release_id<br />
+it needs env variable <code>export GITHUB_TOKEN=paste_github_personal_authorization_token_here</code><br />
+<a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token</a><br />
+async function can be called from sync code:</p>
+</td></tr><tr class="module-item"><td><a class="fn" href="fn.github_upload_asset_to_release.html" title="cargo_auto_github_lib::github_upload_asset_to_release fn">github_upload_asset_to_release</a></td><td class="docblock-short"><p>upload asset to github release<br />
+release_upload_url example: <a href="https://uploads.github.com/repos/owner/repo/releases/48127727/assets">https://uploads.github.com/repos/owner/repo/releases/48127727/assets</a><br />
+it needs env variable <code>export GITHUB_TOKEN=paste_github_personal_authorization_token_here</code><br />
+<a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token</a><br />
+async function can be called from sync code:</p>
+</td></tr></table></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../" data-current-crate="cargo_auto_github_lib" data-search-index-js="../search-index.js" data-search-js="../search.js"></div><script src="../main.js"></script></body></html>

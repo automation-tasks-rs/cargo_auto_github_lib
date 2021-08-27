@@ -1,0 +1,4 @@
+var searchIndex = JSON.parse('{\
+"cargo_auto_github_lib":{"doc":"cargo_auto_github_lib","t":[0,5,5,0,5,5],"n":["auto_github_mod","github_create_new_release","github_upload_asset_to_release","utils_mod","github_create_new_release","github_upload_asset_to_release"],"q":["cargo_auto_github_lib","","","","cargo_auto_github_lib::auto_github_mod",""],"d":["functions to work with github  ","create new release on Github return release_id it needs …","upload asset to github release release_upload_url …","various utilities","create new release on Github return release_id it needs …","upload asset to github release release_upload_url …"],"i":[0,0,0,0,0,0],"f":[null,[[["str",15]]],[[["str",15]]],null,[[["str",15]]],[[["str",15]]]],"p":[]}\
+}');
+if (window.initSearch) {window.initSearch(searchIndex)};
