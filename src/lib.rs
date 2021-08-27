@@ -2,10 +2,10 @@
 //! # cargo_auto_github_lib
 //!
 //! **Library for cargo-auto `automation tasks written in rust language` with functions for github.**  
-//! ***[repository](https://github.com/LucianoBestia/cargo_auto_github_lib); version: 0.1.4  date: 2021-08-27 authors: Luciano Bestia***  
+//! ***[repository](https://github.com/LucianoBestia/cargo_auto_github_lib); version: 0.1.5  date: 2021-08-27 authors: Luciano Bestia***  
 //!
-//! [![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-78-green.svg)](https://github.com/LucianoBestia/cargo_auto_github_lib/)
-//! [![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-142-blue.svg)](https://github.com/LucianoBestia/cargo_auto_github_lib/)
+//! [![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-99-green.svg)](https://github.com/LucianoBestia/cargo_auto_github_lib/)
+//! [![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-143-blue.svg)](https://github.com/LucianoBestia/cargo_auto_github_lib/)
 //! [![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-6-purple.svg)](https://github.com/LucianoBestia/cargo_auto_github_lib/)
 //! [![Lines in examples](https://img.shields.io/badge/Lines_in_examples-0-yellow.svg)](https://github.com/LucianoBestia/cargo_auto_github_lib/)
 //! [![Lines in tests](https://img.shields.io/badge/Lines_in_tests-0-orange.svg)](https://github.com/LucianoBestia/cargo_auto_github_lib/)
@@ -109,5 +109,6 @@ pub mod utils_mod;
 
 // reexport functions for callers of the library
 
-pub use auto_github_mod::github_create_new_release;
-pub use auto_github_mod::github_upload_asset_to_release;
+pub use auto_github_mod::auto_github_create_new_release;
+pub use auto_github_mod::auto_github_upload_asset_to_release;
+pub use auto_github_mod::github_owner;

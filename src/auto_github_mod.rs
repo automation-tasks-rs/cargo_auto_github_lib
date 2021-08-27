@@ -2,7 +2,28 @@
 
 //! functions to work with github  
 
+use lazy_static::lazy_static;
 use unwrap::unwrap;
+
+lazy_static! {
+    pub static ref CARGO_TOML: cargo_toml::Manifest =
+        unwrap!(cargo_toml::Manifest::from_path("Cargo.toml"));
+    pub static ref PACKAGE: cargo_toml::Package = unwrap!(CARGO_TOML.package.as_ref()).to_owned();
+}
+
+/// from Cargo.toml github owner from package.repository
+pub fn github_owner() -> String {
+    match &PACKAGE.repository {
+        Some(repository) => {
+            let splitted: Vec<&str> = repository
+                .trim_start_matches("https://")
+                .split("/")
+                .collect();
+            splitted[1].to_string()
+        }
+        None => "".to_string(),
+    }
+}
 
 /// create new release on Github  
 /// return release_id  
@@ -23,7 +44,7 @@ use unwrap::unwrap;
 /// [dependencies]
 /// tokio = {version = "1.10.0", features = ["rt","rt-multi-thread","fs"]}  
 /// ```
-pub async fn github_create_new_release(
+pub async fn auto_github_create_new_release(
     owner: &str,
     repo: &str,
     version: &str,
@@ -69,7 +90,7 @@ pub async fn github_create_new_release(
 /// [dependencies]
 /// tokio = {version = "1.10.0", features = ["rt","rt-multi-thread","fs"]}  
 /// ```
-pub async fn github_upload_asset_to_release(
+pub async fn auto_github_upload_asset_to_release(
     owner: &str,
     repo: &str,
     release_id: &str,
