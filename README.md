@@ -5,16 +5,16 @@
 [comment]: # (auto_cargo_toml_to_md start)
 
 **Library for cargo-auto `automation tasks written in rust language` with functions for github.**  
-***[repository](https://github.com/LucianoBestia/cargo_auto_github_lib); version: 0.1.3  date: 2021-08-27 authors: Luciano Bestia***  
+***[repository](https://github.com/LucianoBestia/cargo_auto_github_lib); version: 0.1.4  date: 2021-08-27 authors: Luciano Bestia***  
 
 [comment]: # (auto_cargo_toml_to_md end)
 
 [comment]: # (auto_lines_of_code start)
-[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-78-green.svg)]()
-[![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-140-blue.svg)]()
-[![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-6-purple.svg)]()
-[![Lines in examples](https://img.shields.io/badge/Lines_in_examples-0-yellow.svg)]()
-[![Lines in tests](https://img.shields.io/badge/Lines_in_tests-0-orange.svg)]()
+[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-78-green.svg)](https://github.com/LucianoBestia/cargo_auto_github_lib/)
+[![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-142-blue.svg)](https://github.com/LucianoBestia/cargo_auto_github_lib/)
+[![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-6-purple.svg)](https://github.com/LucianoBestia/cargo_auto_github_lib/)
+[![Lines in examples](https://img.shields.io/badge/Lines_in_examples-0-yellow.svg)](https://github.com/LucianoBestia/cargo_auto_github_lib/)
+[![Lines in tests](https://img.shields.io/badge/Lines_in_tests-0-orange.svg)](https://github.com/LucianoBestia/cargo_auto_github_lib/)
 
 [comment]: # (auto_lines_of_code end)
 
