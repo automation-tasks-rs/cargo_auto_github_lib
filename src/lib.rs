@@ -2,7 +2,7 @@
 //! # cargo_auto_github_lib
 //!
 //! **Library for cargo-auto `automation tasks written in rust language` with functions for github.**  
-//! ***[repository](https://github.com/LucianoBestia/cargo_auto_github_lib); version: 0.1.5  date: 2021-08-27 authors: Luciano Bestia***  
+//! ***[repository](https://github.com/LucianoBestia/cargo_auto_github_lib); version: 0.1.6  date: 2021-09-18 authors: Luciano Bestia***  
 //!
 //! [![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-99-green.svg)](https://github.com/LucianoBestia/cargo_auto_github_lib/)
 //! [![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-143-blue.svg)](https://github.com/LucianoBestia/cargo_auto_github_lib/)
@@ -97,7 +97,9 @@
 //!
 //! My open-source projects are free and free as a beer (MIT license).  
 //! I just love programming.  
-//! But I need also to drink. If you find my projects and tutorials helpful, please buy me a beer or two donating on my [paypal](https://www.paypal.com/paypalme/LucianoBestia). You know the price of a beer in your local bar ;-)  
+//! But I need also to drink. If you find my projects and tutorials helpful,  
+//! please buy me a beer or two donating on my [paypal](https://www.paypal.com/paypalme/LucianoBestia).  
+//! You know the price of a beer in your local bar ;-)  
 //! So I can drink a free beer for your health :-)  
 //! [Na zdravje](https://translate.google.com/?hl=en&sl=sl&tl=en&text=Na%20zdravje&op=translate) !
 //!
