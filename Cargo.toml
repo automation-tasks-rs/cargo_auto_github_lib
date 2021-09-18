@@ -1,6 +1,6 @@
 [package]
 name = "cargo_auto_github_lib"
-version = "0.1.6"
+version = "0.1.7"
 authors = ["Luciano Bestia <luciano.bestia@gmail.com>"]
 edition = "2018"
 description = "Library for cargo-auto `automation tasks written in rust language` with functions for github."
@@ -26,4 +26,4 @@ tokio-util = "0.6.7"
 tokio = {version = "1.10.0", features = ["rt","rt-multi-thread","fs"]}
 url="2.2.2"
 lazy_static = "1.4.0"
-cargo_toml = "0.9.3"
+cargo_toml = "0.10.0"
