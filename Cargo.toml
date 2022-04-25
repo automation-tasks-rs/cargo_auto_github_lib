@@ -2,6 +2,7 @@
 name = "cargo_auto_github_lib"
 version = "0.1.7"
 authors = ["bestia.dev"]
+homepage = "https://bestia.dev"
 edition = "2018"
 description = "Library for cargo-auto `automation tasks written in rust language` with functions for github."
 repository = "https://github.com/bestia-dev/cargo_auto_github_lib"
