@@ -1,11 +1,14 @@
 {
     "cSpell.words": [
-        "UNHIDE",
+        "buildtool",
         "commitish",
+        "developmenttool",
         "filedate",
         "filetime",
         "repos",
+        "rustlang",
         "termion",
+        "UNHIDE",
         "zdravje"
     ]
 }
