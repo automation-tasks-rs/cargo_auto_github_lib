@@ -4,7 +4,7 @@
 
 [comment]: # (auto_cargo_toml_to_md start)
 
-**Library for cargo-auto 'automation tasks written in rust language' with functions for github.**  
+**Library for cargo-auto automation tasks written in rust language with functions for github.**  
 ***version: 0.1.7 date: 2021-09-18 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/bestia-dev/cargo_auto_github_lib)***  
 
 [comment]: # (auto_cargo_toml_to_md end)
