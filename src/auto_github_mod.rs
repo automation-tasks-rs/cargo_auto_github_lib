@@ -15,6 +15,7 @@ lazy_static! {
 pub fn github_owner() -> String {
     match &PACKAGE.repository {
         Some(repository) => {
+            let repository = repository.clone().unwrap();
             let splitted: Vec<&str> = repository
                 .trim_start_matches("https://")
                 .split("/")
@@ -96,9 +97,7 @@ pub async fn auto_github_upload_asset_to_release(
     release_id: &str,
     path_to_file: &str,
 ) {
-    use octocrab::Octocrab;
     let token = std::env::var("GITHUB_TOKEN").expect("GITHUB_TOKEN env variable is required");
-    let octocrab = unwrap!(Octocrab::builder().personal_token(token).build());
 
     println!("path_to_file: {}", path_to_file);
     let file = std::path::Path::new(&path_to_file);
@@ -123,9 +122,16 @@ pub async fn auto_github_upload_asset_to_release(
     let file = unwrap!(tokio::fs::File::open(file).await);
     let stream = tokio_util::codec::FramedRead::new(file, tokio_util::codec::BytesCodec::new());
     let body = reqwest::Body::wrap_stream(stream);
-    let builder = octocrab
-        .request_builder(release_upload_url.as_str(), reqwest::Method::POST)
+
+    let _response = reqwest::Client::new()
+        .post(release_upload_url.as_str())
         .header("Content-Type", "application/octet-stream")
-        .header("Content-Length", file_size.to_string());
-    let _response = unwrap!(builder.body(body).send().await);
+        .header("Content-Length", file_size.to_string())
+        .header("Authorization", format!("Bearer {token}"))
+        .body(body)
+        .send()
+        .await
+        .unwrap();
+
+    // dbg!(response);
 }
