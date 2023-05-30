@@ -1,4 +1,3 @@
-use cargo_auto_github_lib::auto_github_upload_asset_to_release;
 
 /*
 to get the releaseId use this:
@@ -10,12 +9,14 @@ curl -L \
   https://api.github.com/repos/bestia-dev/cargo_auto_github_lib/releases
 */
 
+
+/* use only on local machine when github_token is in env variable
 #[test]
 fn upload_asset_1() {
     let rt = tokio::runtime::Runtime::new().unwrap();
     rt.block_on(async move {
         println!("upload_asset_1");
-        auto_github_upload_asset_to_release(
+        cargo_auto_github_lib::auto_github_upload_asset_to_release(
             "bestia-dev",
             "cargo_auto_github_lib",
             "105426789",
@@ -23,4 +24,4 @@ fn upload_asset_1() {
         )
         .await;
     });
-}
+} */

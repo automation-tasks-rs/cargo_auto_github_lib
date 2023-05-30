@@ -117,7 +117,7 @@ fn completion() {
 
 /// cargo build
 fn task_build() {
-    let cargo_toml = CargoToml::read();
+    //let cargo_toml = CargoToml::read();
     auto_version_increment_semver_or_date();
     run_shell_command("cargo fmt");
     run_shell_command("cargo build");
@@ -126,15 +126,14 @@ fn task_build() {
     {YELLOW}After `cargo auto build`, run the examples and/or tests{RESET}
     {YELLOW}if ok, then,{RESET}
 {GREEN}cargo auto release{RESET}
-    {YELLOW}{RESET}"#,
-package_name = cargo_toml.package_name(),
+    {YELLOW}{RESET}"#
     );
     print_examples_cmd();
 }
 
 /// cargo build --release
 fn task_release() {
-    let cargo_toml = CargoToml::read();
+    //let cargo_toml = CargoToml::read();
     auto_version_increment_semver_or_date();
     auto_cargo_toml_to_md();
     auto_lines_of_code("");
@@ -150,8 +149,7 @@ fn task_release() {
     {YELLOW}After `cargo auto release`, run the examples and/or tests{RESET}
     {YELLOW}if ok, then,{RESET}
 {GREEN}cargo auto doc{RESET}
-    {YELLOW}{RESET}"#,
-package_name = cargo_toml.package_name(),
+    {YELLOW}{RESET}"#
     );
     print_examples_cmd();
 }

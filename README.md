@@ -1,22 +1,22 @@
-[comment]: # (auto_md_to_doc_comments segment start A)
+[//]: # (auto_md_to_doc_comments segment start A)
 
 # cargo_auto_github_lib
 
-[comment]: # (auto_cargo_toml_to_md start)
+[//]: # (auto_cargo_toml_to_md start)
 
-**Library for cargo-auto automation tasks written in rust language with functions for github.**  
-***version: 0.1.7 date: 2021-09-18 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/bestia-dev/cargo_auto_github_lib)***  
+**Library for cargo-auto `automation tasks written in rust language` with functions for github.**  
+***version: 0.1.18 date: 2023-05-30 author: [bestia.dev](https://bestia.dev) repository: [Github](https://github.com/bestia-dev/cargo_auto_github_lib)***  
 
-[comment]: # (auto_cargo_toml_to_md end)
+[//]: # (auto_cargo_toml_to_md end)
 
-[comment]: # (auto_lines_of_code start)
-[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-99-green.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
+[//]: # (auto_lines_of_code start)
+[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-104-green.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
 [![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-145-blue.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
-[![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-6-purple.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
+[![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-7-purple.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
 [![Lines in examples](https://img.shields.io/badge/Lines_in_examples-0-yellow.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
-[![Lines in tests](https://img.shields.io/badge/Lines_in_tests-0-orange.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
+[![Lines in tests](https://img.shields.io/badge/Lines_in_tests-26-orange.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
 
-[comment]: # (auto_lines_of_code end)
+[//]: # (auto_lines_of_code end)
 
 [![crates.io](https://img.shields.io/crates/v/cargo_auto_github_lib.svg)](https://crates.io/crates/cargo_auto_github_lib) [![Documentation](https://docs.rs/cargo_auto_github_lib/badge.svg)](https://docs.rs/cargo_auto_github_lib/) [![crev reviews](https://web.crev.dev/rust-reviews/badge/crev_count/cargo_auto_github_lib.svg)](https://web.crev.dev/rust-reviews/crate/cargo_auto_github_lib/) [![Lib.rs](https://img.shields.io/badge/Lib.rs-rust-orange.svg)](https://lib.rs/crates/cargo_auto_github_lib/) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/blob/master/LICENSE) [![Rust](https://github.com/bestia-dev/cargo_auto_github_lib/workflows/RustAction/badge.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/) ![Hits](https://bestia.dev/webpage_hit_counter/get_svg_image/714373530.svg)
 
@@ -118,4 +118,4 @@ So I can drink a free beer for your health :-)
 [//bestiadev.substack.com](https://bestiadev.substack.com)  
 [//youtube.com/@bestia-dev-tutorials](https://youtube.com/@bestia-dev-tutorials)  
 
-[comment]: # (auto_md_to_doc_comments segment end A)
+[//]: # (auto_md_to_doc_comments segment end A)
