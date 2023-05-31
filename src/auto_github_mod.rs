@@ -48,28 +48,70 @@ pub fn github_owner() -> String {
 pub async fn auto_github_create_new_release(
     owner: &str,
     repo: &str,
-    version: &str,
+    tag_name_version: &str,
     name: &str,
     branch: &str,
     body_md_text: &str,
 ) -> String {
-    use octocrab::Octocrab;
+    // https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#create-a-release
+    /*
+    Request like :
+    curl -L \
+    -X POST \
+    -H "Accept: application/vnd.github+json" \
+    -H "Authorization: Bearer <YOUR-TOKEN>"\
+    -H "X-GitHub-Api-Version: 2022-11-28" \
+    https://api.github.com/repos/OWNER/REPO/releases \
+    -d '
+    {
+        "tag_name":"v1.0.0",
+        "target_commitish":"master",
+        "name":"v1.0.0",
+        "body":"Description of the release",
+        "draft":false,
+        "prerelease":false,
+        "generate_release_notes":false
+    }'
+    */
+    /*
+    Response (short)
+    {
+    "id": 1,
+    ...
+    }
+    */
     let token = std::env::var("GITHUB_TOKEN").expect("GITHUB_TOKEN env variable is required");
-    let octocrab = unwrap!(Octocrab::builder().personal_token(token).build());
-    let new_release = unwrap!(
-        octocrab
-            .repos(owner, repo)
-            .releases()
-            .create(&format!("v{}", version))
-            .target_commitish(branch)
-            .name(name)
-            .body(body_md_text)
-            .draft(false)
-            .prerelease(false)
-            .send()
-            .await
-    );
-    new_release.id.to_string()
+    let releases_url = format!("https://api.github.com/repos/{owner}/{repo}/releases");
+    let body = json::object! {
+        tag_name: tag_name_version,
+        target_commitish:branch,
+        name:name,
+        body:body_md_text,
+        draft:false,
+        prerelease:false,
+        generate_release_notes:false,
+    };
+    let body = json::stringify(body);
+    //dbg!(&body);
+
+    let response_text = reqwest::Client::new()
+        .post(releases_url.as_str())
+        .header("Content-Type", "application/vnd.github+json")
+        .header("Authorization", format!("Bearer {token}"))
+        .header("User-Agent", "cargo_auto_github_lib")
+        .body(body)
+        .send()
+        .await
+        .unwrap()
+        .text()
+        .await
+        .unwrap();
+    //dbg!(&response_text);
+
+    let parsed = json::parse(&response_text).unwrap();
+    let new_release_id = parsed["id"].to_string();
+    //dbg!(&new_release_id);
+    new_release_id
 }
 
 /// upload asset to github release  
@@ -103,12 +145,8 @@ pub async fn auto_github_upload_asset_to_release(
     let file = std::path::Path::new(&path_to_file);
     let file_name = file.file_name().unwrap().to_str().unwrap();
 
-    let release_upload_url = format!(
-        "https://uploads.github.com/repos/{owner}/{repo}/releases/{release_id}/assets",
-        owner = owner,
-        repo = repo,
-        release_id = release_id
-    );
+    let release_upload_url =
+        format!("https://uploads.github.com/repos/{owner}/{repo}/releases/{release_id}/assets");
     let mut release_upload_url = unwrap!(<url::Url as std::str::FromStr>::from_str(
         &release_upload_url
     ));

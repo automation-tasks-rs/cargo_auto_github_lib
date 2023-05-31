@@ -135,6 +135,44 @@
 <a href="#135" id="135">135</a>
 <a href="#136" id="136">136</a>
 <a href="#137" id="137">137</a>
+<a href="#138" id="138">138</a>
+<a href="#139" id="139">139</a>
+<a href="#140" id="140">140</a>
+<a href="#141" id="141">141</a>
+<a href="#142" id="142">142</a>
+<a href="#143" id="143">143</a>
+<a href="#144" id="144">144</a>
+<a href="#145" id="145">145</a>
+<a href="#146" id="146">146</a>
+<a href="#147" id="147">147</a>
+<a href="#148" id="148">148</a>
+<a href="#149" id="149">149</a>
+<a href="#150" id="150">150</a>
+<a href="#151" id="151">151</a>
+<a href="#152" id="152">152</a>
+<a href="#153" id="153">153</a>
+<a href="#154" id="154">154</a>
+<a href="#155" id="155">155</a>
+<a href="#156" id="156">156</a>
+<a href="#157" id="157">157</a>
+<a href="#158" id="158">158</a>
+<a href="#159" id="159">159</a>
+<a href="#160" id="160">160</a>
+<a href="#161" id="161">161</a>
+<a href="#162" id="162">162</a>
+<a href="#163" id="163">163</a>
+<a href="#164" id="164">164</a>
+<a href="#165" id="165">165</a>
+<a href="#166" id="166">166</a>
+<a href="#167" id="167">167</a>
+<a href="#168" id="168">168</a>
+<a href="#169" id="169">169</a>
+<a href="#170" id="170">170</a>
+<a href="#171" id="171">171</a>
+<a href="#172" id="172">172</a>
+<a href="#173" id="173">173</a>
+<a href="#174" id="174">174</a>
+<a href="#175" id="175">175</a>
 </pre><pre class="rust"><code><span class="comment">// auto_github_mod
 
 </span><span class="doccomment">//! functions to work with github  
@@ -185,28 +223,70 @@
 </span><span class="kw">pub async fn </span>auto_github_create_new_release(
     owner: <span class="kw-2">&amp;</span>str,
     repo: <span class="kw-2">&amp;</span>str,
-    version: <span class="kw-2">&amp;</span>str,
+    tag_name_version: <span class="kw-2">&amp;</span>str,
     name: <span class="kw-2">&amp;</span>str,
     branch: <span class="kw-2">&amp;</span>str,
     body_md_text: <span class="kw-2">&amp;</span>str,
 ) -&gt; String {
-    <span class="kw">use </span>octocrab::Octocrab;
-    <span class="kw">let </span>token = std::env::var(<span class="string">&quot;GITHUB_TOKEN&quot;</span>).expect(<span class="string">&quot;GITHUB_TOKEN env variable is required&quot;</span>);
-    <span class="kw">let </span>octocrab = <span class="macro">unwrap!</span>(Octocrab::builder().personal_token(token).build());
-    <span class="kw">let </span>new_release = <span class="macro">unwrap!</span>(
-        octocrab
-            .repos(owner, repo)
-            .releases()
-            .create(<span class="kw-2">&amp;</span><span class="macro">format!</span>(<span class="string">&quot;v{}&quot;</span>, version))
-            .target_commitish(branch)
-            .name(name)
-            .body(body_md_text)
-            .draft(<span class="bool-val">false</span>)
-            .prerelease(<span class="bool-val">false</span>)
-            .send()
-            .<span class="kw">await
-    </span>);
-    new_release.id.to_string()
+    <span class="comment">// https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#create-a-release
+    /*
+    Request like :
+    curl -L \
+    -X POST \
+    -H &quot;Accept: application/vnd.github+json&quot; \
+    -H &quot;Authorization: Bearer &lt;YOUR-TOKEN&gt;&quot;\
+    -H &quot;X-GitHub-Api-Version: 2022-11-28&quot; \
+    https://api.github.com/repos/OWNER/REPO/releases \
+    -d &#39;
+    {
+        &quot;tag_name&quot;:&quot;v1.0.0&quot;,
+        &quot;target_commitish&quot;:&quot;master&quot;,
+        &quot;name&quot;:&quot;v1.0.0&quot;,
+        &quot;body&quot;:&quot;Description of the release&quot;,
+        &quot;draft&quot;:false,
+        &quot;prerelease&quot;:false,
+        &quot;generate_release_notes&quot;:false
+    }&#39;
+    */
+    /*
+    Response (short)
+    {
+    &quot;id&quot;: 1,
+    ...
+    }
+    */
+    </span><span class="kw">let </span>token = std::env::var(<span class="string">&quot;GITHUB_TOKEN&quot;</span>).expect(<span class="string">&quot;GITHUB_TOKEN env variable is required&quot;</span>);
+    <span class="kw">let </span>releases_url = <span class="macro">format!</span>(<span class="string">&quot;https://api.github.com/repos/{owner}/{repo}/releases&quot;</span>);
+    <span class="kw">let </span>body = <span class="macro">json::object! </span>{
+        tag_name: tag_name_version,
+        target_commitish:branch,
+        name:name,
+        body:body_md_text,
+        draft:<span class="bool-val">false</span>,
+        prerelease:<span class="bool-val">false</span>,
+        generate_release_notes:<span class="bool-val">false</span>,
+    };
+    <span class="kw">let </span>body = json::stringify(body);
+    <span class="comment">//dbg!(&amp;body);
+
+    </span><span class="kw">let </span>response_text = reqwest::Client::new()
+        .post(releases_url.as_str())
+        .header(<span class="string">&quot;Content-Type&quot;</span>, <span class="string">&quot;application/vnd.github+json&quot;</span>)
+        .header(<span class="string">&quot;Authorization&quot;</span>, <span class="macro">format!</span>(<span class="string">&quot;Bearer {token}&quot;</span>))
+        .header(<span class="string">&quot;User-Agent&quot;</span>, <span class="string">&quot;cargo_auto_github_lib&quot;</span>)
+        .body(body)
+        .send()
+        .<span class="kw">await
+        </span>.unwrap()
+        .text()
+        .<span class="kw">await
+        </span>.unwrap();
+    <span class="comment">//dbg!(&amp;response_text);
+
+    </span><span class="kw">let </span>parsed = json::parse(<span class="kw-2">&amp;</span>response_text).unwrap();
+    <span class="kw">let </span>new_release_id = parsed[<span class="string">&quot;id&quot;</span>].to_string();
+    <span class="comment">//dbg!(&amp;new_release_id);
+    </span>new_release_id
 }
 
 <span class="doccomment">/// upload asset to github release  
@@ -240,12 +320,8 @@
     <span class="kw">let </span>file = std::path::Path::new(<span class="kw-2">&amp;</span>path_to_file);
     <span class="kw">let </span>file_name = file.file_name().unwrap().to_str().unwrap();
 
-    <span class="kw">let </span>release_upload_url = <span class="macro">format!</span>(
-        <span class="string">&quot;https://uploads.github.com/repos/{owner}/{repo}/releases/{release_id}/assets&quot;</span>,
-        owner = owner,
-        repo = repo,
-        release_id = release_id
-    );
+    <span class="kw">let </span>release_upload_url =
+        <span class="macro">format!</span>(<span class="string">&quot;https://uploads.github.com/repos/{owner}/{repo}/releases/{release_id}/assets&quot;</span>);
     <span class="kw">let </span><span class="kw-2">mut </span>release_upload_url = <span class="macro">unwrap!</span>(&lt;url::Url <span class="kw">as </span>std::str::FromStr&gt;::from_str(
         <span class="kw-2">&amp;</span>release_upload_url
     ));

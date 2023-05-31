@@ -5,16 +5,16 @@
 [//]: # (auto_cargo_toml_to_md start)
 
 **Library for cargo-auto `automation tasks written in rust language` with functions for github.**  
-***version: 0.1.18 date: 2023-05-30 author: [bestia.dev](https://bestia.dev) repository: [Github](https://github.com/bestia-dev/cargo_auto_github_lib)***  
+***version: 0.1.24 date: 2023-05-31 author: [bestia.dev](https://bestia.dev) repository: [Github](https://github.com/bestia-dev/cargo_auto_github_lib)***  
 
 [//]: # (auto_cargo_toml_to_md end)
 
 [//]: # (auto_lines_of_code start)
-[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-104-green.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
-[![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-145-blue.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
-[![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-7-purple.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
+[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-138-green.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
+[![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-152-blue.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
+[![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-11-purple.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
 [![Lines in examples](https://img.shields.io/badge/Lines_in_examples-0-yellow.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
-[![Lines in tests](https://img.shields.io/badge/Lines_in_tests-26-orange.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
+[![Lines in tests](https://img.shields.io/badge/Lines_in_tests-60-orange.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
 
 [//]: # (auto_lines_of_code end)
 
@@ -89,11 +89,6 @@ Here is a list of some of them:
 - `auto_github_create_new_release()` - creates new release on Github
 - `auto_github_upload_asset_to_release()` - add asset to the github release
 
-
-
-## TODO
-
-Simpler library for github. This one octocrab with Tokio is too complex. I need just a fraction of functionality. Maybe to write it myself. I just need to call some rest api.
 
 ## cargo crev reviews and advisory
 
