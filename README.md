@@ -7,8 +7,8 @@
 **Library for cargo-auto `automation tasks written in rust language` with functions for github.**  
 ***version: 0.1.24 date: 2023-05-31 author: [bestia.dev](https://bestia.dev) repository: [Github](https://github.com/bestia-dev/cargo_auto_github_lib)***  
 
-![status](https://img.shields.io/badge/active_dev-green) 
-![status](https://img.shields.io/badge/in_use-green) 
+![status](https://img.shields.io/badge/maintained-green) 
+![status](https://img.shields.io/badge/ready_for_use-green) 
 
 [//]: # (auto_cargo_toml_to_md end)
 
