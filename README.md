@@ -10,7 +10,7 @@
 ![status](https://img.shields.io/badge/obsolete-red) 
 ![status](https://img.shields.io/badge/archived-red) 
 
-The functions of this crate are moved to the crate cargo_auto_lib.
+***The functions of this crate are moved to the crate cargo_auto_lib.***
 
 [//]: # (auto_cargo_toml_to_md end)
 
