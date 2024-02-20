@@ -8,8 +8,9 @@
 ***version: 0.1.24 date: 2023-05-31 author: [bestia.dev](https://bestia.dev) repository: [Github](https://github.com/bestia-dev/cargo_auto_github_lib)***  
 
 ![status](https://img.shields.io/badge/obsolete-red) 
-![status](https://img.shields.io/badge/deprecated-red) 
- The functions are moved to the cargo_auto_lib crate.
+![status](https://img.shields.io/badge/archived-red) 
+
+The functions of this crate are moved to the crate cargo_auto_lib.
 
 [//]: # (auto_cargo_toml_to_md end)
 
