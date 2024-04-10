@@ -10,7 +10,6 @@
 ![status](https://img.shields.io/badge/obsolete-red) 
 ![status](https://img.shields.io/badge/archived-red) 
 
-***The functions of this crate are moved to the crate cargo_auto_lib.***
 
 [//]: # (auto_cargo_toml_to_md end)
 
@@ -70,11 +69,7 @@ fn task_github_new_release() {
 
 ```
 
-You need to have a [github PAT (personal access token)](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) and save it in a environment variable:  
-
-```bash
- export GITHUB_TOKEN=ghp_111111111111111111111
-```
+You need to have a [github PAT (personal access token)](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 
 Run (in your main rust project):
 
@@ -94,15 +89,25 @@ Here is a list of some of them:
 - `auto_github_create_new_release()` - creates new release on Github
 - `auto_github_upload_asset_to_release()` - add asset to the github release
 
+## GitHub API token
 
-## cargo crev reviews and advisory
+The GitHub API token is a secret just like a password. Maybe even greater.  
+With this API token, a maleficent actor can change basically anything in your GitHub account. You don't want that.
 
-We leave in times of danger with [supply chain attacks](https://en.wikipedia.org/wiki/Supply_chain_attack).  
-It is recommended to always use [cargo-crev](https://github.com/crev-dev/cargo-crev)  
-to verify the trustworthiness of each of your dependencies.  
-Please, spread this info.  
-You can also read reviews quickly on the web. Example for the crate `num-traits`:  
-<https://web.crev.dev/rust-reviews/crate/num-traits/>  
+How to protect this secret?  
+Ok, there are some basic recommendations:
+
+- HTTPS is a no-brainer. Never use HTTP ever again. It is plain text over the wire.
+- Expire the token frequently, so old tokens are of no use
+- Never store the token in a file as plain text
+- Plain text inside env vars can also be accessed from malware
+- give the least permission/authorization to the API token
+
+But the true problem arises at the moment when you want to use the token. How to trust the code you are giving the token to?  
+Probably the best is that this code is written by you or that you have complete control over it. This makes very cumbersome the use of libraries/crates. You cannot trust them by default. However, it is impossible to avoid trust in low-level crates/libraries.
+
+
+
 
 ## Open-source and free as a beer
 

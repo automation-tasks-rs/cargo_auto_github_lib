@@ -108,11 +108,15 @@
 // endregion: auto_md_to_doc_comments include README.md A //!
 
 // region: mod, extern and use statements
-mod auto_github_mod;
-pub mod utils_mod;
+mod auto_github_api_mod;
+mod utils_mod;
 
 // reexport functions for callers of the library
 
-pub use auto_github_mod::auto_github_create_new_release;
-pub use auto_github_mod::auto_github_upload_asset_to_release;
-pub use auto_github_mod::github_owner;
+pub use auto_github_api_mod::description_and_topics_to_github;
+pub use auto_github_api_mod::github_api_create_a_github_pages_site;
+pub use auto_github_api_mod::github_api_get_repository;
+pub use auto_github_api_mod::github_api_replace_all_topics;
+pub use auto_github_api_mod::github_api_repository_new;
+pub use auto_github_api_mod::github_api_update_description;
+pub use auto_github_api_mod::new_remote_github_repository;

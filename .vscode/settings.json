@@ -1,6 +1,8 @@
 {
     "cSpell.words": [
+        "alloc",
         "bestia",
+        "brainer",
         "buildtool",
         "commitish",
         "developmenttool",
@@ -9,7 +11,11 @@
         "filetime",
         "plantuml",
         "repos",
+        "reqwest",
+        "rustdevuser",
         "rustlang",
+        "rustprojects",
+        "serde",
         "termion",
         "UNHIDE",
         "zdravje"
