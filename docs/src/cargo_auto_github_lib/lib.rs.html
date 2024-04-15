@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-c4dbdcde0fbd8430.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-db279b6232be9c13.css"><link rel="stylesheet" disabled href="../../static.files/dark-cf923f49f397b216.css"><link rel="stylesheet" disabled href="../../static.files/ayu-be46fdc453a55015.css"><script src="../../static.files/storage-3891ce972e3a2bf8.js"></script><script defer src="../../static.files/source-script-1b95b7cca98b26e5.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-98a684e84ae5b08b.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../cargo_auto_github_lib/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/lib.rs`."><title>lib.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-5bc39a1768837dd0.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="cargo_auto_github_lib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.77.1 (7cf61ebde 2024-03-27)" data-channel="1.77.1" data-search-js="search-dd67cee4cfa65049.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-4c98445ec4002617.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-48f368f3872407c8.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-04d5337699b92874.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title">
+            <h2>Files</h2></div></nav><div class="sidebar-resizer"></div>
+    <main><nav class="sub"><form class="search-form"><span></span><div id="sidebar-button" tabindex="-1"><a href="../../cargo_auto_github_lib/all.html" title="show sidebar"></a></div><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -116,17 +118,32 @@
 <a href="#116" id="116">116</a>
 <a href="#117" id="117">117</a>
 <a href="#118" id="118">118</a>
-</pre><pre class="rust"><code><span class="comment">// region: auto_md_to_doc_comments include README.md A //!
+<a href="#119" id="119">119</a>
+<a href="#120" id="120">120</a>
+<a href="#121" id="121">121</a>
+<a href="#122" id="122">122</a>
+<a href="#123" id="123">123</a>
+<a href="#124" id="124">124</a>
+<a href="#125" id="125">125</a>
+<a href="#126" id="126">126</a>
+<a href="#127" id="127">127</a>
+<a href="#128" id="128">128</a>
+<a href="#129" id="129">129</a>
+<a href="#130" id="130">130</a>
+<a href="#131" id="131">131</a>
+<a href="#132" id="132">132</a>
+<a href="#133" id="133">133</a>
+</pre></div><pre class="rust"><code><span class="comment">// region: auto_md_to_doc_comments include README.md A //!
 </span><span class="doccomment">//! # cargo_auto_github_lib
 //!
 //! **Library for cargo-auto `automation tasks written in rust language` with functions for github.**  
-//! ***version: 0.1.24 date: 2023-05-31 author: [bestia.dev](https://bestia.dev) repository: [Github](https://github.com/bestia-dev/cargo_auto_github_lib)***  
+//! ***version: 0.1.31 date: 2024-04-15 author: [bestia.dev](https://bestia.dev) repository: [Github](https://github.com/bestia-dev/cargo_auto_github_lib)***  
 //!
-//! [![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-138-green.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
-//! [![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-152-blue.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
-//! [![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-11-purple.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
-//! [![Lines in examples](https://img.shields.io/badge/Lines_in_examples-0-yellow.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
-//! [![Lines in tests](https://img.shields.io/badge/Lines_in_tests-60-orange.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
+//! [![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-353-green.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
+//! [![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-139-blue.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
+//! [![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-25-purple.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
+//! [![Lines in examples](https://img.shields.io/badge/Lines_in_examples-0-yellow.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
+//! [![Lines in tests](https://img.shields.io/badge/Lines_in_tests-60-orange.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
 //!
 //! [![crates.io](https://img.shields.io/crates/v/cargo_auto_github_lib.svg)](https://crates.io/crates/cargo_auto_github_lib) [![Documentation](https://docs.rs/cargo_auto_github_lib/badge.svg)](https://docs.rs/cargo_auto_github_lib/) [![crev reviews](https://web.crev.dev/rust-reviews/badge/crev_count/cargo_auto_github_lib.svg)](https://web.crev.dev/rust-reviews/crate/cargo_auto_github_lib/) [![Lib.rs](https://img.shields.io/badge/Lib.rs-rust-orange.svg)](https://lib.rs/crates/cargo_auto_github_lib/) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/blob/master/LICENSE) [![Rust](https://github.com/bestia-dev/cargo_auto_github_lib/workflows/RustAction/badge.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/) ![Hits](https://bestia.dev/webpage_hit_counter/get_svg_image/714373530.svg)
 //!
@@ -146,7 +163,7 @@
 //! In a new editor open the generated directory `automation_tasks_rs` as an independent rust project. There is already this dependency in `Cargo.toml`:  
 //!
 //! ```toml
-//! cargo_auto_github_lib=&quot;0.1.*&quot;
+//! cargo_auto_github_lib="0.1.*"
 //! ```
 //!
 //! Preview the code and observe all the `auto_github_*` functions from `cargo_auto_github_lib`.  
@@ -154,32 +171,33 @@
 //!
 //! ```rust ignore
 //! fn task_github_new_release() {
-//!     // async block inside sync code with tokio
-//!     let rt = tokio::runtime::Runtime::new().unwrap();
-//!     rt.block_on(async move {
-//!         // ...
+//!     // ...
 //!
-//!         let release_id =  auto_github_create_new_release(&amp;owner, &amp;repo, &amp;version, &amp;name, branch, body_md_text).await;
-//!         println!(&quot;New release created, now uploading release asset. This can take some time if the files are big. Wait...&quot;);
+//!     let github_client = crate::github_mod::GitHubClient::new();
+//!     let json_value = github_client.send_to_github_api(cgl::github_api_create_new_release(
+//!         &amp;owner,
+//!         &amp;repo_name,
+//!         &amp;tag_name_version,
+//!         &amp;release_name,
+//!         branch,
+//!         &amp;body_md_text,
+//!     ));
 //!
-//!         // upload asset
-//!         let path_to_file = format!(
-//!             &quot;target/release/{package_name}&quot;,
-//!             package_name = package_name()
-//!         );
+//!     //...
 //!
-//!         auto_github_upload_asset_to_release(&amp;owner, &amp;repo, &amp;release_id, &amp;path_to_file).await;
-//!         println!(&quot;Asset uploaded.&quot;);
-//!     });
+//!     // upload asset
+//!     cgl::github_api_upload_asset_to_release(
+//!         &amp;github_client,
+//!         &amp;owner,
+//!         &amp;repo_name,
+//!         &amp;release_id,
+//!         &amp;tar_name,
+//!     );
 //! }
 //!
 //! ```
 //!
-//! You need to have a [github PAT (personal access token)](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) and save it in a environment variable:  
-//!
-//! ```bash
-//!  export GITHUB_TOKEN=ghp_111111111111111111111
-//! ```
+//! You need to have a [GitHub PAT (personal access token)](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 //!
 //! Run (in your main rust project):
 //!
@@ -199,15 +217,22 @@
 //! - `auto_github_create_new_release()` - creates new release on Github
 //! - `auto_github_upload_asset_to_release()` - add asset to the github release
 //!
+//! ## GitHub API token
 //!
-//! ## cargo crev reviews and advisory
+//! The GitHub API token is a secret just like a password. Maybe even greater.  
+//! With this API token, a maleficent actor can change basically anything in your GitHub account. You don't want that.
 //!
-//! We leave in times of danger with [supply chain attacks](https://en.wikipedia.org/wiki/Supply_chain_attack).  
-//! It is recommended to always use [cargo-crev](https://github.com/crev-dev/cargo-crev)  
-//! to verify the trustworthiness of each of your dependencies.  
-//! Please, spread this info.  
-//! You can also read reviews quickly on the web. Example for the crate `num-traits`:  
-//! &lt;https://web.crev.dev/rust-reviews/crate/num-traits/&gt;  
+//! How to protect this secret?  
+//! Ok, there are some basic recommendations:
+//!
+//! - HTTPS is a no-brainer. Never use HTTP ever again. It is plain text over the wire.
+//! - Expire the token frequently, so old tokens are of no use
+//! - Never store the token in a file as plain text
+//! - Plain text inside env vars can also be accessed from malware
+//! - give the least permission/authorization to the API token
+//!
+//! But the true problem arises at the moment when you want to use the token. How to trust the code you are giving the token to?  
+//! Probably the best is that this code is written by you or that you have complete control over it. This makes very cumbersome the use of libraries/crates. You cannot trust them by default. However, it is impossible to avoid trust in low-level crates/libraries.
 //!
 //! ## Open-source and free as a beer
 //!
@@ -226,13 +251,19 @@
 </span><span class="comment">// endregion: auto_md_to_doc_comments include README.md A //!
 
 // region: mod, extern and use statements
-</span><span class="kw">mod </span>auto_github_mod;
-<span class="kw">pub mod </span>utils_mod;
+</span><span class="kw">mod </span>auto_github_api_mod;
+<span class="kw">mod </span>utils_mod;
 
 <span class="comment">// reexport functions for callers of the library
 
-</span><span class="kw">pub use </span>auto_github_mod::auto_github_create_new_release;
-<span class="kw">pub use </span>auto_github_mod::auto_github_upload_asset_to_release;
-<span class="kw">pub use </span>auto_github_mod::github_owner;
-</code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="cargo_auto_github_lib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0 (84c898d65 2023-04-16)" data-search-js="search-8a59a8356673ec1f.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
+</span><span class="kw">pub use </span>auto_github_api_mod::description_and_topics_to_github;
+<span class="kw">pub use </span>auto_github_api_mod::github_api_create_a_github_pages_site;
+<span class="kw">pub use </span>auto_github_api_mod::github_api_create_new_release;
+<span class="kw">pub use </span>auto_github_api_mod::github_api_get_repository;
+<span class="kw">pub use </span>auto_github_api_mod::github_api_replace_all_topics;
+<span class="kw">pub use </span>auto_github_api_mod::github_api_repository_new;
+<span class="kw">pub use </span>auto_github_api_mod::github_api_update_description;
+<span class="kw">pub use </span>auto_github_api_mod::github_api_upload_asset_to_release;
+<span class="kw">pub use </span>auto_github_api_mod::new_remote_github_repository;
+<span class="kw">pub use </span>auto_github_api_mod::SendToGitHubApi;
+</code></pre></div></section></main></body></html>

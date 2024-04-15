@@ -2,13 +2,13 @@
 //! # cargo_auto_github_lib
 //!
 //! **Library for cargo-auto `automation tasks written in rust language` with functions for github.**  
-//! ***version: 0.1.24 date: 2023-05-31 author: [bestia.dev](https://bestia.dev) repository: [Github](https://github.com/bestia-dev/cargo_auto_github_lib)***  
+//! ***version: 0.1.31 date: 2024-04-15 author: [bestia.dev](https://bestia.dev) repository: [Github](https://github.com/bestia-dev/cargo_auto_github_lib)***  
 //!
-//! [![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-138-green.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
-//! [![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-152-blue.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
-//! [![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-11-purple.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
-//! [![Lines in examples](https://img.shields.io/badge/Lines_in_examples-0-yellow.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
-//! [![Lines in tests](https://img.shields.io/badge/Lines_in_tests-60-orange.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/)
+//! [![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-353-green.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
+//! [![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-139-blue.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
+//! [![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-25-purple.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
+//! [![Lines in examples](https://img.shields.io/badge/Lines_in_examples-0-yellow.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
+//! [![Lines in tests](https://img.shields.io/badge/Lines_in_tests-60-orange.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
 //!
 //! [![crates.io](https://img.shields.io/crates/v/cargo_auto_github_lib.svg)](https://crates.io/crates/cargo_auto_github_lib) [![Documentation](https://docs.rs/cargo_auto_github_lib/badge.svg)](https://docs.rs/cargo_auto_github_lib/) [![crev reviews](https://web.crev.dev/rust-reviews/badge/crev_count/cargo_auto_github_lib.svg)](https://web.crev.dev/rust-reviews/crate/cargo_auto_github_lib/) [![Lib.rs](https://img.shields.io/badge/Lib.rs-rust-orange.svg)](https://lib.rs/crates/cargo_auto_github_lib/) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/blob/master/LICENSE) [![Rust](https://github.com/bestia-dev/cargo_auto_github_lib/workflows/RustAction/badge.svg)](https://github.com/bestia-dev/cargo_auto_github_lib/) ![Hits](https://bestia.dev/webpage_hit_counter/get_svg_image/714373530.svg)
 //!
@@ -36,32 +36,33 @@
 //!
 //! ```rust ignore
 //! fn task_github_new_release() {
-//!     // async block inside sync code with tokio
-//!     let rt = tokio::runtime::Runtime::new().unwrap();
-//!     rt.block_on(async move {
-//!         // ...
+//!     // ...
 //!
-//!         let release_id =  auto_github_create_new_release(&owner, &repo, &version, &name, branch, body_md_text).await;
-//!         println!("New release created, now uploading release asset. This can take some time if the files are big. Wait...");
+//!     let github_client = crate::github_mod::GitHubClient::new();
+//!     let json_value = github_client.send_to_github_api(cgl::github_api_create_new_release(
+//!         &owner,
+//!         &repo_name,
+//!         &tag_name_version,
+//!         &release_name,
+//!         branch,
+//!         &body_md_text,
+//!     ));
 //!
-//!         // upload asset
-//!         let path_to_file = format!(
-//!             "target/release/{package_name}",
-//!             package_name = package_name()
-//!         );
+//!     //...
 //!
-//!         auto_github_upload_asset_to_release(&owner, &repo, &release_id, &path_to_file).await;
-//!         println!("Asset uploaded.");
-//!     });
+//!     // upload asset
+//!     cgl::github_api_upload_asset_to_release(
+//!         &github_client,
+//!         &owner,
+//!         &repo_name,
+//!         &release_id,
+//!         &tar_name,
+//!     );
 //! }
 //!
 //! ```
 //!
-//! You need to have a [github PAT (personal access token)](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) and save it in a environment variable:  
-//!
-//! ```bash
-//!  export GITHUB_TOKEN=ghp_111111111111111111111
-//! ```
+//! You need to have a [GitHub PAT (personal access token)](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 //!
 //! Run (in your main rust project):
 //!
@@ -81,15 +82,22 @@
 //! - `auto_github_create_new_release()` - creates new release on Github
 //! - `auto_github_upload_asset_to_release()` - add asset to the github release
 //!
+//! ## GitHub API token
 //!
-//! ## cargo crev reviews and advisory
+//! The GitHub API token is a secret just like a password. Maybe even greater.  
+//! With this API token, a maleficent actor can change basically anything in your GitHub account. You don't want that.
 //!
-//! We leave in times of danger with [supply chain attacks](https://en.wikipedia.org/wiki/Supply_chain_attack).  
-//! It is recommended to always use [cargo-crev](https://github.com/crev-dev/cargo-crev)  
-//! to verify the trustworthiness of each of your dependencies.  
-//! Please, spread this info.  
-//! You can also read reviews quickly on the web. Example for the crate `num-traits`:  
-//! <https://web.crev.dev/rust-reviews/crate/num-traits/>  
+//! How to protect this secret?  
+//! Ok, there are some basic recommendations:
+//!
+//! - HTTPS is a no-brainer. Never use HTTP ever again. It is plain text over the wire.
+//! - Expire the token frequently, so old tokens are of no use
+//! - Never store the token in a file as plain text
+//! - Plain text inside env vars can also be accessed from malware
+//! - give the least permission/authorization to the API token
+//!
+//! But the true problem arises at the moment when you want to use the token. How to trust the code you are giving the token to?  
+//! Probably the best is that this code is written by you or that you have complete control over it. This makes very cumbersome the use of libraries/crates. You cannot trust them by default. However, it is impossible to avoid trust in low-level crates/libraries.
 //!
 //! ## Open-source and free as a beer
 //!

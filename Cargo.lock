@@ -216,7 +216,7 @@ checksum = "c59e92b5a388f549b863a7bea62612c09f24c8393560709a54558a9abdfb3b9c"
 
 [[package]]
 name = "cargo_auto_github_lib"
-version = "0.1.30"
+version = "0.1.31"
 dependencies = [
  "camino",
  "cargo_auto_lib",

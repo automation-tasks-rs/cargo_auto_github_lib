@@ -28,10 +28,7 @@ pub trait SendToGitHubApi {
     /// The RequestBuilder is created somewhere in the library crate.
     /// The client can be passed to the library. It will not reveal the secret token.
     /// This is basically an async fn, but use of `async fn` in public traits is discouraged...
-    fn upload_to_github(
-        &self,
-        req: reqwest::RequestBuilder,
-    ) -> impl std::future::Future<Output = serde_json::Value> + Send;
+    fn upload_to_github(&self, req: reqwest::RequestBuilder) -> impl std::future::Future<Output = serde_json::Value> + Send;
 }
 
 /// Interactive ask to create a new remote GitHub repository
@@ -47,53 +44,38 @@ pub fn new_remote_github_repository(github_client: &impl SendToGitHubApi) -> Opt
         panic!("{RED}ERROR: Element Repository in Cargo.toml contain the placeholder phrase '/github_owner/'! Modify it with your github owner name.{RESET}");
     }
     let name = cargo_toml.package_name();
-    let description = cargo_toml.package_description().unwrap_or_else(|| {
-        panic!("{RED}ERROR: Element Description in Cargo.toml does not exist!{RESET}")
-    });
+    let description = cargo_toml
+        .package_description()
+        .unwrap_or_else(|| panic!("{RED}ERROR: Element Description in Cargo.toml does not exist!{RESET}"));
 
     // if push is not possible, then this function will not execute completely.
     // TODO: check if the github is in the ssh agent and panic if not
 
     // ask interactive
     println!("    {BLUE}This project does not have a remote GitHub repository.{RESET}");
-    let answer = inquire::Text::new(&format!(
-        "{BLUE}Do you want to create a new remote GitHub repository? (y/n){RESET}"
-    ))
-    .prompt()
-    .unwrap();
+    let answer = inquire::Text::new(&format!("{BLUE}Do you want to create a new remote GitHub repository? (y/n){RESET}"))
+        .prompt()
+        .unwrap();
     if answer.to_lowercase() != "y" {
         // early exit
         return None;
     }
     // continue if answer is "y"
 
-    let json = github_client.send_to_github_api(github_api_repository_new(
-        &github_owner,
-        &name,
-        &description,
-    ));
+    let json = github_client.send_to_github_api(github_api_repository_new(&github_owner, &name, &description));
 
     // get just the name, description and html_url from json
-    println!(
-        "{YELLOW}name: {}{RESET}",
-        json.get("name").unwrap().as_str().unwrap()
-    );
-    println!(
-        "{YELLOW}description: {}{RESET}",
-        json.get("description").unwrap().as_str().unwrap()
-    );
+    println!("{YELLOW}name: {}{RESET}", json.get("name").unwrap().as_str().unwrap());
+    println!("{YELLOW}description: {}{RESET}", json.get("description").unwrap().as_str().unwrap());
     let repo_html_url = json.get("html_url").unwrap().as_str().unwrap().to_string();
     println!("{YELLOW}url: {}{RESET}", &repo_html_url);
 
     // add this GitHub repository to origin remote over SSH (use sshadd for passphrase)
-    cl::run_shell_command(&format!(
-        "git remote add origin git@github.com:{github_owner}/{name}.git"
-    ));
+    cl::run_shell_command(&format!("git remote add origin git@github.com:{github_owner}/{name}.git"));
     cl::run_shell_command("git push -u origin main");
 
     // the docs pages are created with a GitHub action
-    let _json = github_client
-        .send_to_github_api(github_api_create_a_github_pages_site(&github_owner, &name));
+    let _json = github_client.send_to_github_api(github_api_create_a_github_pages_site(&github_owner, &name));
 
     Some(repo_html_url)
 }
@@ -118,18 +100,11 @@ pub fn description_and_topics_to_github(github_client: &impl SendToGitHubApi) {
     // get just the description and topis from json
     let gh_description = json.get("description").unwrap().as_str().unwrap();
     let gh_topics = json.get("topics").unwrap().as_array().unwrap();
-    let gh_topics: Vec<String> = gh_topics
-        .into_iter()
-        .map(|value| value.as_str().unwrap().to_string())
-        .collect();
+    let gh_topics: Vec<String> = gh_topics.into_iter().map(|value| value.as_str().unwrap().to_string()).collect();
 
     // are description and topics both equal?
     if gh_description != description {
-        let _json = github_client.send_to_github_api(github_api_update_description(
-            &owner,
-            &repo_name,
-            &description,
-        ));
+        let _json = github_client.send_to_github_api(github_api_update_description(&owner, &repo_name, &description));
     }
 
     // all elements must be equal, but not necessary in the same order
@@ -154,16 +129,12 @@ pub fn description_and_topics_to_github(github_client: &impl SendToGitHubApi) {
     };
 
     if !topics_is_equal {
-        let _json = github_client
-            .send_to_github_api(github_api_replace_all_topics(&owner, &repo_name, &keywords));
+        let _json = github_client.send_to_github_api(github_api_replace_all_topics(&owner, &repo_name, &keywords));
     }
 }
 
 /// GitHub api get repository
-pub fn github_api_get_repository(
-    owner: &str,
-    repo_name: &str,
-) -> reqwest::blocking::RequestBuilder {
+pub fn github_api_get_repository(owner: &str, repo_name: &str) -> reqwest::blocking::RequestBuilder {
     /*
         https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#get-a-repository
 
@@ -183,11 +154,7 @@ pub fn github_api_get_repository(
 }
 
 /// Create a new github repository
-pub fn github_api_repository_new(
-    owner: &str,
-    name: &str,
-    description: &str,
-) -> reqwest::blocking::RequestBuilder {
+pub fn github_api_repository_new(owner: &str, name: &str, description: &str) -> reqwest::blocking::RequestBuilder {
     /*
     https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#create-a-repository-for-the-authenticated-user
 
@@ -236,11 +203,7 @@ pub fn github_api_repository_new(
 }
 
 /// GitHub api update description
-pub fn github_api_update_description(
-    owner: &str,
-    repo_name: &str,
-    description: &str,
-) -> reqwest::blocking::RequestBuilder {
+pub fn github_api_update_description(owner: &str, repo_name: &str, description: &str) -> reqwest::blocking::RequestBuilder {
     /*
     https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#update-a-repository
 
@@ -286,11 +249,7 @@ pub fn github_api_update_description(
 }
 
 /// GitHub API replace all topics
-pub fn github_api_replace_all_topics(
-    owner: &str,
-    repo_name: &str,
-    topics: &Vec<String>,
-) -> reqwest::blocking::RequestBuilder {
+pub fn github_api_replace_all_topics(owner: &str, repo_name: &str, topics: &Vec<String>) -> reqwest::blocking::RequestBuilder {
     /*
     https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#replace-all-repository-topics
     curl -L \
@@ -316,10 +275,7 @@ pub fn github_api_replace_all_topics(
 }
 
 /// GitHub API create-a-github-pages-site
-pub fn github_api_create_a_github_pages_site(
-    owner: &str,
-    repo_name: &str,
-) -> reqwest::blocking::RequestBuilder {
+pub fn github_api_create_a_github_pages_site(owner: &str, repo_name: &str) -> reqwest::blocking::RequestBuilder {
     /*
         https://docs.github.com/en/rest/pages/pages?apiVersion=2022-11-28#create-a-github-pages-site
         curl -L \
@@ -356,21 +312,13 @@ pub fn github_api_create_a_github_pages_site(
 }
 
 /// Upload asset to github release  
-pub fn github_api_upload_asset_to_release(
-    github_client: &impl SendToGitHubApi,
-    owner: &str,
-    repo: &str,
-    release_id: &str,
-    path_to_file: &str,
-) {
+pub fn github_api_upload_asset_to_release(github_client: &impl SendToGitHubApi, owner: &str, repo: &str, release_id: &str, path_to_file: &str) {
     println!("    {YELLOW}Uploading file to GitHub release: {path_to_file}{RESET}");
     let file = camino::Utf8Path::new(&path_to_file);
     let file_name = file.file_name().unwrap();
 
-    let release_upload_url =
-        format!("https://uploads.github.com/repos/{owner}/{repo}/releases/{release_id}/assets");
-    let mut release_upload_url =
-        <url::Url as std::str::FromStr>::from_str(&release_upload_url).unwrap();
+    let release_upload_url = format!("https://uploads.github.com/repos/{owner}/{repo}/releases/{release_id}/assets");
+    let mut release_upload_url = <url::Url as std::str::FromStr>::from_str(&release_upload_url).unwrap();
     release_upload_url.set_query(Some(format!("{}={}", "name", file_name).as_str()));
     let file_size = std::fs::metadata(file).unwrap().len();
     println!("    {YELLOW}It can take some time to upload. File size: {file_size}. Wait...{RESET}");
@@ -393,14 +341,7 @@ pub fn github_api_upload_asset_to_release(
 }
 
 /// Create new release on Github
-pub fn github_api_create_new_release(
-    owner: &str,
-    repo: &str,
-    tag_name_version: &str,
-    name: &str,
-    branch: &str,
-    body_md_text: &str,
-) -> reqwest::blocking::RequestBuilder {
+pub fn github_api_create_new_release(owner: &str, repo: &str, tag_name_version: &str, name: &str, branch: &str, body_md_text: &str) -> reqwest::blocking::RequestBuilder {
     /*
     https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#create-a-release
     Request like :

@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":["__stability","__static_ref_initialize","auto_github_create_new_release","auto_github_upload_asset_to_release","github_owner"],"static":["LAZY"],"struct":["CARGO_TOML","PACKAGE"]};
