@@ -1,10 +1,10 @@
 [package]
 name = "cargo_auto_github_lib"
-version = "0.1.31"
+version = "0.1.33"
 authors = ["bestia.dev"]
 homepage = "https://bestia.dev"
 edition = "2021"
-description = "Library for cargo-auto `automation tasks written in rust language` with functions for github."
+description = "Library for cargo-auto `automation tasks written in rust language` with functions for GitHub."
 repository = "https://github.com/bestia-dev/cargo_auto_github_lib"
 readme = "README.md"
 license = "MIT"
@@ -20,20 +20,13 @@ include = [
 ]
 
 [dependencies]
-# the dependency to crates.io must be set for the GitHub action to succeed.
-# cargo_auto_lib = "2.0.8"
-# Using the development library locally, so I test the changes immediately.
-cargo_auto_lib = {path = "/home/rustdevuser/rustprojects/cargo_auto_lib"}
+cargo_auto_lib = "2.1.2"
 
-unwrap = "1.2.1"
 reqwest = { version = "0.12.3", features = ["blocking", "stream"] }
 tokio-util = {version = "0.7.8", features = ["codec"]}
 tokio = {version = "1.28.2", features = ["rt","rt-multi-thread","fs"]}
 url="2.3.1"
-lazy_static = "1.4.0"
-cargo_toml = "0.19.2"
 json="0.12.4"
-secrecy = { version="0.8.0", features=["alloc"]}
 serde_json = {version= "1.0.114", features=["std"]}
 inquire = "0.7.0"
 camino = "1.1.6"
