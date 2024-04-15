@@ -1,24 +1,43 @@
 // auto_github_api_mod
 
-//! functions to work with github api 
+//! functions to work with github api
 //! WARNING: Never pass the secret API token to this crate library.
-//! Pass the function send_github_api() as a parameter. It encapsulates the secret token.
+//! Pass the function send_to_github_api() as a parameter. It encapsulates the secret token.
 
 use cargo_auto_lib as cl;
 // traits must be in scope (Rust strangeness)
 use cl::CargoTomlPublicApiMethods;
 
 use cl::BLUE;
-use cl::YELLOW;
 use cl::RED;
 use cl::RESET;
+use cl::YELLOW;
+
+/// trait for GitHubClient in the calling crate
+pub trait SendToGitHubApi {
+    /// Send github api request
+    ///
+    /// This function encapsulates the secret API token.
+    /// The RequestBuilder is created somewhere in the library crate.
+    /// The client can be passed to the library. It will not reveal the secret token.
+    fn send_to_github_api(&self, req: reqwest::blocking::RequestBuilder) -> serde_json::Value;
+
+    /// Upload to github
+    ///
+    /// This function encapsulates the secret API token.
+    /// The RequestBuilder is created somewhere in the library crate.
+    /// The client can be passed to the library. It will not reveal the secret token.
+    /// This is basically an async fn, but use of `async fn` in public traits is discouraged...
+    fn upload_to_github(
+        &self,
+        req: reqwest::RequestBuilder,
+    ) -> impl std::future::Future<Output = serde_json::Value> + Send;
+}
 
 /// Interactive ask to create a new remote GitHub repository
 ///
-/// Use a function pointer to send_github_api() to avoid passing the secret token.
-pub fn new_remote_github_repository(
-    send_github_api: &dyn Fn(reqwest::blocking::RequestBuilder) -> serde_json::Value,
-) -> Option<String> {
+/// Use a function pointer to send_to_github_api() to avoid passing the secret token.
+pub fn new_remote_github_repository(github_client: &impl SendToGitHubApi) -> Option<String> {
     // early error if Repository contains the placeholder "github_owner" or does not contain the true github_owner
     let cargo_toml = cl::CargoToml::read();
     let github_owner = cargo_toml
@@ -35,7 +54,6 @@ pub fn new_remote_github_repository(
     // if push is not possible, then this function will not execute completely.
     // TODO: check if the github is in the ssh agent and panic if not
 
-
     // ask interactive
     println!("    {BLUE}This project does not have a remote GitHub repository.{RESET}");
     let answer = inquire::Text::new(&format!(
@@ -49,14 +67,17 @@ pub fn new_remote_github_repository(
     }
     // continue if answer is "y"
 
-    let json = send_github_api(github_api_repository_new(
+    let json = github_client.send_to_github_api(github_api_repository_new(
         &github_owner,
         &name,
         &description,
     ));
 
     // get just the name, description and html_url from json
-    println!("{YELLOW}name: {}{RESET}", json.get("name").unwrap().as_str().unwrap());
+    println!(
+        "{YELLOW}name: {}{RESET}",
+        json.get("name").unwrap().as_str().unwrap()
+    );
     println!(
         "{YELLOW}description: {}{RESET}",
         json.get("description").unwrap().as_str().unwrap()
@@ -71,7 +92,8 @@ pub fn new_remote_github_repository(
     cl::run_shell_command("git push -u origin main");
 
     // the docs pages are created with a GitHub action
-    let _json = send_github_api(github_api_create_a_github_pages_site(&github_owner, &name));
+    let _json = github_client
+        .send_to_github_api(github_api_create_a_github_pages_site(&github_owner, &name));
 
     Some(repo_html_url)
 }
@@ -83,9 +105,7 @@ pub fn new_remote_github_repository(
 /// In README.md I want to have badges for tags
 /// In GitHub they are topics.
 /// Topic must be only one word: lowercase letters, hyphens(-) or numbers, less then 35 characters.
-pub fn description_and_topics_to_github(
-    send_github_api: &dyn Fn(reqwest::blocking::RequestBuilder) -> serde_json::Value,
-) {
+pub fn description_and_topics_to_github(github_client: &impl SendToGitHubApi) {
     let cargo_toml = cl::CargoToml::read();
     let repo_name = cargo_toml.package_name();
     let owner = cargo_toml.github_owner().unwrap();
@@ -93,7 +113,7 @@ pub fn description_and_topics_to_github(
     let keywords = cargo_toml.package_keywords();
 
     // get data from GitHub
-    let json = send_github_api(github_api_get_repository(&owner, &repo_name));
+    let json = github_client.send_to_github_api(github_api_get_repository(&owner, &repo_name));
 
     // get just the description and topis from json
     let gh_description = json.get("description").unwrap().as_str().unwrap();
@@ -105,7 +125,7 @@ pub fn description_and_topics_to_github(
 
     // are description and topics both equal?
     if gh_description != description {
-        let _json = send_github_api(github_api_update_description(
+        let _json = github_client.send_to_github_api(github_api_update_description(
             &owner,
             &repo_name,
             &description,
@@ -134,7 +154,8 @@ pub fn description_and_topics_to_github(
     };
 
     if !topics_is_equal {
-        let _json = send_github_api(github_api_replace_all_topics(&owner, &repo_name, &keywords));
+        let _json = github_client
+            .send_to_github_api(github_api_replace_all_topics(&owner, &repo_name, &keywords));
     }
 }
 
@@ -329,6 +350,98 @@ pub fn github_api_create_a_github_pages_site(
     reqwest::blocking::Client::new()
         .post(repos_url.as_str())
         .header("Accept", "application/vnd.github+json")
+        .header("X-GitHub-Api-Version", "2022-11-28")
+        .header("User-Agent", "cargo_auto_lib")
+        .body(body)
+}
+
+/// Upload asset to github release  
+pub fn github_api_upload_asset_to_release(
+    github_client: &impl SendToGitHubApi,
+    owner: &str,
+    repo: &str,
+    release_id: &str,
+    path_to_file: &str,
+) {
+    println!("    {YELLOW}Uploading file to GitHub release: {path_to_file}{RESET}");
+    let file = camino::Utf8Path::new(&path_to_file);
+    let file_name = file.file_name().unwrap();
+
+    let release_upload_url =
+        format!("https://uploads.github.com/repos/{owner}/{repo}/releases/{release_id}/assets");
+    let mut release_upload_url =
+        <url::Url as std::str::FromStr>::from_str(&release_upload_url).unwrap();
+    release_upload_url.set_query(Some(format!("{}={}", "name", file_name).as_str()));
+    let file_size = std::fs::metadata(file).unwrap().len();
+    println!("    {YELLOW}It can take some time to upload. File size: {file_size}. Wait...{RESET}");
+    // region: async code made sync locally
+    let rt = tokio::runtime::Runtime::new().unwrap();
+    rt.block_on(async move {
+        let file = tokio::fs::File::open(file).await.unwrap();
+        let stream = tokio_util::codec::FramedRead::new(file, tokio_util::codec::BytesCodec::new());
+        let body = reqwest::Body::wrap_stream(stream);
+
+        let req = reqwest::Client::new()
+            .post(release_upload_url.as_str())
+            .header("Content-Type", "application/octet-stream")
+            .header("Content-Length", file_size.to_string())
+            .body(body);
+
+        github_client.upload_to_github(req).await;
+    });
+    // endregion: async code made sync locally
+}
+
+/// Create new release on Github
+pub fn github_api_create_new_release(
+    owner: &str,
+    repo: &str,
+    tag_name_version: &str,
+    name: &str,
+    branch: &str,
+    body_md_text: &str,
+) -> reqwest::blocking::RequestBuilder {
+    /*
+    https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#create-a-release
+    Request like :
+    curl -L \
+    -X POST \
+    -H "Accept: application/vnd.github+json" \
+    -H "Authorization: Bearer <YOUR-TOKEN>"\
+    -H "X-GitHub-Api-Version: 2022-11-28" \
+    https://api.github.com/repos/OWNER/REPO/releases \
+    -d '
+    {
+        "tag_name":"v1.0.0",
+        "target_commitish":"master",
+        "name":"v1.0.0",
+        "body":"Description of the release",
+        "draft":false,
+        "prerelease":false,
+        "generate_release_notes":false
+    }'
+
+    Response (short)
+    {
+    "id": 1,
+    ...
+    }
+    */
+    let releases_url = format!("https://api.github.com/repos/{owner}/{repo}/releases");
+    let body = serde_json::json!({
+        "tag_name": tag_name_version,
+        "target_commitish":branch,
+        "name":name,
+        "body":body_md_text,
+        "draft":false,
+        "prerelease":false,
+        "generate_release_notes":false,
+    });
+    let body = body.to_string();
+
+    reqwest::blocking::Client::new()
+        .post(releases_url.as_str())
+        .header("Content-Type", "application/vnd.github+json")
         .header("X-GitHub-Api-Version", "2022-11-28")
         .header("User-Agent", "cargo_auto_lib")
         .body(body)

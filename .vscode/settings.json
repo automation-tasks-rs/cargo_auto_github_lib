@@ -4,6 +4,7 @@
         "bestia",
         "brainer",
         "buildtool",
+        "camino",
         "commitish",
         "developmenttool",
         "endregion",
@@ -16,6 +17,7 @@
         "rustlang",
         "rustprojects",
         "serde",
+        "sshadd",
         "termion",
         "UNHIDE",
         "zdravje"
