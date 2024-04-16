@@ -1,6 +1,58 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/auto_github_api_mod.rs`."><title>auto_github_api_mod.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-5bc39a1768837dd0.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="cargo_auto_github_lib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.77.1 (7cf61ebde 2024-03-27)" data-channel="1.77.1" data-search-js="search-dd67cee4cfa65049.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-4c98445ec4002617.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-48f368f3872407c8.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-04d5337699b92874.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title">
-            <h2>Files</h2></div></nav><div class="sidebar-resizer"></div>
-    <main><nav class="sub"><form class="search-form"><span></span><div id="sidebar-button" tabindex="-1"><a href="../../cargo_auto_github_lib/all.html" title="show sidebar"></a></div><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="rustdoc">
+  <meta name="description" content="Source of the Rust file `src/auto_github_api_mod.rs`.">
+  <title>auto_github_api_mod.rs - source</title>
+  <link rel="preload" as="font" type="font/woff2" crossorigin="" href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin="" href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin="" href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin="" href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin="" href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2">
+  <link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css">
+  <link rel="stylesheet" href="../../static.files/rustdoc-5bc39a1768837dd0.css">
+  <meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="cargo_auto_github_lib" data-themes=""
+  data-resource-suffix="" data-rustdoc-version="1.77.1 (7cf61ebde 2024-03-27)" data-channel="1.77.1" data-search-js="search-dd67cee4cfa65049.js"
+  data-settings-js="settings-4313503d2e1961c2.js">
+  <script src="../../static.files/storage-4c98445ec4002617.js"></script>
+  <script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script>
+  <script defer src="../../src-files.js"></script>
+  <script defer src="../../static.files/main-48f368f3872407c8.js"></script><noscript>
+  <link rel="stylesheet" href="../../static.files/noscript-04d5337699b92874.css"></noscript>
+  <link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png">
+  <link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png">
+  <link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg">
+</head>
+<body class="rustdoc src">
+  <!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+  <nav class="sidebar">
+    <div class="src-sidebar-title">
+      <h2>Files</h2>
+    </div>
+  </nav>
+  <div class="sidebar-resizer"></div>
+  <main>
+    <nav class="sub">
+      <form class="search-form">
+        <div id="sidebar-button" tabindex="-1">
+          <a href="../../cargo_auto_github_lib/all.html" title="show sidebar"></a>
+        </div><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder=
+        "Click or press ‘S’ to search, ‘?’ for more options…" type="search">
+        <div id="help-button" tabindex="-1">
+          <a href="../../help.html" title="help">?</a>
+        </div>
+        <div id="settings-menu" tabindex="-1">
+          <a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src=
+          "../../static.files/wheel-7b819b6101059cd0.svg"></a>
+        </div>
+      </form>
+    </nav>
+    <section id="main-content" class="content">
+      <div class="example-wrap">
+        <div data-nosnippet="">
+          <pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -389,7 +441,9 @@
 <a href="#387" id="387">387</a>
 <a href="#388" id="388">388</a>
 <a href="#389" id="389">389</a>
-</pre></div><pre class="rust"><code><span class="comment">// auto_github_api_mod
+</pre>
+        </div>
+        <pre class="rust"><code><span class="comment">// auto_github_api_mod
 
 </span><span class="doccomment">//! functions to work with github api
 //! WARNING: Never pass the secret API token to this crate library.
@@ -411,7 +465,8 @@
     /// This function encapsulates the secret API token.
     /// The RequestBuilder is created somewhere in the library crate.
     /// The client can be passed to the library. It will not reveal the secret token.
-    </span><span class="kw">fn </span>send_to_github_api(<span class="kw-2">&amp;</span><span class="self">self</span>, req: reqwest::blocking::RequestBuilder) -&gt; serde_json::Value;
+    </span><span class="kw">fn </span>send_to_github_api(<span class="kw-2">&</span><span class=
+"self">self</span>, req: reqwest::blocking::RequestBuilder) -&gt; serde_json::Value;
 
     <span class="doccomment">/// Upload to github
     ///
@@ -419,32 +474,38 @@
     /// The RequestBuilder is created somewhere in the library crate.
     /// The client can be passed to the library. It will not reveal the secret token.
     /// This is basically an async fn, but use of `async fn` in public traits is discouraged...
-    </span><span class="kw">fn </span>upload_to_github(<span class="kw-2">&amp;</span><span class="self">self</span>, req: reqwest::RequestBuilder) -&gt; <span class="kw">impl </span>std::future::Future&lt;Output = serde_json::Value&gt; + Send;
+    </span><span class="kw">fn </span>upload_to_github(<span class="kw-2">&</span><span class=
+"self">self</span>, req: reqwest::RequestBuilder) -&gt; <span class="kw">impl </span>std::future::Future&lt;Output = serde_json::Value&gt; + Send;
 }
 
 <span class="doccomment">/// Interactive ask to create a new remote GitHub repository
 ///
 /// Use a function pointer to send_to_github_api() to avoid passing the secret token.
-</span><span class="kw">pub fn </span>new_remote_github_repository(github_client: <span class="kw-2">&amp;</span><span class="kw">impl </span>SendToGitHubApi) -&gt; <span class="prelude-ty">Option</span>&lt;String&gt; {
+</span><span class="kw">pub fn </span>new_remote_github_repository(github_client: <span class="kw-2">&</span><span class=
+"kw">impl </span>SendToGitHubApi) -&gt; <span class="prelude-ty">Option</span>&lt;String&gt; {
     <span class="comment">// early error if Repository contains the placeholder "github_owner" or does not contain the true github_owner
     </span><span class="kw">let </span>cargo_toml = cl::CargoToml::read();
     <span class="kw">let </span>github_owner = cargo_toml
         .github_owner()
-        .unwrap_or_else(|| <span class="macro">panic!</span>(<span class="string">"{RED}ERROR: Element Repository in Cargo.toml does not contain the github_owner!{RESET}"</span>));
+        .unwrap_or_else(|| <span class="macro">panic!</span>(<span class=
+"string">"{RED}ERROR: Element Repository in Cargo.toml does not contain the github_owner!{RESET}"</span>));
     <span class="kw">if </span>github_owner == <span class="string">"github_owner" </span>{
-        <span class="macro">panic!</span>(<span class="string">"{RED}ERROR: Element Repository in Cargo.toml contain the placeholder phrase '/github_owner/'! Modify it with your github owner name.{RESET}"</span>);
+        <span class="macro">panic!</span>(<span class=
+"string">"{RED}ERROR: Element Repository in Cargo.toml contain the placeholder phrase '/github_owner/'! Modify it with your github owner name.{RESET}"</span>);
     }
     <span class="kw">let </span>name = cargo_toml.package_name();
     <span class="kw">let </span>description = cargo_toml
         .package_description()
-        .unwrap_or_else(|| <span class="macro">panic!</span>(<span class="string">"{RED}ERROR: Element Description in Cargo.toml does not exist!{RESET}"</span>));
+        .unwrap_or_else(|| <span class="macro">panic!</span>(<span class=
+"string">"{RED}ERROR: Element Description in Cargo.toml does not exist!{RESET}"</span>));
 
     <span class="comment">// if push is not possible, then this function will not execute completely.
     // TODO: check if the github is in the ssh agent and panic if not
 
     // ask interactive
     </span><span class="macro">println!</span>(<span class="string">"    {BLUE}This project does not have a remote GitHub repository.{RESET}"</span>);
-    <span class="kw">let </span>answer = inquire::Text::new(<span class="kw-2">&amp;</span><span class="macro">format!</span>(<span class="string">"{BLUE}Do you want to create a new remote GitHub repository? (y/n){RESET}"</span>))
+    <span class="kw">let </span>answer = inquire::Text::new(<span class="kw-2">&</span><span class="macro">format!</span>(<span class=
+"string">"{BLUE}Do you want to create a new remote GitHub repository? (y/n){RESET}"</span>))
         .prompt()
         .unwrap();
     <span class="kw">if </span>answer.to_lowercase() != <span class="string">"y" </span>{
@@ -453,20 +514,25 @@
     }
     <span class="comment">// continue if answer is "y"
 
-    </span><span class="kw">let </span>json = github_client.send_to_github_api(github_api_repository_new(<span class="kw-2">&amp;</span>github_owner, <span class="kw-2">&amp;</span>name, <span class="kw-2">&amp;</span>description));
+    </span><span class="kw">let </span>json = github_client.send_to_github_api(github_api_repository_new(<span class="kw-2">&</span>github_owner, <span class=
+"kw-2">&</span>name, <span class="kw-2">&</span>description));
 
     <span class="comment">// get just the name, description and html_url from json
-    </span><span class="macro">println!</span>(<span class="string">"{YELLOW}name: {}{RESET}"</span>, json.get(<span class="string">"name"</span>).unwrap().as_str().unwrap());
-    <span class="macro">println!</span>(<span class="string">"{YELLOW}description: {}{RESET}"</span>, json.get(<span class="string">"description"</span>).unwrap().as_str().unwrap());
+    </span><span class="macro">println!</span>(<span class="string">"{YELLOW}name: {}{RESET}"</span>, json.get(<span class=
+"string">"name"</span>).unwrap().as_str().unwrap());
+    <span class="macro">println!</span>(<span class="string">"{YELLOW}description: {}{RESET}"</span>, json.get(<span class=
+"string">"description"</span>).unwrap().as_str().unwrap());
     <span class="kw">let </span>repo_html_url = json.get(<span class="string">"html_url"</span>).unwrap().as_str().unwrap().to_string();
-    <span class="macro">println!</span>(<span class="string">"{YELLOW}url: {}{RESET}"</span>, <span class="kw-2">&amp;</span>repo_html_url);
+    <span class="macro">println!</span>(<span class="string">"{YELLOW}url: {}{RESET}"</span>, <span class="kw-2">&</span>repo_html_url);
 
     <span class="comment">// add this GitHub repository to origin remote over SSH (use sshadd for passphrase)
-    </span>cl::run_shell_command(<span class="kw-2">&amp;</span><span class="macro">format!</span>(<span class="string">"git remote add origin git@github.com:{github_owner}/{name}.git"</span>));
+    </span>cl::run_shell_command(<span class="kw-2">&</span><span class="macro">format!</span>(<span class=
+"string">"git remote add origin git@github.com:{github_owner}/{name}.git"</span>));
     cl::run_shell_command(<span class="string">"git push -u origin main"</span>);
 
     <span class="comment">// the docs pages are created with a GitHub action
-    </span><span class="kw">let </span>_json = github_client.send_to_github_api(github_api_create_a_github_pages_site(<span class="kw-2">&amp;</span>github_owner, <span class="kw-2">&amp;</span>name));
+    </span><span class="kw">let </span>_json = github_client.send_to_github_api(github_api_create_a_github_pages_site(<span class=
+"kw-2">&</span>github_owner, <span class="kw-2">&</span>name));
 
     <span class="prelude-val">Some</span>(repo_html_url)
 }
@@ -478,7 +544,8 @@
 /// In README.md I want to have badges for tags
 /// In GitHub they are topics.
 /// Topic must be only one word: lowercase letters, hyphens(-) or numbers, less then 35 characters.
-</span><span class="kw">pub fn </span>description_and_topics_to_github(github_client: <span class="kw-2">&amp;</span><span class="kw">impl </span>SendToGitHubApi) {
+</span><span class="kw">pub fn </span>description_and_topics_to_github(github_client: <span class="kw-2">&</span><span class=
+"kw">impl </span>SendToGitHubApi) {
     <span class="kw">let </span>cargo_toml = cl::CargoToml::read();
     <span class="kw">let </span>repo_name = cargo_toml.package_name();
     <span class="kw">let </span>owner = cargo_toml.github_owner().unwrap();
@@ -486,7 +553,8 @@
     <span class="kw">let </span>keywords = cargo_toml.package_keywords();
 
     <span class="comment">// get data from GitHub
-    </span><span class="kw">let </span>json = github_client.send_to_github_api(github_api_get_repository(<span class="kw-2">&amp;</span>owner, <span class="kw-2">&amp;</span>repo_name));
+    </span><span class="kw">let </span>json = github_client.send_to_github_api(github_api_get_repository(<span class="kw-2">&</span>owner, <span class=
+"kw-2">&</span>repo_name));
 
     <span class="comment">// get just the description and topis from json
     </span><span class="kw">let </span>gh_description = json.get(<span class="string">"description"</span>).unwrap().as_str().unwrap();
@@ -495,7 +563,8 @@
 
     <span class="comment">// are description and topics both equal?
     </span><span class="kw">if </span>gh_description != description {
-        <span class="kw">let </span>_json = github_client.send_to_github_api(github_api_update_description(<span class="kw-2">&amp;</span>owner, <span class="kw-2">&amp;</span>repo_name, <span class="kw-2">&amp;</span>description));
+        <span class="kw">let </span>_json = github_client.send_to_github_api(github_api_update_description(<span class="kw-2">&</span>owner, <span class=
+"kw-2">&</span>repo_name, <span class="kw-2">&</span>description));
     }
 
     <span class="comment">// all elements must be equal, but not necessary in the same order
@@ -520,12 +589,14 @@
     </span>};
 
     <span class="kw">if </span>!topics_is_equal {
-        <span class="kw">let </span>_json = github_client.send_to_github_api(github_api_replace_all_topics(<span class="kw-2">&amp;</span>owner, <span class="kw-2">&amp;</span>repo_name, <span class="kw-2">&amp;</span>keywords));
+        <span class="kw">let </span>_json = github_client.send_to_github_api(github_api_replace_all_topics(<span class="kw-2">&</span>owner, <span class=
+"kw-2">&</span>repo_name, <span class="kw-2">&</span>keywords));
     }
 }
 
 <span class="doccomment">/// GitHub api get repository
-</span><span class="kw">pub fn </span>github_api_get_repository(owner: <span class="kw-2">&amp;</span>str, repo_name: <span class="kw-2">&amp;</span>str) -&gt; reqwest::blocking::RequestBuilder {
+</span><span class="kw">pub fn </span>github_api_get_repository(owner: <span class="kw-2">&</span>str, repo_name: <span class=
+"kw-2">&</span>str) -&gt; reqwest::blocking::RequestBuilder {
     <span class="comment">/*
         https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#get-a-repository
 
@@ -535,7 +606,8 @@
         -H "X-GitHub-Api-Version: 2022-11-28" \
         https://api.github.com/repos/OWNER/REPO
     */
-    </span><span class="kw">let </span>repos_url = <span class="macro">format!</span>(<span class="string">"https://api.github.com/repos/{owner}/{repo_name}"</span>);
+    </span><span class="kw">let </span>repos_url = <span class="macro">format!</span>(<span class=
+"string">"https://api.github.com/repos/{owner}/{repo_name}"</span>);
     <span class="comment">// return
     </span>reqwest::blocking::Client::new()
         .get(repos_url.as_str())
@@ -545,7 +617,8 @@
 }
 
 <span class="doccomment">/// Create a new github repository
-</span><span class="kw">pub fn </span>github_api_repository_new(owner: <span class="kw-2">&amp;</span>str, name: <span class="kw-2">&amp;</span>str, description: <span class="kw-2">&amp;</span>str) -&gt; reqwest::blocking::RequestBuilder {
+</span><span class="kw">pub fn </span>github_api_repository_new(owner: <span class="kw-2">&</span>str, name: <span class=
+"kw-2">&</span>str, description: <span class="kw-2">&</span>str) -&gt; reqwest::blocking::RequestBuilder {
     <span class="comment">/*
     https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#create-a-repository-for-the-authenticated-user
 
@@ -594,7 +667,8 @@
 }
 
 <span class="doccomment">/// GitHub api update description
-</span><span class="kw">pub fn </span>github_api_update_description(owner: <span class="kw-2">&amp;</span>str, repo_name: <span class="kw-2">&amp;</span>str, description: <span class="kw-2">&amp;</span>str) -&gt; reqwest::blocking::RequestBuilder {
+</span><span class="kw">pub fn </span>github_api_update_description(owner: <span class="kw-2">&</span>str, repo_name: <span class=
+"kw-2">&</span>str, description: <span class="kw-2">&</span>str) -&gt; reqwest::blocking::RequestBuilder {
     <span class="comment">/*
     https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#update-a-repository
 
@@ -625,7 +699,8 @@
     ...
     }
     */
-    </span><span class="kw">let </span>repos_url = <span class="macro">format!</span>(<span class="string">"https://api.github.com/repos/{owner}/{repo_name}"</span>);
+    </span><span class="kw">let </span>repos_url = <span class="macro">format!</span>(<span class=
+"string">"https://api.github.com/repos/{owner}/{repo_name}"</span>);
     <span class="kw">let </span>body = <span class="macro">serde_json::json!</span>({
         <span class="string">"description"</span>: description,
     });
@@ -640,7 +715,8 @@
 }
 
 <span class="doccomment">/// GitHub API replace all topics
-</span><span class="kw">pub fn </span>github_api_replace_all_topics(owner: <span class="kw-2">&amp;</span>str, repo_name: <span class="kw-2">&amp;</span>str, topics: <span class="kw-2">&amp;</span>Vec&lt;String&gt;) -&gt; reqwest::blocking::RequestBuilder {
+</span><span class="kw">pub fn </span>github_api_replace_all_topics(owner: <span class="kw-2">&</span>str, repo_name: <span class=
+"kw-2">&</span>str, topics: <span class="kw-2">&</span>Vec&lt;String&gt;) -&gt; reqwest::blocking::RequestBuilder {
     <span class="comment">/*
     https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#replace-all-repository-topics
     curl -L \
@@ -651,7 +727,8 @@
       https://api.github.com/repos/OWNER/REPO/topics \
       -d '{"names":["cat","atom","electron","api"]}'
      */
-    </span><span class="kw">let </span>repos_url = <span class="macro">format!</span>(<span class="string">"https://api.github.com/repos/{owner}/{repo_name}/topics"</span>);
+    </span><span class="kw">let </span>repos_url = <span class="macro">format!</span>(<span class=
+"string">"https://api.github.com/repos/{owner}/{repo_name}/topics"</span>);
     <span class="kw">let </span>body = <span class="macro">serde_json::json!</span>({
         <span class="string">"names"</span>: topics,
     });
@@ -666,7 +743,8 @@
 }
 
 <span class="doccomment">/// GitHub API create-a-github-pages-site
-</span><span class="kw">pub fn </span>github_api_create_a_github_pages_site(owner: <span class="kw-2">&amp;</span>str, repo_name: <span class="kw-2">&amp;</span>str) -&gt; reqwest::blocking::RequestBuilder {
+</span><span class="kw">pub fn </span>github_api_create_a_github_pages_site(owner: <span class="kw-2">&</span>str, repo_name: <span class=
+"kw-2">&</span>str) -&gt; reqwest::blocking::RequestBuilder {
     <span class="comment">/*
         https://docs.github.com/en/rest/pages/pages?apiVersion=2022-11-28#create-a-github-pages-site
         curl -L \
@@ -684,7 +762,8 @@
         }
     }'
          */
-    </span><span class="kw">let </span>repos_url = <span class="macro">format!</span>(<span class="string">"https://api.github.com/repos/{owner}/{repo_name}/pages"</span>);
+    </span><span class="kw">let </span>repos_url = <span class="macro">format!</span>(<span class=
+"string">"https://api.github.com/repos/{owner}/{repo_name}/pages"</span>);
     <span class="kw">let </span>body = <span class="macro">serde_json::json!</span>({
         <span class="string">"build_type"</span>: <span class="string">"workflow"</span>,
         <span class="string">"source"</span>: {
@@ -703,14 +782,19 @@
 }
 
 <span class="doccomment">/// Upload asset to github release  
-</span><span class="kw">pub fn </span>github_api_upload_asset_to_release(github_client: <span class="kw-2">&amp;</span><span class="kw">impl </span>SendToGitHubApi, owner: <span class="kw-2">&amp;</span>str, repo: <span class="kw-2">&amp;</span>str, release_id: <span class="kw-2">&amp;</span>str, path_to_file: <span class="kw-2">&amp;</span>str) {
+</span><span class="kw">pub fn </span>github_api_upload_asset_to_release(github_client: <span class="kw-2">&</span><span class=
+"kw">impl </span>SendToGitHubApi, owner: <span class="kw-2">&</span>str, repo: <span class="kw-2">&</span>str, release_id: <span class=
+"kw-2">&</span>str, path_to_file: <span class="kw-2">&</span>str) {
     <span class="macro">println!</span>(<span class="string">"    {YELLOW}Uploading file to GitHub release: {path_to_file}{RESET}"</span>);
-    <span class="kw">let </span>file = camino::Utf8Path::new(<span class="kw-2">&amp;</span>path_to_file);
+    <span class="kw">let </span>file = camino::Utf8Path::new(<span class="kw-2">&</span>path_to_file);
     <span class="kw">let </span>file_name = file.file_name().unwrap();
 
-    <span class="kw">let </span>release_upload_url = <span class="macro">format!</span>(<span class="string">"https://uploads.github.com/repos/{owner}/{repo}/releases/{release_id}/assets"</span>);
-    <span class="kw">let </span><span class="kw-2">mut </span>release_upload_url = &lt;url::Url <span class="kw">as </span>std::str::FromStr&gt;::from_str(<span class="kw-2">&amp;</span>release_upload_url).unwrap();
-    release_upload_url.set_query(<span class="prelude-val">Some</span>(<span class="macro">format!</span>(<span class="string">"{}={}"</span>, <span class="string">"name"</span>, file_name).as_str()));
+    <span class="kw">let </span>release_upload_url = <span class="macro">format!</span>(<span class=
+"string">"https://uploads.github.com/repos/{owner}/{repo}/releases/{release_id}/assets"</span>);
+    <span class="kw">let </span><span class="kw-2">mut </span>release_upload_url = &lt;url::Url <span class=
+"kw">as </span>std::str::FromStr&gt;::from_str(<span class="kw-2">&</span>release_upload_url).unwrap();
+    release_upload_url.set_query(<span class="prelude-val">Some</span>(<span class="macro">format!</span>(<span class="string">"{}={}"</span>, <span class=
+"string">"name"</span>, file_name).as_str()));
     <span class="kw">let </span>file_size = std::fs::metadata(file).unwrap().len();
     <span class="macro">println!</span>(<span class="string">"    {YELLOW}It can take some time to upload. File size: {file_size}. Wait...{RESET}"</span>);
     <span class="comment">// region: async code made sync locally
@@ -732,7 +816,9 @@
 </span>}
 
 <span class="doccomment">/// Create new release on Github
-</span><span class="kw">pub fn </span>github_api_create_new_release(owner: <span class="kw-2">&amp;</span>str, repo: <span class="kw-2">&amp;</span>str, tag_name_version: <span class="kw-2">&amp;</span>str, name: <span class="kw-2">&amp;</span>str, branch: <span class="kw-2">&amp;</span>str, body_md_text: <span class="kw-2">&amp;</span>str) -&gt; reqwest::blocking::RequestBuilder {
+</span><span class="kw">pub fn </span>github_api_create_new_release(owner: <span class="kw-2">&</span>str, repo: <span class=
+"kw-2">&</span>str, tag_name_version: <span class="kw-2">&</span>str, name: <span class="kw-2">&</span>str, branch: <span class=
+"kw-2">&</span>str, body_md_text: <span class="kw-2">&</span>str) -&gt; reqwest::blocking::RequestBuilder {
     <span class="comment">/*
     https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#create-a-release
     Request like :
@@ -759,7 +845,8 @@
     ...
     }
     */
-    </span><span class="kw">let </span>releases_url = <span class="macro">format!</span>(<span class="string">"https://api.github.com/repos/{owner}/{repo}/releases"</span>);
+    </span><span class="kw">let </span>releases_url = <span class="macro">format!</span>(<span class=
+"string">"https://api.github.com/repos/{owner}/{repo}/releases"</span>);
     <span class="kw">let </span>body = <span class="macro">serde_json::json!</span>({
         <span class="string">"tag_name"</span>: tag_name_version,
         <span class="string">"target_commitish"</span>:branch,
@@ -778,4 +865,9 @@
         .header(<span class="string">"User-Agent"</span>, <span class="string">"cargo_auto_lib"</span>)
         .body(body)
 }
-</code></pre></div></section></main></body></html>
+</code></pre>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
