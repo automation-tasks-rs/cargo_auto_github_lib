@@ -2,7 +2,10 @@
 //! # cargo_auto_github_lib
 //!
 //! **Library for cargo-auto `automation tasks written in rust language` with functions for GitHub.**  
-//! ***version: 0.1.34 date: 2024-04-16 author: [bestia.dev](https://bestia.dev) repository: [Github](https://github.com/bestia-dev/cargo_auto_github_lib)***  
+//! ***version: 1.0.2 date: 2024-04-16 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/bestia-dev/cargo_auto_github_lib)***
+//!
+//!  ![rust](https://img.shields.io/badge/rust-orange)
+//!  ![cargo-auto](https://img.shields.io/badge/cargo_auto-orange)
 //!
 //! [![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-353-green.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
 //! [![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-147-blue.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
