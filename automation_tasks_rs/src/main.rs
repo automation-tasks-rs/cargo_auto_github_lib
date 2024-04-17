@@ -343,7 +343,7 @@ fn task_publish_to_crates_io() {
     let tag_name_version = cl::git_tag_sync_check_create_push(&version);
 
     // cargo publish with encrypted secret token
-    let crate_io_client = crate_io_mod::CratesIoClient::new_interactive_input_token();
+    let crate_io_client = crate_io_mod::CratesIoClient::new_with_stored_token();
     crate_io_client.publish_to_crates_io();
 
     println!(
