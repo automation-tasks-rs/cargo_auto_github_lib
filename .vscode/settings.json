@@ -2,9 +2,9 @@
     "workbench.colorCustomizations": {
         "titleBar.activeForeground": "#fff",
         "titleBar.inactiveForeground": "#ffffffcc",
-        "titleBar.activeBackground": "#47875c",
-        "titleBar.inactiveBackground": "#3f8d5acc"
-      },
+        "titleBar.activeBackground": "#a81c1c",
+        "titleBar.inactiveBackground": "#630b0bcc"
+    },
     "spellright.language": [
         "en"
     ],
@@ -18,28 +18,33 @@
     },
     "rust-analyzer.showUnlinkedFileNotification": false,
     "cSpell.words": [
+        "Alla",
         "alloc",
+        "appender",
         "bestia",
-        "brainer",
-        "buildtool",
+        "bestiadev",
         "camino",
-        "commitish",
         "CRUSTDE",
-        "developmenttool",
+        "decryptor",
+        "encryptor",
         "endregion",
-        "filedate",
-        "filetime",
+        "Nazdravlje",
+        "new_cli",
+        "octocrab",
         "passcode",
         "plantuml",
-        "repos",
+        "Prost",
         "reqwest",
         "rustdevuser",
-        "rustlang",
         "rustprojects",
         "serde",
         "sshadd",
-        "termion",
-        "UNHIDE",
-        "zdravje"
+        "struct",
+        "subsecond",
+        "substack",
+        "thiserror",
+        "zcvf",
+        "zdravje",
+        "zeroize"
     ]
 }
