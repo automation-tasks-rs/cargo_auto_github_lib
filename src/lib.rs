@@ -2,7 +2,7 @@
 //! # cargo_auto_github_lib
 //!
 //! **Library for cargo-auto `automation tasks written in rust language` with functions for GitHub.**  
-//! ***version: 1.0.3 date: 2024-04-17 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/bestia-dev/cargo_auto_github_lib)***
+//! ***version: 1.0.4 date: 2024-04-17 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/bestia-dev/cargo_auto_github_lib)***
 //!
 //!  ![rust](https://img.shields.io/badge/rust-orange)
 //!  ![cargo-auto](https://img.shields.io/badge/cargo_auto-orange)

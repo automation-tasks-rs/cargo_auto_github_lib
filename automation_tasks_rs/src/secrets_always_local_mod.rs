@@ -202,8 +202,8 @@ pub(crate) mod ssh_mod {
             let token_is_a_secret = get_token();
             // use this signed as password for symmetric encryption
             let encryptor = encrypt_mod::Encryptor::new_for_encrypt(token_is_a_secret, &self.signed_passcode_is_a_secret);
+
             let encrypted_token = encryptor.encrypt_symmetric().unwrap();
-            tracing::debug!("{:?}", &encrypted_token.0);
             // return
             encrypted_token
         }
@@ -263,13 +263,10 @@ pub(crate) mod ssh_mod {
 
                     let passphrase_is_a_secret = get_passphrase();
                     let private_key = ssh_key::PrivateKey::read_openssh_file(identity_private_file_path_expanded.as_std_path()).unwrap();
-                    let private_key = private_key.decrypt(passphrase_is_a_secret.expose_secret()).unwrap();
-                    let namespace = "passcode@bestia.dev";
-                    // The additional signature namespace is used to prevent signature confusion across different domains of use (e.g. file signing vs email signing).
-                    // Namespaces are arbitrary strings, and may include: “file” for file signing, “email” for email signing or anything for custom uses.
-                    // For custom uses, it is recommended to use names following a NAMESPACE@YOUR.DOMAIN pattern to generate unambiguous namespaces.
-                    let ssh_sig = private_key.sign(namespace, ssh_key::HashAlg::default(), seed_bytes_not_a_secret).unwrap();
-                    let signature_is_the_new_secret_password = ssh_sig.signature();
+                    let mut private_key = private_key.decrypt(passphrase_is_a_secret.expose_secret()).unwrap();
+
+                    // FYI: this type of signature is compatible with ssh-agent because it does not involve namespace
+                    let signature_is_the_new_secret_password = rsa::signature::SignerMut::try_sign(&mut private_key, seed_bytes_not_a_secret).unwrap();
 
                     // only the data part of the signature goes into as_bytes.
                     self.signed_passcode_is_a_secret = secrecy::SecretVec::new(signature_is_the_new_secret_password.as_bytes().to_owned());
@@ -359,22 +356,26 @@ pub(crate) mod github_mod {
                     // enter the token manually, not storing
                     return Self::new_interactive_input_token();
                 } else {
-                    // get the token
-                    let github_client = Self::new_wo_token();
+                    // get the passphrase and token interactively
                     // encrypt and save the encrypted token
                     let mut ssh_context = super::ssh_mod::SshContext::new();
                     cargo_auto_encrypt_secret_lib::encrypt_with_ssh_interactive_save_file(&mut ssh_context, identity_file_path, encrypted_string_file_path);
 
+                    // read the token and decrypt
+                    cargo_auto_encrypt_secret_lib::decrypt_with_ssh_interactive_from_file(&mut ssh_context, encrypted_string_file_path);
+                    let token_is_a_secret = ssh_context.get_decrypted_string();
+                    let mut github_client = Self::new_wo_token();
+                    github_client.encrypted_token = super::secrecy_mod::SecretEncryptedString::new_with_secret_string(token_is_a_secret, &github_client.session_passcode);
+
                     return github_client;
                 }
             } else {
-                // file exists, read the token and decrypt
-                let mut github_client = Self::new_wo_token();
-
+                // file exists
                 let mut ssh_context = super::ssh_mod::SshContext::new();
+                // read the token and decrypt
                 cargo_auto_encrypt_secret_lib::decrypt_with_ssh_interactive_from_file(&mut ssh_context, encrypted_string_file_path);
-
                 let token_is_a_secret = ssh_context.get_decrypted_string();
+                let mut github_client = Self::new_wo_token();
                 github_client.encrypted_token = super::secrecy_mod::SecretEncryptedString::new_with_secret_string(token_is_a_secret, &github_client.session_passcode);
 
                 return github_client;
@@ -570,7 +571,7 @@ pub(crate) mod crate_io_mod {
         pub fn decrypt_token_in_memory(&self) -> secrecy::SecretString {
             self.encrypted_token.expose_decrypted_secret(&self.session_passcode)
         }
-    
+
         /// Publish to crates.io
         ///
         /// This function encapsulates the secret crates.io token.
