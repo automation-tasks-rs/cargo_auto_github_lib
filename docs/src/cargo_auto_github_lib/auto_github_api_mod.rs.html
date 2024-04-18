@@ -441,6 +441,73 @@
 <a href="#387" id="387">387</a>
 <a href="#388" id="388">388</a>
 <a href="#389" id="389">389</a>
+<a href="#390" id="390">390</a>
+<a href="#391" id="391">391</a>
+<a href="#392" id="392">392</a>
+<a href="#393" id="393">393</a>
+<a href="#394" id="394">394</a>
+<a href="#395" id="395">395</a>
+<a href="#396" id="396">396</a>
+<a href="#397" id="397">397</a>
+<a href="#398" id="398">398</a>
+<a href="#399" id="399">399</a>
+<a href="#400" id="400">400</a>
+<a href="#401" id="401">401</a>
+<a href="#402" id="402">402</a>
+<a href="#403" id="403">403</a>
+<a href="#404" id="404">404</a>
+<a href="#405" id="405">405</a>
+<a href="#406" id="406">406</a>
+<a href="#407" id="407">407</a>
+<a href="#408" id="408">408</a>
+<a href="#409" id="409">409</a>
+<a href="#410" id="410">410</a>
+<a href="#411" id="411">411</a>
+<a href="#412" id="412">412</a>
+<a href="#413" id="413">413</a>
+<a href="#414" id="414">414</a>
+<a href="#415" id="415">415</a>
+<a href="#416" id="416">416</a>
+<a href="#417" id="417">417</a>
+<a href="#418" id="418">418</a>
+<a href="#419" id="419">419</a>
+<a href="#420" id="420">420</a>
+<a href="#421" id="421">421</a>
+<a href="#422" id="422">422</a>
+<a href="#423" id="423">423</a>
+<a href="#424" id="424">424</a>
+<a href="#425" id="425">425</a>
+<a href="#426" id="426">426</a>
+<a href="#427" id="427">427</a>
+<a href="#428" id="428">428</a>
+<a href="#429" id="429">429</a>
+<a href="#430" id="430">430</a>
+<a href="#431" id="431">431</a>
+<a href="#432" id="432">432</a>
+<a href="#433" id="433">433</a>
+<a href="#434" id="434">434</a>
+<a href="#435" id="435">435</a>
+<a href="#436" id="436">436</a>
+<a href="#437" id="437">437</a>
+<a href="#438" id="438">438</a>
+<a href="#439" id="439">439</a>
+<a href="#440" id="440">440</a>
+<a href="#441" id="441">441</a>
+<a href="#442" id="442">442</a>
+<a href="#443" id="443">443</a>
+<a href="#444" id="444">444</a>
+<a href="#445" id="445">445</a>
+<a href="#446" id="446">446</a>
+<a href="#447" id="447">447</a>
+<a href="#448" id="448">448</a>
+<a href="#449" id="449">449</a>
+<a href="#450" id="450">450</a>
+<a href="#451" id="451">451</a>
+<a href="#452" id="452">452</a>
+<a href="#453" id="453">453</a>
+<a href="#454" id="454">454</a>
+<a href="#455" id="455">455</a>
+<a href="#456" id="456">456</a>
 </pre>
         </div>
         <pre class="rust"><code><span class="comment">// auto_github_api_mod
@@ -453,6 +520,7 @@
 <span class="comment">// traits must be in scope (Rust strangeness)
 </span><span class="kw">use </span>cl::CargoTomlPublicApiMethods;
 
+<span class="kw">use </span>cl::ShellCommandLimitedDoubleQuotesSanitizerTrait;
 <span class="kw">use </span>cl::BLUE;
 <span class="kw">use </span>cl::RED;
 <span class="kw">use </span>cl::RESET;
@@ -478,11 +546,29 @@
 "self">self</span>, req: reqwest::RequestBuilder) -&gt; <span class="kw">impl </span>std::future::Future&lt;Output = serde_json::Value&gt; + Send;
 }
 
+<span class="doccomment">/// Has git remote
+</span><span class="kw">pub fn </span>git_has_remote() -&gt; bool {
+    <span class="comment">// git remote returns only "origin" if exists or nothing if it does not exist
+    </span><span class="kw">let </span>output = std::process::Command::new(<span class="string">"git"</span>).arg(<span class=
+"string">"remote"</span>).output().unwrap();
+    <span class="comment">// return
+    </span>String::from_utf8(output.stdout).unwrap() != <span class="string">""
+</span>}
+
+<span class="doccomment">/// Has git upstream
+</span><span class="kw">pub fn </span>git_has_upstream() -&gt; bool {
+    <span class="comment">// git branch -vv returns upstream branches in angle brackets []
+    </span><span class="kw">let </span>output = std::process::Command::new(<span class="string">"git"</span>).arg(<span class=
+"string">"branch"</span>).arg(<span class="string">"vv"</span>).output().unwrap();
+    <span class="comment">// return
+    </span>String::from_utf8(output.stdout).unwrap().contains(<span class="string">"["</span>)
+}
+
 <span class="doccomment">/// Interactive ask to create a new remote GitHub repository
 ///
 /// Use a function pointer to send_to_github_api() to avoid passing the secret token.
 </span><span class="kw">pub fn </span>new_remote_github_repository(github_client: <span class="kw-2">&</span><span class=
-"kw">impl </span>SendToGitHubApi) -&gt; <span class="prelude-ty">Option</span>&lt;String&gt; {
+"kw">impl </span>SendToGitHubApi) -&gt; <span class="prelude-ty">Option</span>&lt;()&gt; {
     <span class="comment">// early error if Repository contains the placeholder "github_owner" or does not contain the true github_owner
     </span><span class="kw">let </span>cargo_toml = cl::CargoToml::read();
     <span class="kw">let </span>github_owner = cargo_toml
@@ -494,47 +580,71 @@
 "string">"{RED}ERROR: Element Repository in Cargo.toml contain the placeholder phrase '/github_owner/'! Modify it with your github owner name.{RESET}"</span>);
     }
     <span class="kw">let </span>name = cargo_toml.package_name();
-    <span class="kw">let </span>description = cargo_toml
-        .package_description()
-        .unwrap_or_else(|| <span class="macro">panic!</span>(<span class=
+
+    <span class="kw">if </span>!git_has_remote() {
+        <span class="kw">let </span>description = cargo_toml
+            .package_description()
+            .unwrap_or_else(|| <span class="macro">panic!</span>(<span class=
 "string">"{RED}ERROR: Element Description in Cargo.toml does not exist!{RESET}"</span>));
 
-    <span class="comment">// if push is not possible, then this function will not execute completely.
-    // TODO: check if the github is in the ssh agent and panic if not
-
-    // ask interactive
-    </span><span class="macro">println!</span>(<span class="string">"    {BLUE}This project does not have a remote GitHub repository.{RESET}"</span>);
-    <span class="kw">let </span>answer = inquire::Text::new(<span class="kw-2">&</span><span class="macro">format!</span>(<span class=
+        <span class="comment">// ask interactive
+        </span><span class="macro">println!</span>(<span class="string">"    {BLUE}This project does not have a remote GitHub repository.{RESET}"</span>);
+        <span class="kw">let </span>answer = inquire::Text::new(<span class="kw-2">&</span><span class="macro">format!</span>(<span class=
 "string">"{BLUE}Do you want to create a new remote GitHub repository? (y/n){RESET}"</span>))
-        .prompt()
-        .unwrap();
-    <span class="kw">if </span>answer.to_lowercase() != <span class="string">"y" </span>{
-        <span class="comment">// early exit
-        </span><span class="kw">return </span><span class="prelude-val">None</span>;
-    }
-    <span class="comment">// continue if answer is "y"
+            .prompt()
+            .unwrap();
+        <span class="kw">if </span>answer.to_lowercase() != <span class="string">"y" </span>{
+            <span class="comment">// early exit
+            </span><span class="kw">return </span><span class="prelude-val">None</span>;
+        }
+        <span class="comment">// continue if answer is "y"
 
-    </span><span class="kw">let </span>json = github_client.send_to_github_api(github_api_repository_new(<span class="kw-2">&</span>github_owner, <span class=
-"kw-2">&</span>name, <span class="kw-2">&</span>description));
+        </span><span class="kw">let </span>json_value = github_client.send_to_github_api(github_api_repository_new(<span class=
+"kw-2">&</span>github_owner, <span class="kw-2">&</span>name, <span class="kw-2">&</span>description));
+        <span class="comment">// early exit on error
+        </span><span class="kw">if let </span><span class="prelude-val">Some</span>(error_message) = json_value.get(<span class="string">"message"</span>) {
+            <span class="macro">eprintln!</span>(<span class="string">"{RED}{error_message}{RESET}"</span>);
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(errors) = json_value.get(<span class="string">"errors"</span>) {
+                <span class="kw">let </span>errors = errors.as_array().unwrap();
+                <span class="kw">for </span>error <span class="kw">in </span>errors.iter() {
+                    <span class="kw">if let </span><span class="prelude-val">Some</span>(code) = error.get(<span class="string">"message"</span>) {
+                        <span class="macro">eprintln!</span>(<span class="string">"{RED}{code}{RESET}"</span>);
+                    }
+                }
+            }
+            <span class="macro">panic!</span>(<span class="string">"{RED}Call to GitHub API returned an error.{RESET}"</span>)
+        }
 
-    <span class="comment">// get just the name, description and html_url from json
-    </span><span class="macro">println!</span>(<span class="string">"{YELLOW}name: {}{RESET}"</span>, json.get(<span class=
+        <span class="comment">// get just the name, description and html_url from json
+        </span><span class="macro">println!</span>(<span class="string">"{YELLOW}name: {}{RESET}"</span>, json_value.get(<span class=
 "string">"name"</span>).unwrap().as_str().unwrap());
-    <span class="macro">println!</span>(<span class="string">"{YELLOW}description: {}{RESET}"</span>, json.get(<span class=
+        <span class="macro">println!</span>(<span class="string">"{YELLOW}description: {}{RESET}"</span>, json_value.get(<span class=
 "string">"description"</span>).unwrap().as_str().unwrap());
-    <span class="kw">let </span>repo_html_url = json.get(<span class="string">"html_url"</span>).unwrap().as_str().unwrap().to_string();
-    <span class="macro">println!</span>(<span class="string">"{YELLOW}url: {}{RESET}"</span>, <span class="kw-2">&</span>repo_html_url);
+        <span class="kw">let </span>repo_html_url = json_value.get(<span class="string">"html_url"</span>).unwrap().as_str().unwrap().to_string();
+        <span class="macro">println!</span>(<span class="string">"{YELLOW}url: {}{RESET}"</span>, <span class="kw-2">&</span>repo_html_url);
 
-    <span class="comment">// add this GitHub repository to origin remote over SSH (use sshadd for passphrase)
-    </span>cl::run_shell_command(<span class="kw-2">&</span><span class="macro">format!</span>(<span class=
-"string">"git remote add origin git@github.com:{github_owner}/{name}.git"</span>));
-    cl::run_shell_command(<span class="string">"git push -u origin main"</span>);
+        <span class="comment">// add this GitHub repository to origin remote over SSH (use sshadd for passphrase)
+        </span>cl::ShellCommandLimitedDoubleQuotesSanitizer::new(<span class=
+"string">r#"git remote add origin "git@github.com:{github_owner}/{name}.git" "#</span>)
+            .unwrap()
+            .arg(<span class="string">"{github_owner}"</span>, <span class="kw-2">&</span>github_owner)
+            .unwrap()
+            .arg(<span class="string">"{name}"</span>, <span class="kw-2">&</span>name)
+            .unwrap()
+            .run()
+            .unwrap();
+    }
 
-    <span class="comment">// the docs pages are created with a GitHub action
-    </span><span class="kw">let </span>_json = github_client.send_to_github_api(github_api_create_a_github_pages_site(<span class=
+    <span class="kw">if </span>!git_has_upstream() {
+        cl::run_shell_command(<span class="string">"git push -u origin main"</span>).unwrap_or_else(|e| <span class="macro">panic!</span>(<span class=
+"string">"{e}"</span>));
+
+        <span class="comment">// the docs pages are created with a GitHub action
+        </span><span class="kw">let </span>_json = github_client.send_to_github_api(github_api_create_a_github_pages_site(<span class=
 "kw-2">&</span>github_owner, <span class="kw-2">&</span>name));
+    }
 
-    <span class="prelude-val">Some</span>(repo_html_url)
+    <span class="prelude-val">Some</span>(())
 }
 
 <span class="doccomment">/// Check and modify the description and topics on Github
@@ -544,6 +654,9 @@
 /// In README.md I want to have badges for tags
 /// In GitHub they are topics.
 /// Topic must be only one word: lowercase letters, hyphens(-) or numbers, less then 35 characters.
+/// I want to avoid GitHub API at every git push. I will store the old description and topics
+/// in the file automation_tasks_rs/.old_metadata.json
+/// So I can compare first locally and only when they differ call the Github API.
 </span><span class="kw">pub fn </span>description_and_topics_to_github(github_client: <span class="kw-2">&</span><span class=
 "kw">impl </span>SendToGitHubApi) {
     <span class="kw">let </span>cargo_toml = cl::CargoToml::read();
@@ -552,45 +665,72 @@
     <span class="kw">let </span>description = cargo_toml.package_description().unwrap();
     <span class="kw">let </span>keywords = cargo_toml.package_keywords();
 
-    <span class="comment">// get data from GitHub
-    </span><span class="kw">let </span>json = github_client.send_to_github_api(github_api_get_repository(<span class="kw-2">&</span>owner, <span class=
-"kw-2">&</span>repo_name));
-
-    <span class="comment">// get just the description and topis from json
-    </span><span class="kw">let </span>gh_description = json.get(<span class="string">"description"</span>).unwrap().as_str().unwrap();
-    <span class="kw">let </span>gh_topics = json.get(<span class="string">"topics"</span>).unwrap().as_array().unwrap();
-    <span class="kw">let </span>gh_topics: Vec&lt;String&gt; = gh_topics.into_iter().map(|value| value.as_str().unwrap().to_string()).collect();
-
-    <span class="comment">// are description and topics both equal?
-    </span><span class="kw">if </span>gh_description != description {
-        <span class="kw">let </span>_json = github_client.send_to_github_api(github_api_update_description(<span class="kw-2">&</span>owner, <span class=
-"kw-2">&</span>repo_name, <span class="kw-2">&</span>description));
+    <span class="attr">#[derive(serde::Serialize, serde::Deserialize)]
+    </span><span class="kw">struct </span>OldMetadata {
+        old_description: String,
+        old_keywords: Vec&lt;String&gt;,
     }
 
-    <span class="comment">// all elements must be equal, but not necessary in the same order
-    </span><span class="kw">let </span>topics_is_equal = <span class="kw">if </span>gh_topics.len() == keywords.len() {
-        <span class="kw">let </span><span class="kw-2">mut </span>elements_is_equal = <span class="bool-val">true</span>;
-        <span class="lifetime">'outer</span>: <span class="kw">for </span>x <span class="kw">in </span>gh_topics.iter() {
-            <span class="kw">let </span><span class="kw-2">mut </span>has_element = <span class="bool-val">false</span>;
-            <span class="lifetime">'inner</span>: <span class="kw">for </span>y <span class="kw">in </span>keywords.iter() {
-                <span class="kw">if </span>y == x {
-                    has_element = <span class="bool-val">true</span>;
-                    <span class="kw">break </span><span class="lifetime">'inner</span>;
-                }
-            }
-            <span class="kw">if </span>!has_element {
-                elements_is_equal = <span class="bool-val">false</span>;
-                <span class="kw">break </span><span class="lifetime">'outer</span>;
+    <span class="comment">// read data from automation_tasks_rs/.old_metadata.json
+    </span><span class="kw">let </span><span class="kw-2">mut </span>is_old_metadata_different = <span class="bool-val">true</span>;
+    <span class="kw">if let </span><span class="prelude-val">Ok</span>(old_metadata) = std::fs::read_to_string(<span class=
+"string">"automation_tasks_rs/.old_metadata.json"</span>) {
+        <span class="kw">if let </span><span class="prelude-val">Ok</span>(old_metadata) = serde_json::from_str::&lt;OldMetadata&gt;(<span class=
+"kw-2">&</span>old_metadata) {
+            <span class="kw">if </span>old_metadata.old_description == description &amp;& old_metadata.old_keywords == keywords {
+                is_old_metadata_different = <span class="bool-val">false</span>;
             }
         }
-        elements_is_equal
-    } <span class="kw">else </span>{
-        <span class="bool-val">false
-    </span>};
+    }
 
-    <span class="kw">if </span>!topics_is_equal {
-        <span class="kw">let </span>_json = github_client.send_to_github_api(github_api_replace_all_topics(<span class="kw-2">&</span>owner, <span class=
+    <span class="kw">if </span>is_old_metadata_different {
+        <span class="comment">// get data from GitHub
+        </span><span class="kw">let </span>json = github_client.send_to_github_api(github_api_get_repository(<span class="kw-2">&</span>owner, <span class=
+"kw-2">&</span>repo_name));
+
+        <span class="comment">// get just the description and topis from json
+        </span><span class="kw">let </span>gh_description = json.get(<span class="string">"description"</span>).unwrap().as_str().unwrap();
+        <span class="kw">let </span>gh_topics = json.get(<span class="string">"topics"</span>).unwrap().as_array().unwrap();
+        <span class="kw">let </span>gh_topics: Vec&lt;String&gt; = gh_topics.into_iter().map(|value| value.as_str().unwrap().to_string()).collect();
+
+        <span class="comment">// are description and topics both equal?
+        </span><span class="kw">if </span>gh_description != description {
+            <span class="kw">let </span>_json = github_client.send_to_github_api(github_api_update_description(<span class="kw-2">&</span>owner, <span class=
+"kw-2">&</span>repo_name, <span class="kw-2">&</span>description));
+        }
+
+        <span class="comment">// all elements must be equal, but not necessary in the same order
+        </span><span class="kw">let </span>topics_is_equal = <span class="kw">if </span>gh_topics.len() == keywords.len() {
+            <span class="kw">let </span><span class="kw-2">mut </span>elements_is_equal = <span class="bool-val">true</span>;
+            <span class="lifetime">'outer</span>: <span class="kw">for </span>x <span class="kw">in </span>gh_topics.iter() {
+                <span class="kw">let </span><span class="kw-2">mut </span>has_element = <span class="bool-val">false</span>;
+                <span class="lifetime">'inner</span>: <span class="kw">for </span>y <span class="kw">in </span>keywords.iter() {
+                    <span class="kw">if </span>y == x {
+                        has_element = <span class="bool-val">true</span>;
+                        <span class="kw">break </span><span class="lifetime">'inner</span>;
+                    }
+                }
+                <span class="kw">if </span>!has_element {
+                    elements_is_equal = <span class="bool-val">false</span>;
+                    <span class="kw">break </span><span class="lifetime">'outer</span>;
+                }
+            }
+            elements_is_equal
+        } <span class="kw">else </span>{
+            <span class="bool-val">false
+        </span>};
+
+        <span class="kw">if </span>!topics_is_equal {
+            <span class="kw">let </span>_json = github_client.send_to_github_api(github_api_replace_all_topics(<span class="kw-2">&</span>owner, <span class=
 "kw-2">&</span>repo_name, <span class="kw-2">&</span>keywords));
+            <span class="comment">// write into automation_tasks_rs/.old_metadata.json file
+            </span><span class="kw">let </span>old_metadata = OldMetadata {
+                old_description: description,
+                old_keywords: keywords,
+            };
+            std::fs::write(<span class="string">"automation_tasks_rs/.old_metadata.json"</span>, serde_json::to_string_pretty(<span class=
+"kw-2">&</span>old_metadata).unwrap()).unwrap();
+        }
     }
 }
 
