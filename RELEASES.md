@@ -10,9 +10,9 @@ The TODO section is part of the [README.md](https://github.com/automation-tasks-
 
 ## Unreleased
 
-- signature ssh-agent
+## Version 1.1.1 (2024-04-18)
 
-- auto
+- signature ssh-agent
 
 ## Version 1.0.3 (2024-04-17)
 
