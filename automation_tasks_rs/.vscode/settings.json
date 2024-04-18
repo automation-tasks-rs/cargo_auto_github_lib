@@ -2,8 +2,8 @@
     "workbench.colorCustomizations": {
         "titleBar.activeForeground": "#fff",
         "titleBar.inactiveForeground": "#ffffffcc",
-        "titleBar.activeBackground": "#3aa81c",
-        "titleBar.inactiveBackground": "#0b6312cc"
+        "titleBar.activeBackground": "#a81c1c",
+        "titleBar.inactiveBackground": "#630b0bcc"
     },
     "spellright.language": [
         "en"
@@ -24,7 +24,6 @@
         "bestia",
         "bestiadev",
         "camino",
-        "commitish",
         "CRUSTDE",
         "decryptor",
         "encryptor",
@@ -44,7 +43,6 @@
         "subsecond",
         "substack",
         "thiserror",
-        "upstreamed",
         "zcvf",
         "zdravje",
         "zeroize"

@@ -2,14 +2,14 @@
 //! # cargo_auto_github_lib
 //!
 //! **Library for cargo-auto `automation tasks written in rust language` with functions for GitHub.**  
-//! ***version: 1.0.4 date: 2024-04-17 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/bestia-dev/cargo_auto_github_lib)***
+//! ***version: 1.1.1 date: 2024-04-18 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/bestia-dev/cargo_auto_github_lib)***
 //!
 //!  ![rust](https://img.shields.io/badge/rust-orange)
 //!  ![cargo-auto](https://img.shields.io/badge/cargo_auto-orange)
 //!
-//! [![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-353-green.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
-//! [![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-150-blue.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
-//! [![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-25-purple.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
+//! [![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-412-green.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
+//! [![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-155-blue.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
+//! [![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-30-purple.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
 //! [![Lines in examples](https://img.shields.io/badge/Lines_in_examples-0-yellow.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
 //! [![Lines in tests](https://img.shields.io/badge/Lines_in_tests-60-orange.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
 //!
@@ -125,6 +125,8 @@ mod utils_mod;
 // reexport functions for callers of the library
 
 pub use auto_github_api_mod::description_and_topics_to_github;
+pub use auto_github_api_mod::git_has_remote;
+pub use auto_github_api_mod::git_has_upstream;
 pub use auto_github_api_mod::github_api_create_a_github_pages_site;
 pub use auto_github_api_mod::github_api_create_new_release;
 pub use auto_github_api_mod::github_api_get_repository;

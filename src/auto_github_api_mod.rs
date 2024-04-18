@@ -8,6 +8,7 @@ use cargo_auto_lib as cl;
 // traits must be in scope (Rust strangeness)
 use cl::CargoTomlPublicApiMethods;
 
+use cl::ShellCommandLimitedDoubleQuotesSanitizerTrait;
 use cl::BLUE;
 use cl::RED;
 use cl::RESET;
@@ -31,10 +32,26 @@ pub trait SendToGitHubApi {
     fn upload_to_github(&self, req: reqwest::RequestBuilder) -> impl std::future::Future<Output = serde_json::Value> + Send;
 }
 
+/// Has git remote
+pub fn git_has_remote() -> bool {
+    // git remote returns only "origin" if exists or nothing if it does not exist
+    let output = std::process::Command::new("git").arg("remote").output().unwrap();
+    // return
+    String::from_utf8(output.stdout).unwrap() != ""
+}
+
+/// Has git upstream
+pub fn git_has_upstream() -> bool {
+    // git branch -vv returns upstream branches in angle brackets []
+    let output = std::process::Command::new("git").arg("branch").arg("vv").output().unwrap();
+    // return
+    String::from_utf8(output.stdout).unwrap().contains("[")
+}
+
 /// Interactive ask to create a new remote GitHub repository
 ///
 /// Use a function pointer to send_to_github_api() to avoid passing the secret token.
-pub fn new_remote_github_repository(github_client: &impl SendToGitHubApi) -> Option<String> {
+pub fn new_remote_github_repository(github_client: &impl SendToGitHubApi) -> Option<()> {
     // early error if Repository contains the placeholder "github_owner" or does not contain the true github_owner
     let cargo_toml = cl::CargoToml::read();
     let github_owner = cargo_toml
@@ -44,40 +61,63 @@ pub fn new_remote_github_repository(github_client: &impl SendToGitHubApi) -> Opt
         panic!("{RED}ERROR: Element Repository in Cargo.toml contain the placeholder phrase '/github_owner/'! Modify it with your github owner name.{RESET}");
     }
     let name = cargo_toml.package_name();
-    let description = cargo_toml
-        .package_description()
-        .unwrap_or_else(|| panic!("{RED}ERROR: Element Description in Cargo.toml does not exist!{RESET}"));
 
-    // if push is not possible, then this function will not execute completely.
-    // TODO: check if the github is in the ssh agent and panic if not
+    if !git_has_remote() {
+        let description = cargo_toml
+            .package_description()
+            .unwrap_or_else(|| panic!("{RED}ERROR: Element Description in Cargo.toml does not exist!{RESET}"));
 
-    // ask interactive
-    println!("    {BLUE}This project does not have a remote GitHub repository.{RESET}");
-    let answer = inquire::Text::new(&format!("{BLUE}Do you want to create a new remote GitHub repository? (y/n){RESET}"))
-        .prompt()
-        .unwrap();
-    if answer.to_lowercase() != "y" {
-        // early exit
-        return None;
+        // ask interactive
+        println!("    {BLUE}This project does not have a remote GitHub repository.{RESET}");
+        let answer = inquire::Text::new(&format!("{BLUE}Do you want to create a new remote GitHub repository? (y/n){RESET}"))
+            .prompt()
+            .unwrap();
+        if answer.to_lowercase() != "y" {
+            // early exit
+            return None;
+        }
+        // continue if answer is "y"
+
+        let json_value = github_client.send_to_github_api(github_api_repository_new(&github_owner, &name, &description));
+        // early exit on error
+        if let Some(error_message) = json_value.get("message") {
+            eprintln!("{RED}{error_message}{RESET}");
+            if let Some(errors) = json_value.get("errors") {
+                let errors = errors.as_array().unwrap();
+                for error in errors.iter() {
+                    if let Some(code) = error.get("message") {
+                        eprintln!("{RED}{code}{RESET}");
+                    }
+                }
+            }
+            panic!("{RED}Call to GitHub API returned an error.{RESET}")
+        }
+
+        // get just the name, description and html_url from json
+        println!("{YELLOW}name: {}{RESET}", json_value.get("name").unwrap().as_str().unwrap());
+        println!("{YELLOW}description: {}{RESET}", json_value.get("description").unwrap().as_str().unwrap());
+        let repo_html_url = json_value.get("html_url").unwrap().as_str().unwrap().to_string();
+        println!("{YELLOW}url: {}{RESET}", &repo_html_url);
+
+        // add this GitHub repository to origin remote over SSH (use sshadd for passphrase)
+        cl::ShellCommandLimitedDoubleQuotesSanitizer::new(r#"git remote add origin "git@github.com:{github_owner}/{name}.git" "#)
+            .unwrap()
+            .arg("{github_owner}", &github_owner)
+            .unwrap()
+            .arg("{name}", &name)
+            .unwrap()
+            .run()
+            .unwrap();
     }
-    // continue if answer is "y"
 
-    let json = github_client.send_to_github_api(github_api_repository_new(&github_owner, &name, &description));
+    if !git_has_upstream() {
+        cl::run_shell_command("git push -u origin main").unwrap_or_else(|e| panic!("{e}"));
 
-    // get just the name, description and html_url from json
-    println!("{YELLOW}name: {}{RESET}", json.get("name").unwrap().as_str().unwrap());
-    println!("{YELLOW}description: {}{RESET}", json.get("description").unwrap().as_str().unwrap());
-    let repo_html_url = json.get("html_url").unwrap().as_str().unwrap().to_string();
-    println!("{YELLOW}url: {}{RESET}", &repo_html_url);
+        // the docs pages are created with a GitHub action
+        let _json = github_client.send_to_github_api(github_api_create_a_github_pages_site(&github_owner, &name));
+    }
 
-    // add this GitHub repository to origin remote over SSH (use sshadd for passphrase)
-    cl::run_shell_command(&format!("git remote add origin git@github.com:{github_owner}/{name}.git"));
-    cl::run_shell_command("git push -u origin main");
-
-    // the docs pages are created with a GitHub action
-    let _json = github_client.send_to_github_api(github_api_create_a_github_pages_site(&github_owner, &name));
-
-    Some(repo_html_url)
+    Some(())
 }
 
 /// Check and modify the description and topics on Github
@@ -87,6 +127,9 @@ pub fn new_remote_github_repository(github_client: &impl SendToGitHubApi) -> Opt
 /// In README.md I want to have badges for tags
 /// In GitHub they are topics.
 /// Topic must be only one word: lowercase letters, hyphens(-) or numbers, less then 35 characters.
+/// I want to avoid GitHub API at every git push. I will store the old description and topics
+/// in the file automation_tasks_rs/.old_metadata.json
+/// So I can compare first locally and only when they differ call the Github API.
 pub fn description_and_topics_to_github(github_client: &impl SendToGitHubApi) {
     let cargo_toml = cl::CargoToml::read();
     let repo_name = cargo_toml.package_name();
@@ -94,42 +137,66 @@ pub fn description_and_topics_to_github(github_client: &impl SendToGitHubApi) {
     let description = cargo_toml.package_description().unwrap();
     let keywords = cargo_toml.package_keywords();
 
-    // get data from GitHub
-    let json = github_client.send_to_github_api(github_api_get_repository(&owner, &repo_name));
-
-    // get just the description and topis from json
-    let gh_description = json.get("description").unwrap().as_str().unwrap();
-    let gh_topics = json.get("topics").unwrap().as_array().unwrap();
-    let gh_topics: Vec<String> = gh_topics.into_iter().map(|value| value.as_str().unwrap().to_string()).collect();
-
-    // are description and topics both equal?
-    if gh_description != description {
-        let _json = github_client.send_to_github_api(github_api_update_description(&owner, &repo_name, &description));
+    #[derive(serde::Serialize, serde::Deserialize)]
+    struct OldMetadata {
+        old_description: String,
+        old_keywords: Vec<String>,
     }
 
-    // all elements must be equal, but not necessary in the same order
-    let topics_is_equal = if gh_topics.len() == keywords.len() {
-        let mut elements_is_equal = true;
-        'outer: for x in gh_topics.iter() {
-            let mut has_element = false;
-            'inner: for y in keywords.iter() {
-                if y == x {
-                    has_element = true;
-                    break 'inner;
-                }
-            }
-            if !has_element {
-                elements_is_equal = false;
-                break 'outer;
+    // read data from automation_tasks_rs/.old_metadata.json
+    let mut is_old_metadata_different = true;
+    if let Ok(old_metadata) = std::fs::read_to_string("automation_tasks_rs/.old_metadata.json") {
+        if let Ok(old_metadata) = serde_json::from_str::<OldMetadata>(&old_metadata) {
+            if old_metadata.old_description == description && old_metadata.old_keywords == keywords {
+                is_old_metadata_different = false;
             }
         }
-        elements_is_equal
-    } else {
-        false
-    };
+    }
 
-    if !topics_is_equal {
-        let _json = github_client.send_to_github_api(github_api_replace_all_topics(&owner, &repo_name, &keywords));
+    if is_old_metadata_different {
+        // get data from GitHub
+        let json = github_client.send_to_github_api(github_api_get_repository(&owner, &repo_name));
+
+        // get just the description and topis from json
+        let gh_description = json.get("description").unwrap().as_str().unwrap();
+        let gh_topics = json.get("topics").unwrap().as_array().unwrap();
+        let gh_topics: Vec<String> = gh_topics.into_iter().map(|value| value.as_str().unwrap().to_string()).collect();
+
+        // are description and topics both equal?
+        if gh_description != description {
+            let _json = github_client.send_to_github_api(github_api_update_description(&owner, &repo_name, &description));
+        }
+
+        // all elements must be equal, but not necessary in the same order
+        let topics_is_equal = if gh_topics.len() == keywords.len() {
+            let mut elements_is_equal = true;
+            'outer: for x in gh_topics.iter() {
+                let mut has_element = false;
+                'inner: for y in keywords.iter() {
+                    if y == x {
+                        has_element = true;
+                        break 'inner;
+                    }
+                }
+                if !has_element {
+                    elements_is_equal = false;
+                    break 'outer;
+                }
+            }
+            elements_is_equal
+        } else {
+            false
+        };
+
+        if !topics_is_equal {
+            let _json = github_client.send_to_github_api(github_api_replace_all_topics(&owner, &repo_name, &keywords));
+            // write into automation_tasks_rs/.old_metadata.json file
+            let old_metadata = OldMetadata {
+                old_description: description,
+                old_keywords: keywords,
+            };
+            std::fs::write("automation_tasks_rs/.old_metadata.json", serde_json::to_string_pretty(&old_metadata).unwrap()).unwrap();
+        }
     }
 }
 

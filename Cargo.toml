@@ -1,6 +1,6 @@
 [package]
 name = "cargo_auto_github_lib"
-version = "1.0.4"
+version = "1.1.1"
 authors = ["bestia.dev"]
 homepage = "https://bestia.dev"
 edition = "2021"
@@ -20,13 +20,15 @@ include = [
 ]
 
 [dependencies]
-cargo_auto_lib = "2.1.2"
+cargo_auto_lib = "2.3.8"
+##### cargo_auto_lib = {path="../cargo_auto_lib"}
 
 reqwest = { version = "0.12.3", features = ["blocking", "stream"] }
 tokio-util = {version = "0.7.8", features = ["codec"]}
 tokio = {version = "1.28.2", features = ["rt","rt-multi-thread","fs"]}
 url="2.3.1"
 json="0.12.4"
+serde="1.0.198"
 serde_json = {version= "1.0.114", features=["std"]}
 inquire = "0.7.0"
 camino = "1.1.6"
