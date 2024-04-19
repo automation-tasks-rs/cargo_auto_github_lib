@@ -43,7 +43,7 @@ pub fn git_has_remote() -> bool {
 /// Has git upstream
 pub fn git_has_upstream() -> bool {
     // git branch -vv returns upstream branches in angle brackets []
-    let output = std::process::Command::new("git").arg("branch").arg("vv").output().unwrap();
+    let output = std::process::Command::new("git").arg("branch").arg("-vv").output().unwrap();
     // return
     String::from_utf8(output.stdout).unwrap().contains("[")
 }

@@ -259,9 +259,9 @@ checksum = "c59e92b5a388f549b863a7bea62612c09f24c8393560709a54558a9abdfb3b9c"
 
 [[package]]
 name = "cargo_auto_encrypt_secret_lib"
-version = "1.0.5"
+version = "1.0.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a6dad776eee48cf12dbb508d61767827e1b1fb2bd39fffb8ed2e8f26783a780b"
+checksum = "97ea82d252cf1d5cac69ef0528d403d93c075d9c938068cdd02ad4c7e1a20e8c"
 dependencies = [
  "aes-gcm",
  "argon2",
@@ -279,7 +279,9 @@ dependencies = [
 
 [[package]]
 name = "cargo_auto_github_lib"
-version = "1.0.9"
+version = "1.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ab3f9fb3c7cf18156e9977c7395ef075106345da691c61714bc1bd2f8a6999f0"
 dependencies = [
  "camino",
  "cargo_auto_lib",
