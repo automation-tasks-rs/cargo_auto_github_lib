@@ -559,7 +559,7 @@
 </span><span class="kw">pub fn </span>git_has_upstream() -&gt; bool {
     <span class="comment">// git branch -vv returns upstream branches in angle brackets []
     </span><span class="kw">let </span>output = std::process::Command::new(<span class="string">"git"</span>).arg(<span class=
-"string">"branch"</span>).arg(<span class="string">"vv"</span>).output().unwrap();
+"string">"branch"</span>).arg(<span class="string">"-vv"</span>).output().unwrap();
     <span class="comment">// return
     </span>String::from_utf8(output.stdout).unwrap().contains(<span class="string">"["</span>)
 }
