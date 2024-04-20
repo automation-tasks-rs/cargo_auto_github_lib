@@ -8,7 +8,7 @@ description = "Library for cargo-auto `automation tasks written in rust language
 repository = "https://github.com/automation-tasks-rs/cargo_auto_github_lib"
 readme = "README.md"
 license = "MIT"
-keywords = ["maintained","ready_for_use", "rust","cargo-auto"]
+keywords = ["maintained","ready-for-use", "rust","cargo-auto"]
 categories = ["development-tools::build-utils"]
 # publish as a cargo tool. Only this files.
 publish = true
