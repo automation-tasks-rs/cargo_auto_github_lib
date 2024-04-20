@@ -12,6 +12,8 @@ The TODO section is part of the [README.md](https://github.com/automation-tasks-
 
 - clear cache
 
+- clear cache
+
 ## Version 1.1.2 (2024-04-19)
 
 - git branch -vv
