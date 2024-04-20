@@ -8,7 +8,7 @@
 ***version: 1.1.4 date: 2024-04-20 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/automation-tasks-rs/cargo_auto_github_lib)***
 
  ![maintained](https://img.shields.io/badge/maintained-green)
- ![ready_for_use](https://img.shields.io/badge/ready_for_use-orange)
+ ![ready_for_use](https://img.shields.io/badge/ready_for_use-green)
  ![rust](https://img.shields.io/badge/rust-orange)
  ![cargo-auto](https://img.shields.io/badge/cargo_auto-orange)
 
