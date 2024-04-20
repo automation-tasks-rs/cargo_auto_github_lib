@@ -1,11 +1,11 @@
 [package]
 name = "cargo_auto_github_lib"
-version = "1.1.2"
+version = "1.1.3"
 authors = ["bestia.dev"]
 homepage = "https://bestia.dev"
 edition = "2021"
 description = "Library for cargo-auto `automation tasks written in rust language` with functions for GitHub."
-repository = "https://github.com/bestia-dev/cargo_auto_github_lib"
+repository = "https://github.com/automation-tasks-rs/cargo_auto_github_lib"
 readme = "README.md"
 license = "MIT"
 keywords = ["rust","cargo-auto"]
