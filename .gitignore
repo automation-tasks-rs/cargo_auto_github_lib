@@ -1,6 +1,7 @@
 target/
 logs/
 
+# always fresh dependencies
 Cargo.lock
 
 # not needed in commits, but also not a problem if they are committed

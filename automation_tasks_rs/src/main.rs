@@ -2,7 +2,7 @@
 
 // region: library and modules with basic automation tasks
 
-// for projects that don't use github, delete all the mentions of GitHub
+// for projects that don't use GitHub, delete all the mentions of GitHub
 mod secrets_always_local_mod;
 use crate::secrets_always_local_mod::crate_io_mod;
 use crate::secrets_always_local_mod::github_mod;
@@ -55,8 +55,8 @@ pub fn tracing_init() {
     // Unset the environment variable RUST_LOG
     // unset RUST_LOG
     let filter = tracing_subscriber::EnvFilter::from_default_env()
-        .add_directive("hyper_util=error".parse().unwrap())
-        .add_directive("reqwest=error".parse().unwrap());
+        .add_directive("hyper_util=error".parse().unwrap_or_else(|e| panic!("{e}")))
+        .add_directive("reqwest=error".parse().unwrap_or_else(|e| panic!("{e}")));
 
     tracing_subscriber::fmt()
         .with_file(true)
@@ -150,7 +150,7 @@ fn print_help() {
     {YELLOW}It is preferred to use SSH for git push to GitHub.{RESET}
     {YELLOW}<https://github.com/CRUSTDE-ContainerizedRustDevEnv/crustde_cnt_img_pod/blob/main/ssh_easy.md>{YELLOW}
     {YELLOW}On the very first commit, this task will initialize a new local git repository and create a remote GitHub repo.{RESET}
-    {YELLOW}For the Github API the task needs the Personal Access Token Classic from <https://github.com/settings/tokens>{RESET}
+    {YELLOW}For the GitHub API the task needs the Personal Access Token Classic from <https://github.com/settings/tokens>{RESET}
     {YELLOW}You can choose to type the token every time or to store it in a file encrypted with an SSH key.{RESET}
     {YELLOW}Then you can type the passphrase of the private key every time. This is pretty secure.{RESET}
     {YELLOW}Somewhat less secure (but more comfortable) way is to store the private key in ssh-agent.{RESET}
@@ -159,8 +159,8 @@ fn print_help() {
     {YELLOW}You can choose to type the token every time or to store it in a file encrypted with an SSH key.{RESET}
     {YELLOW}Then you can type the passphrase of the private key every time. This is pretty secure.{RESET}
     {YELLOW}Somewhat less secure (but more comfortable) way is to store the private key in ssh-agent.{RESET}
-{GREEN}cargo auto github_new_release{RESET} - {YELLOW}creates new release on github{RESET}
-    {YELLOW}For the Github API the task needs the Personal Access Token Classic from <https://github.com/settings/tokens>{RESET}
+{GREEN}cargo auto github_new_release{RESET} - {YELLOW}creates new release on GitHub{RESET}
+    {YELLOW}For the GitHub API the task needs the Personal Access Token Classic from <https://github.com/settings/tokens>{RESET}
     {YELLOW}You can choose to type the token every time or to store it in a file encrypted with an SSH key.{RESET}
     {YELLOW}Then you can type the passphrase of the private key every time. This is pretty secure.{RESET}
     {YELLOW}Somewhat less secure (but more comfortable) way is to store the private key in ssh-agent.{RESET}
@@ -173,12 +173,14 @@ fn print_help() {
 
 /// all example commands in one place
 fn print_examples_cmd() {
+/*
     println!(
         r#"
     {YELLOW}run examples:{RESET}
 {GREEN}cargo run --example plantuml1{RESET}
 "#
     );
+*/
 }
 
 /// sub-command for bash auto-completion of `cargo auto` using the crate `dev_bestia_cargo_completion`
@@ -241,7 +243,7 @@ fn task_release() {
     print_examples_cmd();
 }
 
-/// cargo doc, then copies to /docs/ folder, because this is a github standard folder
+/// cargo doc, then copies to /docs/ folder, because this is a GitHub standard folder
 fn task_doc() {
     let cargo_toml = cl::CargoToml::read();
     cl::auto_cargo_toml_to_md();
@@ -253,7 +255,7 @@ fn task_doc() {
     cl::auto_md_to_doc_comments();
 
     cl::run_shell_command_static("cargo doc --no-deps --document-private-items").unwrap_or_else(|e| panic!("{e}"));
-    // copy target/doc into docs/ because it is github standard
+    // copy target/doc into docs/ because it is GitHub standard
     cl::run_shell_command_static("rsync -a --info=progress2 --delete-after target/doc/ docs/").unwrap_or_else(|e| panic!("{e}"));
 
     // Create simple index.html file in docs directory
@@ -303,7 +305,7 @@ fn task_commit_and_push(arg_2: Option<String>) {
     }
 
     // If needed, ask to create a GitHub remote repository
-    if !cl::git_has_remote() {
+    if !cgl::git_has_remote() || !cgl::git_has_upstream() {
         let github_client = github_mod::GitHubClient::new_with_stored_token();
         cgl::new_remote_github_repository(&github_client).unwrap();
         cgl::description_and_topics_to_github(&github_client);
@@ -401,9 +403,9 @@ fn task_github_new_release() {
     {YELLOW}New GitHub release created: {release_name}.{RESET}
 "
     );
-
-    // region: upload asset only for executables, not for libraries
 /*
+    // region: upload asset only for executables, not for libraries
+
     let release_id = json_value.get("id").unwrap().as_i64().unwrap().to_string();
     println!(
         "
@@ -413,27 +415,26 @@ fn task_github_new_release() {
     // compress files tar.gz
     let tar_name = format!("{repo_name}-{tag_name_version}-x86_64-unknown-linux-gnu.tar.gz");
 
-    let mut shell_command_sanitized =
-        cl::ShellCommandLimitedDoubleQuotesSanitizer::new(r#"tar -zcvf "{tar_name_sanitized_for_double_quote}" "target/release/{repo_name_sanitized_for_double_quote}" "#);
-    shell_command_sanitized.replace_placeholder_forbidden_double_quotes("{tar_name_sanitized_for_double_quote}", &tar_name);
-    shell_command_sanitized.replace_placeholder_forbidden_double_quotes("{repo_name_sanitized_for_double_quote}", &repo_name);
-    shell_command_sanitized.run();
+    cl::ShellCommandLimitedDoubleQuotesSanitizer::new(r#"tar -zcvf "{tar_name_sanitized_for_double_quote}" "target/release/{repo_name_sanitized_for_double_quote}" "#).unwrap_or_else(|e| panic!("{e}"))
+    .arg("{tar_name_sanitized_for_double_quote}", &tar_name).unwrap_or_else(|e| panic!("{e}"))
+    .arg("{repo_name_sanitized_for_double_quote}", &repo_name).unwrap_or_else(|e| panic!("{e}"))
+    .run().unwrap_or_else(|e| panic!("{e}"));
 
     // upload asset
     cgl::github_api_upload_asset_to_release(&github_client, &owner, &repo_name, &release_id, &tar_name);
 
-    let mut shell_command_sanitized = cl::ShellCommandLimitedDoubleQuotesSanitizer::new(r#"rm "{tar_name_sanitized_for_double_quote}" "#);
-    shell_command_sanitized.replace_placeholder_forbidden_double_quotes("{tar_name_sanitized_for_double_quote}", &tar_name);
-    shell_command_sanitized.run();
+    cl::ShellCommandLimitedDoubleQuotesSanitizer::new(r#"rm "{tar_name_sanitized_for_double_quote}" "#).unwrap_or_else(|e| panic!("{e}"))
+    .arg("{tar_name_sanitized_for_double_quote}", &tar_name).unwrap_or_else(|e| panic!("{e}"))
+    .run().unwrap_or_else(|e| panic!("{e}"));
 
     println!(
         r#"
     {YELLOW}Asset uploaded. Open and edit the description on GitHub Releases in the browser.{RESET}
     "#
     );
-*/    
-    // endregion: upload asset only for executables, not for libraries
 
+    // endregion: upload asset only for executables, not for libraries
+*/
     println!(
         r#"
 {GREEN}https://github.com/{owner}/{repo_name}/releases{RESET}
