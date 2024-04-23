@@ -221,6 +221,7 @@ pub fn github_api_get_repository(owner: &str, repo_name: &str) -> reqwest::block
 }
 
 /// Create a new github repository
+/// TODO: slightly different API call for organization repository. How to distinguish user and organization?
 pub fn github_api_repository_new(owner: &str, name: &str, description: &str) -> reqwest::blocking::RequestBuilder {
     /*
     https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#create-a-repository-for-the-authenticated-user
