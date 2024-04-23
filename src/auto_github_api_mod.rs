@@ -1,7 +1,7 @@
 // auto_github_api_mod
 
 //! functions to work with github api
-//! WARNING: Never pass the secret API token to this crate library.
+//! WARNING: Never pass the secret API secret_token to this crate library.
 //! Pass the function send_to_github_api() as a parameter. It encapsulates the secret token.
 
 use cargo_auto_lib as cl;
@@ -18,14 +18,14 @@ use cl::YELLOW;
 pub trait SendToGitHubApi {
     /// Send github api request
     ///
-    /// This function encapsulates the secret API token.
+    /// This function encapsulates the secret API secret_token.
     /// The RequestBuilder is created somewhere in the library crate.
     /// The client can be passed to the library. It will not reveal the secret token.
     fn send_to_github_api(&self, req: reqwest::blocking::RequestBuilder) -> serde_json::Value;
 
     /// Upload to github
     ///
-    /// This function encapsulates the secret API token.
+    /// This function encapsulates the secret API secret_token.
     /// The RequestBuilder is created somewhere in the library crate.
     /// The client can be passed to the library. It will not reveal the secret token.
     /// This is basically an async fn, but use of `async fn` in public traits is discouraged...

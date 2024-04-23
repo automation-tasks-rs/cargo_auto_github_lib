@@ -95,10 +95,10 @@ Here is a list of some of them:
 - `auto_github_create_new_release()` - creates new release on Github
 - `auto_github_upload_asset_to_release()` - add asset to the github release
 
-## GitHub API token
+## GitHub API secret_token
 
-The GitHub API token is a secret just like a password. Maybe even greater.  
-With this API token, a maleficent actor can change basically anything in your GitHub account. You don't want that.
+The GitHub API secret_token is a secret just like a password. Maybe even greater.  
+With this API secret_token, a maleficent actor can change basically anything in your GitHub account. You don't want that.
 
 How to protect this secret?  
 Ok, there are some basic recommendations:
@@ -107,7 +107,7 @@ Ok, there are some basic recommendations:
 - Expire the token frequently, so old tokens are of no use
 - Never store the token in a file as plain text
 - Plain text inside env vars can also be accessed from malware
-- give the least permission/authorization to the API token
+- give the least permission/authorization to the API secret_token
 
 But the true problem arises at the moment when you want to use the token. How to trust the code you are giving the token to?  
 Probably the best is that this code is written by you or that you have complete control over it. This makes very cumbersome the use of libraries/crates. You cannot trust them by default. However, it is impossible to avoid trust in low-level crates/libraries.
