@@ -18,6 +18,8 @@ The TODO section is part of the [README.md](https://github.com/automation-tasks-
 
 - secret_token
 
+- 2.4.3
+
 ## Version 1.1.2 (2024-04-19)
 
 - git branch -vv
