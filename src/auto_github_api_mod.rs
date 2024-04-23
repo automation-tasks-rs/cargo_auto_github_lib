@@ -2,7 +2,7 @@
 
 //! functions to work with github api
 //! WARNING: Never pass the secret API secret_token to this crate library.
-//! Pass the function send_to_github_api() as a parameter. It encapsulates the secret token.
+//! Pass the function send_to_github_api() as a parameter. It encapsulates the secret_token.
 
 use cargo_auto_lib as cl;
 // traits must be in scope (Rust strangeness)
@@ -20,14 +20,14 @@ pub trait SendToGitHubApi {
     ///
     /// This function encapsulates the secret API secret_token.
     /// The RequestBuilder is created somewhere in the library crate.
-    /// The client can be passed to the library. It will not reveal the secret token.
+    /// The client can be passed to the library. It will not reveal the secret_token.
     fn send_to_github_api(&self, req: reqwest::blocking::RequestBuilder) -> serde_json::Value;
 
     /// Upload to github
     ///
     /// This function encapsulates the secret API secret_token.
     /// The RequestBuilder is created somewhere in the library crate.
-    /// The client can be passed to the library. It will not reveal the secret token.
+    /// The client can be passed to the library. It will not reveal the secret_token.
     /// This is basically an async fn, but use of `async fn` in public traits is discouraged...
     fn upload_to_github(&self, req: reqwest::RequestBuilder) -> impl std::future::Future<Output = serde_json::Value> + Send;
 }
@@ -50,7 +50,7 @@ pub fn git_has_upstream() -> bool {
 
 /// Interactive ask to create a new remote GitHub repository
 ///
-/// Use a function pointer to send_to_github_api() to avoid passing the secret token.
+/// Use a function pointer to send_to_github_api() to avoid passing the secret_token.
 pub fn new_remote_github_repository(github_client: &impl SendToGitHubApi) -> Option<()> {
     // early error if Repository contains the placeholder "github_owner" or does not contain the true github_owner
     let cargo_toml = cl::CargoToml::read();
