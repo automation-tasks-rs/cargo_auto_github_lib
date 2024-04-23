@@ -157,12 +157,12 @@ line 2 column 81 - Warning: trimming empty <span>
 ./docs/cargo_auto_github_lib/auto_github_api_mod/index.html
 Document: "2" is not a file!
 
-line 1 column 2402 - Warning: trimming empty <button>
+line 1 column 2409 - Warning: trimming empty <button>
 line 2 column 81 - Warning: trimming empty <span>
 ./docs/cargo_auto_github_lib/auto_github_api_mod/fn.github_api_repository_new.html
 Document: "2" is not a file!
 
-line 1 column 2271 - Warning: trimming empty <button>
+line 1 column 2376 - Warning: trimming empty <button>
 line 2 column 81 - Warning: trimming empty <span>
 ./docs/cargo_auto_github_lib/auto_github_api_mod/fn.new_remote_github_repository.html
 Document: "2" is not a file!
@@ -172,7 +172,7 @@ line 2 column 81 - Warning: trimming empty <span>
 ./docs/cargo_auto_github_lib/fn.github_api_repository_new.html
 Document: "2" is not a file!
 
-line 1 column 2205 - Warning: trimming empty <button>
+line 1 column 2310 - Warning: trimming empty <button>
 line 2 column 81 - Warning: trimming empty <span>
 ./docs/cargo_auto_github_lib/fn.new_remote_github_repository.html
 Document: "2" is not a file!

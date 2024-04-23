@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css">
   <link rel="stylesheet" href="../../static.files/rustdoc-5bc39a1768837dd0.css">
   <meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="cargo_auto_github_lib" data-themes=""
-  data-resource-suffix="" data-rustdoc-version="1.77.1 (7cf61ebde 2024-03-27)" data-channel="1.77.1" data-search-js="search-dd67cee4cfa65049.js"
+  data-resource-suffix="" data-rustdoc-version="1.77.2 (25ef9e3d8 2024-04-09)" data-channel="1.77.2" data-search-js="search-dd67cee4cfa65049.js"
   data-settings-js="settings-4313503d2e1961c2.js">
   <script src="../../static.files/storage-4c98445ec4002617.js"></script>
   <script defer src="sidebar-items.js"></script>
@@ -29,7 +29,7 @@
   <nav class="mobile-topbar"></nav>
   <nav class="sidebar">
     <div class="sidebar-crate">
-      <h2><a href="../../cargo_auto_github_lib/index.html">cargo_auto_github_lib</a><span class="version">1.1.4</span></h2>
+      <h2><a href="../../cargo_auto_github_lib/index.html">cargo_auto_github_lib</a><span class="version">1.1.5</span></h2>
     </div>
     <h2 class="location"><a href="#">SendToGitHubApi</a></h2>
     <div class="sidebar-elems">
@@ -78,13 +78,13 @@
         <pre class="rust item-decl"><code>pub trait SendToGitHubApi {
     // Required methods
     fn <a href="#tymethod.send_to_github_api" class="fn">send_to_github_api</a>(&amp;self, req: RequestBuilder) -&gt; <a class="enum" href=
-"https://docs.rs/serde_json/1.0.115/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>;
+"https://docs.rs/serde_json/1.0.116/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>;
     fn <a href="#tymethod.upload_to_github" class="fn">upload_to_github</a>(
         &amp;self,
         req: RequestBuilder
-    ) -&gt; impl <a class="trait" href="https://doc.rust-lang.org/1.77.1/core/future/future/trait.Future.html" title=
-"trait core::future::future::Future">Future</a>&lt;Output = <a class="enum" href="https://docs.rs/serde_json/1.0.115/serde_json/value/enum.Value.html" title=
-"enum serde_json::value::Value">Value</a>&gt; + <a class="trait" href="https://doc.rust-lang.org/1.77.1/core/marker/trait.Send.html" title=
+    ) -&gt; impl <a class="trait" href="https://doc.rust-lang.org/1.77.2/core/future/future/trait.Future.html" title=
+"trait core::future::future::Future">Future</a>&lt;Output = <a class="enum" href="https://docs.rs/serde_json/1.0.116/serde_json/value/enum.Value.html" title=
+"enum serde_json::value::Value">Value</a>&gt; + <a class="trait" href="https://doc.rust-lang.org/1.77.2/core/marker/trait.Send.html" title=
 "trait core::marker::Send">Send</a>;
 }</code></pre>
         <details class="toggle top-doc" open="">
@@ -101,34 +101,34 @@
             <section id="tymethod.send_to_github_api" class="method">
               <a class="src rightside" href="../../src/cargo_auto_github_lib/auto_github_api_mod.rs.html#24">source</a>
               <h4 class="code-header">fn <a href="#tymethod.send_to_github_api" class="fn">send_to_github_api</a>(&amp;self, req: RequestBuilder) -&gt;
-              <a class="enum" href="https://docs.rs/serde_json/1.0.115/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a></h4>
+              <a class="enum" href="https://docs.rs/serde_json/1.0.116/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a></h4>
             </section>
             <div class="docblock">
               <p>Send github api request</p>
-              <p>This function encapsulates the secret API token. The RequestBuilder is created somewhere in the library crate. The client can be passed to the
-              library. It will not reveal the secret token.</p>
+              <p>This function encapsulates the secret API secret_token. The RequestBuilder is created somewhere in the library crate. The client can be passed
+              to the library. It will not reveal the secret_token.</p>
             </div>
           </details>
           <details class="toggle method-toggle" open="">
             <section id="tymethod.upload_to_github" class="method">
               <a class="src rightside" href="../../src/cargo_auto_github_lib/auto_github_api_mod.rs.html#32">source</a>
               <h4 class="code-header">fn <a href="#tymethod.upload_to_github" class="fn">upload_to_github</a>( &amp;self, req: RequestBuilder ) -&gt; impl
-              <a class="trait" href="https://doc.rust-lang.org/1.77.1/core/future/future/trait.Future.html" title=
+              <a class="trait" href="https://doc.rust-lang.org/1.77.2/core/future/future/trait.Future.html" title=
               "trait core::future::future::Future">Future</a>&lt;Output = <a class="enum" href=
-              "https://docs.rs/serde_json/1.0.115/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>&gt; + <a class="trait"
-              href="https://doc.rust-lang.org/1.77.1/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a></h4>
+              "https://docs.rs/serde_json/1.0.116/serde_json/value/enum.Value.html" title="enum serde_json::value::Value">Value</a>&gt; + <a class="trait"
+              href="https://doc.rust-lang.org/1.77.2/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a></h4>
             </section>
             <div class="docblock">
               <p>Upload to github</p>
-              <p>This function encapsulates the secret API token. The RequestBuilder is created somewhere in the library crate. The client can be passed to the
-              library. It will not reveal the secret token. This is basically an async fn, but use of <code>async fn</code> in public traits is
+              <p>This function encapsulates the secret API secret_token. The RequestBuilder is created somewhere in the library crate. The client can be passed
+              to the library. It will not reveal the secret_token. This is basically an async fn, but use of <code>async fn</code> in public traits is
               discouraged…</p>
             </div>
           </details>
         </div>
         <h2 id="object-safety" class="section-header">Object Safety<a href="#object-safety" class="anchor">§</a></h2>
         <div class="object-safety-info">
-          This trait is <b>not</b> <a href="https://doc.rust-lang.org/1.77.1/reference/items/traits.html#object-safety">object safe</a>.
+          This trait is <b>not</b> <a href="https://doc.rust-lang.org/1.77.2/reference/items/traits.html#object-safety">object safe</a>.
         </div>
         <h2 id="implementors" class="section-header">Implementors<a href="#implementors" class="anchor">§</a></h2>
         <div id="implementors-list"></div>

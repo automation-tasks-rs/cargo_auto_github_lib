@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css">
   <link rel="stylesheet" href="../../static.files/rustdoc-5bc39a1768837dd0.css">
   <meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="cargo_auto_github_lib" data-themes=""
-  data-resource-suffix="" data-rustdoc-version="1.77.1 (7cf61ebde 2024-03-27)" data-channel="1.77.1" data-search-js="search-dd67cee4cfa65049.js"
+  data-resource-suffix="" data-rustdoc-version="1.77.2 (25ef9e3d8 2024-04-09)" data-channel="1.77.2" data-search-js="search-dd67cee4cfa65049.js"
   data-settings-js="settings-4313503d2e1961c2.js">
   <script src="../../static.files/storage-4c98445ec4002617.js"></script>
   <script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script>
@@ -508,13 +508,14 @@
 <a href="#454" id="454">454</a>
 <a href="#455" id="455">455</a>
 <a href="#456" id="456">456</a>
+<a href="#457" id="457">457</a>
 </pre>
         </div>
         <pre class="rust"><code><span class="comment">// auto_github_api_mod
 
 </span><span class="doccomment">//! functions to work with github api
-//! WARNING: Never pass the secret API token to this crate library.
-//! Pass the function send_to_github_api() as a parameter. It encapsulates the secret token.
+//! WARNING: Never pass the secret API secret_token to this crate library.
+//! Pass the function send_to_github_api() as a parameter. It encapsulates the secret_token.
 
 </span><span class="kw">use </span>cargo_auto_lib <span class="kw">as </span>cl;
 <span class="comment">// traits must be in scope (Rust strangeness)
@@ -530,17 +531,17 @@
 </span><span class="kw">pub trait </span>SendToGitHubApi {
     <span class="doccomment">/// Send github api request
     ///
-    /// This function encapsulates the secret API token.
+    /// This function encapsulates the secret API secret_token.
     /// The RequestBuilder is created somewhere in the library crate.
-    /// The client can be passed to the library. It will not reveal the secret token.
+    /// The client can be passed to the library. It will not reveal the secret_token.
     </span><span class="kw">fn </span>send_to_github_api(<span class="kw-2">&</span><span class=
 "self">self</span>, req: reqwest::blocking::RequestBuilder) -&gt; serde_json::Value;
 
     <span class="doccomment">/// Upload to github
     ///
-    /// This function encapsulates the secret API token.
+    /// This function encapsulates the secret API secret_token.
     /// The RequestBuilder is created somewhere in the library crate.
-    /// The client can be passed to the library. It will not reveal the secret token.
+    /// The client can be passed to the library. It will not reveal the secret_token.
     /// This is basically an async fn, but use of `async fn` in public traits is discouraged...
     </span><span class="kw">fn </span>upload_to_github(<span class="kw-2">&</span><span class=
 "self">self</span>, req: reqwest::RequestBuilder) -&gt; <span class="kw">impl </span>std::future::Future&lt;Output = serde_json::Value&gt; + Send;
@@ -566,7 +567,7 @@
 
 <span class="doccomment">/// Interactive ask to create a new remote GitHub repository
 ///
-/// Use a function pointer to send_to_github_api() to avoid passing the secret token.
+/// Use a function pointer to send_to_github_api() to avoid passing the secret_token.
 </span><span class="kw">pub fn </span>new_remote_github_repository(github_client: <span class="kw-2">&</span><span class=
 "kw">impl </span>SendToGitHubApi) -&gt; <span class="prelude-ty">Option</span>&lt;()&gt; {
     <span class="comment">// early error if Repository contains the placeholder "github_owner" or does not contain the true github_owner
@@ -757,6 +758,7 @@
 }
 
 <span class="doccomment">/// Create a new github repository
+/// TODO: slightly different API call for organization repository. How to distinguish user and organization?
 </span><span class="kw">pub fn </span>github_api_repository_new(owner: <span class="kw-2">&</span>str, name: <span class=
 "kw-2">&</span>str, description: <span class="kw-2">&</span>str) -&gt; reqwest::blocking::RequestBuilder {
     <span class="comment">/*

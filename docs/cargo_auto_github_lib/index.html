@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="../static.files/normalize-76eba96aa4d2e634.css">
   <link rel="stylesheet" href="../static.files/rustdoc-5bc39a1768837dd0.css">
   <meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="cargo_auto_github_lib" data-themes=""
-  data-resource-suffix="" data-rustdoc-version="1.77.1 (7cf61ebde 2024-03-27)" data-channel="1.77.1" data-search-js="search-dd67cee4cfa65049.js"
+  data-resource-suffix="" data-rustdoc-version="1.77.2 (25ef9e3d8 2024-04-09)" data-channel="1.77.2" data-search-js="search-dd67cee4cfa65049.js"
   data-settings-js="settings-4313503d2e1961c2.js">
   <script src="../static.files/storage-4c98445ec4002617.js"></script>
   <script defer src="../crates.js"></script>
@@ -29,7 +29,7 @@
   <nav class="mobile-topbar"></nav>
   <nav class="sidebar">
     <div class="sidebar-crate">
-      <h2><a href="../cargo_auto_github_lib/index.html">cargo_auto_github_lib</a><span class="version">1.1.4</span></h2>
+      <h2><a href="../cargo_auto_github_lib/index.html">cargo_auto_github_lib</a><span class="version">1.1.5</span></h2>
     </div>
     <div class="sidebar-elems">
       <ul class="block">
@@ -83,14 +83,14 @@
           <div class="docblock">
             <h2 id="cargo_auto_github_lib"><a class="doc-anchor" href="#cargo_auto_github_lib">§</a>cargo_auto_github_lib</h2>
             <p><strong>Library for cargo-auto <code>automation tasks written in rust language</code> with functions for GitHub.</strong><br>
-            <em><strong>version: 1.1.4 date: 2024-04-20 author: <a href="https://bestia.dev">bestia.dev</a> repository: <a href=
+            <em><strong>version: 1.1.5 date: 2024-04-23 author: <a href="https://bestia.dev">bestia.dev</a> repository: <a href=
             "https://github.com/automation-tasks-rs/cargo_auto_github_lib">GitHub</a></strong></em></p>
-            <p><img src="https://img.shields.io/badge/maintained-green" alt="maintained"> <img src="https://img.shields.io/badge/ready_for_use-orange" alt=
-            "ready_for_use"> <img src="https://img.shields.io/badge/rust-orange" alt="rust"> <img src="https://img.shields.io/badge/cargo_auto-orange" alt=
+            <p><img src="https://img.shields.io/badge/maintained-green" alt="maintained"> <img src="https://img.shields.io/badge/ready_for_use-green" alt=
+            "ready-for-use"> <img src="https://img.shields.io/badge/rust-orange" alt="rust"> <img src="https://img.shields.io/badge/cargo_auto-orange" alt=
             "cargo-auto"></p>
             <p><a href="https://github.com/automation-tasks-rs/cargo_auto_github_lib/"><img src="https://img.shields.io/badge/Lines_in_Rust-412-green.svg" alt=
             "Lines in Rust code"></a> <a href="https://github.com/automation-tasks-rs/cargo_auto_github_lib/"><img src=
-            "https://img.shields.io/badge/Lines_in_Doc_comments-155-blue.svg" alt="Lines in Doc comments"></a> <a href=
+            "https://img.shields.io/badge/Lines_in_Doc_comments-158-blue.svg" alt="Lines in Doc comments"></a> <a href=
             "https://github.com/automation-tasks-rs/cargo_auto_github_lib/"><img src="https://img.shields.io/badge/Lines_in_comments-30-purple.svg" alt=
             "Lines in Comments"></a> <a href="https://github.com/automation-tasks-rs/cargo_auto_github_lib/"><img src=
             "https://img.shields.io/badge/Lines_in_examples-0-yellow.svg" alt="Lines in examples"></a> <a href=
@@ -154,7 +154,7 @@ cargo auto new
             </div>
             <p>You need to have a <a href=
             "https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">GitHub PAT
-            (personal access token)</a>.</p>
+            (personal access secret_token)</a>.</p>
             <p>Run (in your main rust project):</p>
             <div class="example-wrap">
               <pre class="language-bash"><code>cargo auto release
@@ -170,19 +170,19 @@ cargo auto github_new_release
               <li><code>auto_github_create_new_release()</code> - creates new release on Github</li>
               <li><code>auto_github_upload_asset_to_release()</code> - add asset to the github release</li>
             </ul>
-            <h3 id="github-api-token"><a class="doc-anchor" href="#github-api-token">§</a>GitHub API token</h3>
-            <p>The GitHub API token is a secret just like a password. Maybe even greater.<br>
-            With this API token, a maleficent actor can change basically anything in your GitHub account. You don’t want that.</p>
+            <h3 id="github-api-secret_token"><a class="doc-anchor" href="#github-api-secret_token">§</a>GitHub API secret_token</h3>
+            <p>The GitHub API secret_token is a secret just like a password. Maybe even greater.<br>
+            With this API secret_token, a maleficent actor can change basically anything in your GitHub account. You don’t want that.</p>
             <p>How to protect this secret?<br>
             Ok, there are some basic recommendations:</p>
             <ul>
               <li>HTTPS is a no-brainer. Never use HTTP ever again. It is plain text over the wire.</li>
-              <li>Expire the token frequently, so old tokens are of no use</li>
-              <li>Never store the token in a file as plain text</li>
+              <li>Expire the secret_token frequently, so old secret_tokens are of no use</li>
+              <li>Never store the secret_token in a file as plain text</li>
               <li>Plain text inside env vars can also be accessed from malware</li>
-              <li>give the least permission/authorization to the API token</li>
+              <li>give the least permission/authorization to the API secret_token</li>
             </ul>
-            <p>But the true problem arises at the moment when you want to use the token. How to trust the code you are giving the token to?<br>
+            <p>But the true problem arises at the moment when you want to use the secret_token. How to trust the code you are giving the secret_token to?<br>
             Probably the best is that this code is written by you or that you have complete control over it. This makes very cumbersome the use of
             libraries/crates. You cannot trust them by default. However, it is impossible to avoid trust in low-level crates/libraries.</p>
             <h3 id="open-source-and-free-as-a-beer"><a class="doc-anchor" href="#open-source-and-free-as-a-beer">§</a>Open-source and free as a beer</h3>
@@ -210,8 +210,8 @@ cargo auto github_new_release
               "Restricted Visibility">&nbsp;🔒</span>
             </div>
             <div class="desc docblock-short">
-              functions to work with github api WARNING: Never pass the secret API token to this crate library. Pass the function send_to_github_api() as a
-              parameter. It encapsulates the secret token.
+              functions to work with github api WARNING: Never pass the secret API secret_token to this crate library. Pass the function send_to_github_api()
+              as a parameter. It encapsulates the secret_token.
             </div>
           </li>
           <li>
@@ -302,7 +302,7 @@ cargo auto github_new_release
               <a class="fn" href="fn.github_api_repository_new.html" title="fn cargo_auto_github_lib::github_api_repository_new">github_api_repository_new</a>
             </div>
             <div class="desc docblock-short">
-              Create a new github repository
+              Create a new github repository TODO: slightly different API call for organization repository. How to distinguish user and organization?
             </div>
           </li>
           <li>
