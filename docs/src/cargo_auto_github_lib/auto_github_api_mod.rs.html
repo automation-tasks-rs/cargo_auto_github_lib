@@ -509,6 +509,31 @@
 <a href="#455" id="455">455</a>
 <a href="#456" id="456">456</a>
 <a href="#457" id="457">457</a>
+<a href="#458" id="458">458</a>
+<a href="#459" id="459">459</a>
+<a href="#460" id="460">460</a>
+<a href="#461" id="461">461</a>
+<a href="#462" id="462">462</a>
+<a href="#463" id="463">463</a>
+<a href="#464" id="464">464</a>
+<a href="#465" id="465">465</a>
+<a href="#466" id="466">466</a>
+<a href="#467" id="467">467</a>
+<a href="#468" id="468">468</a>
+<a href="#469" id="469">469</a>
+<a href="#470" id="470">470</a>
+<a href="#471" id="471">471</a>
+<a href="#472" id="472">472</a>
+<a href="#473" id="473">473</a>
+<a href="#474" id="474">474</a>
+<a href="#475" id="475">475</a>
+<a href="#476" id="476">476</a>
+<a href="#477" id="477">477</a>
+<a href="#478" id="478">478</a>
+<a href="#479" id="479">479</a>
+<a href="#480" id="480">480</a>
+<a href="#481" id="481">481</a>
+<a href="#482" id="482">482</a>
 </pre>
         </div>
         <pre class="rust"><code><span class="comment">// auto_github_api_mod
@@ -733,6 +758,31 @@
 "kw-2">&</span>old_metadata).unwrap()).unwrap();
         }
     }
+}
+
+<span class="doccomment">/// GitHub api get authenticated user
+</span><span class="kw">pub fn </span>github_api_get_authenticated_user() -&gt; reqwest::blocking::RequestBuilder {
+    <span class="comment">/*
+        https://docs.github.com/en/rest/users/users?apiVersion=2022-11-28#get-the-authenticated-user
+
+        curl -L \
+        -H "Accept: application/vnd.github+json" \
+        -H "Authorization: Bearer &lt;YOUR-TOKEN&gt;" \
+        -H "X-GitHub-Api-Version: 2022-11-28" \
+        https://api.github.com/user
+
+        {
+        "login": "bestia-dev",
+        "id": 1,
+        }
+    */
+    </span><span class="kw">let </span>repos_url = <span class="macro">format!</span>(<span class="string">"https://api.github.com/user"</span>);
+    <span class="comment">// return
+    </span>reqwest::blocking::Client::new()
+        .get(repos_url.as_str())
+        .header(<span class="string">"Accept"</span>, <span class="string">"application/vnd.github+json"</span>)
+        .header(<span class="string">"X-GitHub-Api-Version"</span>, <span class="string">"2022-11-28"</span>)
+        .header(<span class="string">"User-Agent"</span>, <span class="string">"cargo_auto_lib"</span>)
 }
 
 <span class="doccomment">/// GitHub api get repository
