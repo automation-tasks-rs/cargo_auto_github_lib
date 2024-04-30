@@ -199,16 +199,16 @@
 </span><span class="doccomment">//! # cargo_auto_github_lib
 //!
 //! **Library for cargo-auto `automation tasks written in rust language` with functions for GitHub.**  
-//! ***version: 1.1.7 date: 2024-04-30 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/automation-tasks-rs/cargo_auto_github_lib)***
+//! ***version: 1.1.8 date: 2024-04-30 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/automation-tasks-rs/cargo_auto_github_lib)***
 //!
 //!  ![maintained](https://img.shields.io/badge/maintained-green)
 //!  ![ready-for-use](https://img.shields.io/badge/ready_for_use-green)
 //!  ![rust](https://img.shields.io/badge/rust-orange)
 //!  ![cargo-auto](https://img.shields.io/badge/cargo_auto-orange)
 //!
-//! [![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-436-green.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
-//! [![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-159-blue.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
-//! [![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-31-purple.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
+//! [![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-539-green.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
+//! [![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-161-blue.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
+//! [![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-41-purple.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
 //! [![Lines in examples](https://img.shields.io/badge/Lines_in_examples-0-yellow.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
 //! [![Lines in tests](https://img.shields.io/badge/Lines_in_tests-60-orange.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
 //!
@@ -242,7 +242,7 @@
 //!
 //!     let github_client = crate::github_mod::GitHubClient::new();
 //!     let json_value = github_client.send_to_github_api(cgl::github_api_create_new_release(
-//!         &amp;owner,
+//!         &amp;github_owner,
 //!         &amp;repo_name,
 //!         &amp;tag_name_version,
 //!         &amp;release_name,
@@ -255,7 +255,7 @@
 //!     // upload asset
 //!     cgl::github_api_upload_asset_to_release(
 //!         &amp;github_client,
-//!         &amp;owner,
+//!         &amp;github_owner,
 //!         &amp;repo_name,
 //!         &amp;release_id,
 //!         &amp;tar_name,
@@ -329,9 +329,9 @@
 <span class="kw">pub use </span>auto_github_api_mod::github_api_create_a_github_pages_site;
 <span class="kw">pub use </span>auto_github_api_mod::github_api_create_new_release;
 <span class="kw">pub use </span>auto_github_api_mod::github_api_get_authenticated_user;
+<span class="kw">pub use </span>auto_github_api_mod::github_api_get_organization;
 <span class="kw">pub use </span>auto_github_api_mod::github_api_get_repository;
 <span class="kw">pub use </span>auto_github_api_mod::github_api_replace_all_topics;
-<span class="kw">pub use </span>auto_github_api_mod::github_api_repository_new;
 <span class="kw">pub use </span>auto_github_api_mod::github_api_update_description;
 <span class="kw">pub use </span>auto_github_api_mod::github_api_upload_asset_to_release;
 <span class="kw">pub use </span>auto_github_api_mod::new_remote_github_repository;
