@@ -14,6 +14,8 @@ The TODO section is part of the [README.md](https://github.com/automation-tasks-
 
 - github_api_get_authenticated_user
 
+- github_api_get_authenticated_user
+
 ## Version 1.1.6 (2024-04-23)
 
 - clear cache
