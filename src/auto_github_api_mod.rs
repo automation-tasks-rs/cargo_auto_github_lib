@@ -200,6 +200,31 @@ pub fn description_and_topics_to_github(github_client: &impl SendToGitHubApi) {
     }
 }
 
+/// GitHub api get authenticated user
+pub fn github_api_get_authenticated_user() -> reqwest::blocking::RequestBuilder {
+    /*
+        https://docs.github.com/en/rest/users/users?apiVersion=2022-11-28#get-the-authenticated-user
+
+        curl -L \
+        -H "Accept: application/vnd.github+json" \
+        -H "Authorization: Bearer <YOUR-TOKEN>" \
+        -H "X-GitHub-Api-Version: 2022-11-28" \
+        https://api.github.com/user
+
+        {
+        "login": "bestia-dev",
+        "id": 1,
+        }
+    */
+    let repos_url = format!("https://api.github.com/user");
+    // return
+    reqwest::blocking::Client::new()
+        .get(repos_url.as_str())
+        .header("Accept", "application/vnd.github+json")
+        .header("X-GitHub-Api-Version", "2022-11-28")
+        .header("User-Agent", "cargo_auto_lib")
+}
+
 /// GitHub api get repository
 pub fn github_api_get_repository(owner: &str, repo_name: &str) -> reqwest::blocking::RequestBuilder {
     /*
