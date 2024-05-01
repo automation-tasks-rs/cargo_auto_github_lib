@@ -45,7 +45,7 @@
 //!
 //!     let github_client = crate::github_mod::GitHubClient::new();
 //!     let json_value = github_client.send_to_github_api(cgl::github_api_create_new_release(
-//!         &owner,
+//!         &github_owner,
 //!         &repo_name,
 //!         &tag_name_version,
 //!         &release_name,
@@ -58,7 +58,7 @@
 //!     // upload asset
 //!     cgl::github_api_upload_asset_to_release(
 //!         &github_client,
-//!         &owner,
+//!         &github_owner,
 //!         &repo_name,
 //!         &release_id,
 //!         &tar_name,

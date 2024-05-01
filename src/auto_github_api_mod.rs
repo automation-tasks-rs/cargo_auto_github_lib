@@ -58,7 +58,7 @@ pub fn new_remote_github_repository(github_client: &impl SendToGitHubApi) -> Opt
         .github_owner()
         .unwrap_or_else(|| panic!("{RED}ERROR: Element Repository in Cargo.toml does not contain the github_owner!{RESET}"));
     if github_owner == "github_owner" {
-        panic!("{RED}ERROR: Element Repository in Cargo.toml contain the placeholder phrase '/github_owner/'! Modify it with your github owner name.{RESET}");
+        panic!("{RED}ERROR: Element Repository in Cargo.toml contain the placeholder phrase '/github_owner/'! Modify it with your github github_owner name.{RESET}");
     }
     let name = cargo_toml.package_name();
 
@@ -133,7 +133,7 @@ pub fn new_remote_github_repository(github_client: &impl SendToGitHubApi) -> Opt
 pub fn description_and_topics_to_github(github_client: &impl SendToGitHubApi) {
     let cargo_toml = cl::CargoToml::read();
     let repo_name = cargo_toml.package_name();
-    let owner = cargo_toml.github_owner().unwrap();
+    let github_owner = cargo_toml.github_owner().unwrap();
     let description = cargo_toml.package_description().unwrap();
     let keywords = cargo_toml.package_keywords();
 
@@ -155,7 +155,7 @@ pub fn description_and_topics_to_github(github_client: &impl SendToGitHubApi) {
 
     if is_old_metadata_different {
         // get data from GitHub
-        let json = github_client.send_to_github_api(github_api_get_repository(&owner, &repo_name));
+        let json = github_client.send_to_github_api(github_api_get_repository(&github_owner, &repo_name));
 
         // get just the description and topis from json
         let gh_description = json.get("description").unwrap().as_str().unwrap();
@@ -164,7 +164,7 @@ pub fn description_and_topics_to_github(github_client: &impl SendToGitHubApi) {
 
         // are description and topics both equal?
         if gh_description != description {
-            let _json = github_client.send_to_github_api(github_api_update_description(&owner, &repo_name, &description));
+            let _json = github_client.send_to_github_api(github_api_update_description(&github_owner, &repo_name, &description));
         }
 
         // all elements must be equal, but not necessary in the same order
@@ -189,7 +189,7 @@ pub fn description_and_topics_to_github(github_client: &impl SendToGitHubApi) {
         };
 
         if !topics_is_equal {
-            let _json = github_client.send_to_github_api(github_api_replace_all_topics(&owner, &repo_name, &keywords));
+            let _json = github_client.send_to_github_api(github_api_replace_all_topics(&github_owner, &repo_name, &keywords));
             // write into automation_tasks_rs/.old_metadata.json file
             let old_metadata = OldMetadata {
                 old_description: description,
@@ -201,7 +201,7 @@ pub fn description_and_topics_to_github(github_client: &impl SendToGitHubApi) {
 }
 
 /// GitHub api get repository
-pub fn github_api_get_repository(owner: &str, repo_name: &str) -> reqwest::blocking::RequestBuilder {
+pub fn github_api_get_repository(github_owner: &str, repo_name: &str) -> reqwest::blocking::RequestBuilder {
     /*
         https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#get-a-repository
 
@@ -209,9 +209,9 @@ pub fn github_api_get_repository(owner: &str, repo_name: &str) -> reqwest::block
         -H "Accept: application/vnd.github+json" \
         -H "Authorization: Bearer <YOUR-TOKEN>" \
         -H "X-GitHub-Api-Version: 2022-11-28" \
-        https://api.github.com/repos/OWNER/REPO
+        https://api.github.com/repos/github_owner/REPO
     */
-    let repos_url = format!("https://api.github.com/repos/{owner}/{repo_name}");
+    let repos_url = format!("https://api.github.com/repos/{github_owner}/{repo_name}");
     // return
     reqwest::blocking::Client::new()
         .get(repos_url.as_str())
@@ -222,7 +222,7 @@ pub fn github_api_get_repository(owner: &str, repo_name: &str) -> reqwest::block
 
 /// Create a new github repository
 /// TODO: slightly different API call for organization repository. How to distinguish user and organization?
-pub fn github_api_repository_new(owner: &str, name: &str, description: &str) -> reqwest::blocking::RequestBuilder {
+pub fn github_api_repository_new(github_owner: &str, name: &str, description: &str) -> reqwest::blocking::RequestBuilder {
     /*
     https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#create-a-repository-for-the-authenticated-user
 
@@ -251,7 +251,7 @@ pub fn github_api_repository_new(owner: &str, name: &str, description: &str) -> 
     let body = serde_json::json!({
         "name": name,
         "description": description,
-        "homepage": format!("https://{owner}.github.io/{name}"),
+        "homepage": format!("https://{github_owner}.github.io/{name}"),
         "private":false,
         "has_issues":true,
         "has_projects":false,
@@ -271,7 +271,7 @@ pub fn github_api_repository_new(owner: &str, name: &str, description: &str) -> 
 }
 
 /// GitHub api update description
-pub fn github_api_update_description(owner: &str, repo_name: &str, description: &str) -> reqwest::blocking::RequestBuilder {
+pub fn github_api_update_description(github_owner: &str, repo_name: &str, description: &str) -> reqwest::blocking::RequestBuilder {
     /*
     https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#update-a-repository
 
@@ -280,7 +280,7 @@ pub fn github_api_update_description(owner: &str, repo_name: &str, description: 
     -H "Accept: application/vnd.github+json" \
     -H "Authorization: Bearer <YOUR-TOKEN>" \
     -H "X-GitHub-Api-Version: 2022-11-28" \
-    https://api.github.com/repos/OWNER/REPO \
+    https://api.github.com/repos/github_owner/REPO \
     -d '{
         "name":"Hello-World",
         "description":"This is your first repository",
@@ -302,7 +302,7 @@ pub fn github_api_update_description(owner: &str, repo_name: &str, description: 
     ...
     }
     */
-    let repos_url = format!("https://api.github.com/repos/{owner}/{repo_name}");
+    let repos_url = format!("https://api.github.com/repos/{github_owner}/{repo_name}");
     let body = serde_json::json!({
         "description": description,
     });
@@ -317,7 +317,7 @@ pub fn github_api_update_description(owner: &str, repo_name: &str, description: 
 }
 
 /// GitHub API replace all topics
-pub fn github_api_replace_all_topics(owner: &str, repo_name: &str, topics: &Vec<String>) -> reqwest::blocking::RequestBuilder {
+pub fn github_api_replace_all_topics(github_owner: &str, repo_name: &str, topics: &Vec<String>) -> reqwest::blocking::RequestBuilder {
     /*
     https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#replace-all-repository-topics
     curl -L \
@@ -325,10 +325,10 @@ pub fn github_api_replace_all_topics(owner: &str, repo_name: &str, topics: &Vec<
       -H "Accept: application/vnd.github+json" \
       -H "Authorization: Bearer <YOUR-TOKEN>" \
       -H "X-GitHub-Api-Version: 2022-11-28" \
-      https://api.github.com/repos/OWNER/REPO/topics \
+      https://api.github.com/repos/github_owner/REPO/topics \
       -d '{"names":["cat","atom","electron","api"]}'
      */
-    let repos_url = format!("https://api.github.com/repos/{owner}/{repo_name}/topics");
+    let repos_url = format!("https://api.github.com/repos/{github_owner}/{repo_name}/topics");
     let body = serde_json::json!({
         "names": topics,
     });
@@ -343,7 +343,7 @@ pub fn github_api_replace_all_topics(owner: &str, repo_name: &str, topics: &Vec<
 }
 
 /// GitHub API create-a-github-pages-site
-pub fn github_api_create_a_github_pages_site(owner: &str, repo_name: &str) -> reqwest::blocking::RequestBuilder {
+pub fn github_api_create_a_github_pages_site(github_owner: &str, repo_name: &str) -> reqwest::blocking::RequestBuilder {
     /*
         https://docs.github.com/en/rest/pages/pages?apiVersion=2022-11-28#create-a-github-pages-site
         curl -L \
@@ -351,7 +351,7 @@ pub fn github_api_create_a_github_pages_site(owner: &str, repo_name: &str) -> re
         -H "Accept: application/vnd.github+json" \
         -H "Authorization: Bearer <YOUR-TOKEN>" \
         -H "X-GitHub-Api-Version: 2022-11-28" \
-        https://api.github.com/repos/OWNER/REPO/pages \
+        https://api.github.com/repos/github_owner/REPO/pages \
         -d '
     {
         "source": {
@@ -361,7 +361,7 @@ pub fn github_api_create_a_github_pages_site(owner: &str, repo_name: &str) -> re
         }
     }'
          */
-    let repos_url = format!("https://api.github.com/repos/{owner}/{repo_name}/pages");
+    let repos_url = format!("https://api.github.com/repos/{github_owner}/{repo_name}/pages");
     let body = serde_json::json!({
         "build_type": "workflow",
         "source": {
@@ -380,12 +380,12 @@ pub fn github_api_create_a_github_pages_site(owner: &str, repo_name: &str) -> re
 }
 
 /// Upload asset to github release  
-pub fn github_api_upload_asset_to_release(github_client: &impl SendToGitHubApi, owner: &str, repo: &str, release_id: &str, path_to_file: &str) {
+pub fn github_api_upload_asset_to_release(github_client: &impl SendToGitHubApi, github_owner: &str, repo: &str, release_id: &str, path_to_file: &str) {
     println!("    {YELLOW}Uploading file to GitHub release: {path_to_file}{RESET}");
     let file = camino::Utf8Path::new(&path_to_file);
     let file_name = file.file_name().unwrap();
 
-    let release_upload_url = format!("https://uploads.github.com/repos/{owner}/{repo}/releases/{release_id}/assets");
+    let release_upload_url = format!("https://uploads.github.com/repos/{github_owner}/{repo}/releases/{release_id}/assets");
     let mut release_upload_url = <url::Url as std::str::FromStr>::from_str(&release_upload_url).unwrap();
     release_upload_url.set_query(Some(format!("{}={}", "name", file_name).as_str()));
     let file_size = std::fs::metadata(file).unwrap().len();
@@ -409,7 +409,7 @@ pub fn github_api_upload_asset_to_release(github_client: &impl SendToGitHubApi, 
 }
 
 /// Create new release on Github
-pub fn github_api_create_new_release(owner: &str, repo: &str, tag_name_version: &str, name: &str, branch: &str, body_md_text: &str) -> reqwest::blocking::RequestBuilder {
+pub fn github_api_create_new_release(github_owner: &str, repo: &str, tag_name_version: &str, name: &str, branch: &str, body_md_text: &str) -> reqwest::blocking::RequestBuilder {
     /*
     https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#create-a-release
     Request like :
@@ -418,7 +418,7 @@ pub fn github_api_create_new_release(owner: &str, repo: &str, tag_name_version: 
     -H "Accept: application/vnd.github+json" \
     -H "Authorization: Bearer <YOUR-TOKEN>"\
     -H "X-GitHub-Api-Version: 2022-11-28" \
-    https://api.github.com/repos/OWNER/REPO/releases \
+    https://api.github.com/repos/github_owner/REPO/releases \
     -d '
     {
         "tag_name":"v1.0.0",
@@ -436,7 +436,7 @@ pub fn github_api_create_new_release(owner: &str, repo: &str, tag_name_version: 
     ...
     }
     */
-    let releases_url = format!("https://api.github.com/repos/{owner}/{repo}/releases");
+    let releases_url = format!("https://api.github.com/repos/{github_owner}/{repo}/releases");
     let body = serde_json::json!({
         "tag_name": tag_name_version,
         "target_commitish":branch,
