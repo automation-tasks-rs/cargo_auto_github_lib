@@ -29,7 +29,7 @@
   <nav class="mobile-topbar"></nav>
   <nav class="sidebar">
     <div class="sidebar-crate">
-      <h2><a href="../cargo_auto_github_lib/index.html">cargo_auto_github_lib</a><span class="version">1.1.6</span></h2>
+      <h2><a href="../cargo_auto_github_lib/index.html">cargo_auto_github_lib</a><span class="version">1.1.8</span></h2>
     </div>
     <div class="sidebar-elems">
       <ul class="block">
@@ -73,7 +73,7 @@
         <div class="main-heading">
           <h1>Crate <a class="mod" href="#">cargo_auto_github_lib</a><button id="copy-path" title="Copy item path to clipboard"><img src=
           "../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="src"
-          href="../src/cargo_auto_github_lib/lib.rs.html#2-140">source</a> · <button id="toggle-all-docs" title=
+          href="../src/cargo_auto_github_lib/lib.rs.html#2-141">source</a> · <button id="toggle-all-docs" title=
           "collapse all docs">[<span>−</span>]</button></span>
         </div>
         <details class="toggle top-doc" open="">
@@ -83,15 +83,15 @@
           <div class="docblock">
             <h2 id="cargo_auto_github_lib"><a class="doc-anchor" href="#cargo_auto_github_lib">§</a>cargo_auto_github_lib</h2>
             <p><strong>Library for cargo-auto <code>automation tasks written in rust language</code> with functions for GitHub.</strong><br>
-            <em><strong>version: 1.1.6 date: 2024-04-23 author: <a href="https://bestia.dev">bestia.dev</a> repository: <a href=
+            <em><strong>version: 1.1.8 date: 2024-04-30 author: <a href="https://bestia.dev">bestia.dev</a> repository: <a href=
             "https://github.com/automation-tasks-rs/cargo_auto_github_lib">GitHub</a></strong></em></p>
             <p><img src="https://img.shields.io/badge/maintained-green" alt="maintained"> <img src="https://img.shields.io/badge/ready_for_use-green" alt=
             "ready-for-use"> <img src="https://img.shields.io/badge/rust-orange" alt="rust"> <img src="https://img.shields.io/badge/cargo_auto-orange" alt=
             "cargo-auto"></p>
-            <p><a href="https://github.com/automation-tasks-rs/cargo_auto_github_lib/"><img src="https://img.shields.io/badge/Lines_in_Rust-412-green.svg" alt=
+            <p><a href="https://github.com/automation-tasks-rs/cargo_auto_github_lib/"><img src="https://img.shields.io/badge/Lines_in_Rust-539-green.svg" alt=
             "Lines in Rust code"></a> <a href="https://github.com/automation-tasks-rs/cargo_auto_github_lib/"><img src=
-            "https://img.shields.io/badge/Lines_in_Doc_comments-158-blue.svg" alt="Lines in Doc comments"></a> <a href=
-            "https://github.com/automation-tasks-rs/cargo_auto_github_lib/"><img src="https://img.shields.io/badge/Lines_in_comments-30-purple.svg" alt=
+            "https://img.shields.io/badge/Lines_in_Doc_comments-161-blue.svg" alt="Lines in Doc comments"></a> <a href=
+            "https://github.com/automation-tasks-rs/cargo_auto_github_lib/"><img src="https://img.shields.io/badge/Lines_in_comments-41-purple.svg" alt=
             "Lines in Comments"></a> <a href="https://github.com/automation-tasks-rs/cargo_auto_github_lib/"><img src=
             "https://img.shields.io/badge/Lines_in_examples-0-yellow.svg" alt="Lines in examples"></a> <a href=
             "https://github.com/automation-tasks-rs/cargo_auto_github_lib/"><img src="https://img.shields.io/badge/Lines_in_tests-60-orange.svg" alt=
@@ -131,7 +131,7 @@ cargo auto new
 
     </span><span class="kw">let </span>github_client = <span class="kw">crate</span>::github_mod::GitHubClient::new();
     <span class="kw">let </span>json_value = github_client.send_to_github_api(cgl::github_api_create_new_release(
-        <span class="kw-2">&</span>owner,
+        <span class="kw-2">&</span>github_owner,
         <span class="kw-2">&</span>repo_name,
         <span class="kw-2">&</span>tag_name_version,
         <span class="kw-2">&</span>release_name,
@@ -144,7 +144,7 @@ cargo auto new
     // upload asset
     </span>cgl::github_api_upload_asset_to_release(
         <span class="kw-2">&</span>github_client,
-        <span class="kw-2">&</span>owner,
+        <span class="kw-2">&</span>github_owner,
         <span class="kw-2">&</span>repo_name,
         <span class="kw-2">&</span>release_id,
         <span class="kw-2">&</span>tar_name,
@@ -282,6 +282,24 @@ cargo auto github_new_release
           </li>
           <li>
             <div class="item-name">
+              <a class="fn" href="fn.github_api_get_authenticated_user.html" title=
+              "fn cargo_auto_github_lib::github_api_get_authenticated_user">github_api_get_authenticated_user</a>
+            </div>
+            <div class="desc docblock-short">
+              GitHub api get authenticated user
+            </div>
+          </li>
+          <li>
+            <div class="item-name">
+              <a class="fn" href="fn.github_api_get_organization.html" title=
+              "fn cargo_auto_github_lib::github_api_get_organization">github_api_get_organization</a>
+            </div>
+            <div class="desc docblock-short">
+              GitHub api get organization
+            </div>
+          </li>
+          <li>
+            <div class="item-name">
               <a class="fn" href="fn.github_api_get_repository.html" title="fn cargo_auto_github_lib::github_api_get_repository">github_api_get_repository</a>
             </div>
             <div class="desc docblock-short">
@@ -295,14 +313,6 @@ cargo auto github_new_release
             </div>
             <div class="desc docblock-short">
               GitHub API replace all topics
-            </div>
-          </li>
-          <li>
-            <div class="item-name">
-              <a class="fn" href="fn.github_api_repository_new.html" title="fn cargo_auto_github_lib::github_api_repository_new">github_api_repository_new</a>
-            </div>
-            <div class="desc docblock-short">
-              Create a new github repository TODO: slightly different API call for organization repository. How to distinguish user and organization?
             </div>
           </li>
           <li>

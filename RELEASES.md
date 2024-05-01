@@ -10,13 +10,15 @@ The TODO section is part of the [README.md](https://github.com/automation-tasks-
 
 ## Unreleased
 
+## Version 1.1.8 (2024-04-30)
+
+- github_owner_or_organization
+
+## Version 1.1.7 (2024-04-30)
+
+- github_api_get_authenticated_user
+
 ## Version 1.1.6 (2024-04-23)
-
-- clear cache
-
-- clear cache
-
-- maintained
 
 - secret_token
 

@@ -5,7 +5,7 @@
 [//]: # (auto_cargo_toml_to_md start)
 
 **Library for cargo-auto `automation tasks written in rust language` with functions for GitHub.**  
-***version: 1.1.6 date: 2024-04-23 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/automation-tasks-rs/cargo_auto_github_lib)***
+***version: 1.1.8 date: 2024-04-30 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/automation-tasks-rs/cargo_auto_github_lib)***
 
  ![maintained](https://img.shields.io/badge/maintained-green)
  ![ready-for-use](https://img.shields.io/badge/ready_for_use-green)
@@ -15,9 +15,9 @@
 [//]: # (auto_cargo_toml_to_md end)
 
 [//]: # (auto_lines_of_code start)
-[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-412-green.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
-[![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-158-blue.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
-[![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-30-purple.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
+[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-539-green.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
+[![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-161-blue.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
+[![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-41-purple.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
 [![Lines in examples](https://img.shields.io/badge/Lines_in_examples-0-yellow.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
 [![Lines in tests](https://img.shields.io/badge/Lines_in_tests-60-orange.svg)](https://github.com/automation-tasks-rs/cargo_auto_github_lib/)
 
@@ -53,7 +53,7 @@ fn task_github_new_release() {
 
     let github_client = crate::github_mod::GitHubClient::new();
     let json_value = github_client.send_to_github_api(cgl::github_api_create_new_release(
-        &owner,
+        &github_owner,
         &repo_name,
         &tag_name_version,
         &release_name,
@@ -66,7 +66,7 @@ fn task_github_new_release() {
     // upload asset
     cgl::github_api_upload_asset_to_release(
         &github_client,
-        &owner,
+        &github_owner,
         &repo_name,
         &release_id,
         &tar_name,
