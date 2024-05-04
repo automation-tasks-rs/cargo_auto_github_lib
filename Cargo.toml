@@ -1,5 +1,11 @@
 [package]
 name = "cargo_auto_github_lib"
+# SemVer rules for libraries:
+# increment MAJOR version when you make breaking changes (incompatible API changes)
+# increment MINOR version when you add functionality (that are backward compatible)
+# increment PATCH version when you make bug fixes (that are backward compatible)
+# PATCH version MUST be reset to 0 when MINOR version is incremented.
+# PATCH and MINOR versions MUST be reset to 0 when MAJOR version is incremented.
 version = "1.1.8"
 authors = ["bestia.dev"]
 homepage = "https://bestia.dev"
@@ -20,8 +26,10 @@ include = [
 ]
 
 [dependencies]
-cargo_auto_lib = "2.4.3"
-##### cargo_auto_lib = {path="../cargo_auto_lib"}
+# SemVer rules: Major version zero (0.y.z) is for initial development. Anything MAY change at any time. The public API SHOULD NOT be considered stable.
+# WARNING: Although dependecies in Cargo.toml look like a specific version of the crate, they are just like a carret version "^x.y.z" and actually specify 
+# the minimum version and allow automatic SemVer compatible updates up to a MAJOR increment! Always check the true version with `cargo tree`!
+cargo_auto_lib = {version="2.4.3", path="../cargo_auto_lib"}
 
 reqwest = { version = "0.12.3", features = ["blocking", "stream"] }
 tokio-util = {version = "0.7.8", features = ["codec"]}
