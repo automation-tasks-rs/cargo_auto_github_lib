@@ -1,58 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="rustdoc">
-  <meta name="description" content="Source of the Rust file `src/auto_github_api_mod.rs`.">
-  <title>auto_github_api_mod.rs - source</title>
-  <link rel="preload" as="font" type="font/woff2" crossorigin="" href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin="" href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin="" href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin="" href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin="" href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2">
-  <link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css">
-  <link rel="stylesheet" href="../../static.files/rustdoc-5bc39a1768837dd0.css">
-  <meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="cargo_auto_github_lib" data-themes=""
-  data-resource-suffix="" data-rustdoc-version="1.77.2 (25ef9e3d8 2024-04-09)" data-channel="1.77.2" data-search-js="search-dd67cee4cfa65049.js"
-  data-settings-js="settings-4313503d2e1961c2.js">
-  <script src="../../static.files/storage-4c98445ec4002617.js"></script>
-  <script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script>
-  <script defer src="../../src-files.js"></script>
-  <script defer src="../../static.files/main-48f368f3872407c8.js"></script><noscript>
-  <link rel="stylesheet" href="../../static.files/noscript-04d5337699b92874.css"></noscript>
-  <link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png">
-  <link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png">
-  <link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg">
-</head>
-<body class="rustdoc src">
-  <!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
-  <nav class="sidebar">
-    <div class="src-sidebar-title">
-      <h2>Files</h2>
-    </div>
-  </nav>
-  <div class="sidebar-resizer"></div>
-  <main>
-    <nav class="sub">
-      <form class="search-form">
-        <div id="sidebar-button" tabindex="-1">
-          <a href="../../cargo_auto_github_lib/all.html" title="show sidebar"></a>
-        </div><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder=
-        "Click or press ‘S’ to search, ‘?’ for more options…" type="search">
-        <div id="help-button" tabindex="-1">
-          <a href="../../help.html" title="help">?</a>
-        </div>
-        <div id="settings-menu" tabindex="-1">
-          <a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src=
-          "../../static.files/wheel-7b819b6101059cd0.svg"></a>
-        </div>
-      </form>
-    </nav>
-    <section id="main-content" class="content">
-      <div class="example-wrap">
-        <div data-nosnippet="">
-          <pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/auto_github_api_mod.rs`."><title>auto_github_api_mod.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-46132b98.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="cargo_auto_github_lib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.85.0 (4d91de4e4 2025-02-17)" data-channel="1.85.0" data-search-js="search-75f5ac3e.js" data-settings-js="settings-0f613d39.js" ><script src="../../static.files/storage-59e33391.js"></script><script defer src="../../static.files/src-script-56102188.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-5f194d8c.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><h1><div class="sub-heading">cargo_auto_github_lib/</div>auto_github_api_mod.rs</h1><rustdoc-toolbar></rustdoc-toolbar></div><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers">
+<a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -648,10 +595,7 @@
 <a href="#594" id="594">594</a>
 <a href="#595" id="595">595</a>
 <a href="#596" id="596">596</a>
-<a href="#597" id="597">597</a>
-</pre>
-        </div>
-        <pre class="rust"><code><span class="comment">// auto_github_api_mod
+<a href="#597" id="597">597</a></pre></div><pre class="rust"><code><span class="comment">// auto_github_api_mod
 
 </span><span class="doccomment">//! functions to work with github api
 //! WARNING: Never pass the secret API secret_token to this crate library.
@@ -674,8 +618,7 @@
     /// This function encapsulates the secret API secret_token.
     /// The RequestBuilder is created somewhere in the library crate.
     /// The client can be passed to the library. It will not reveal the secret_token.
-    </span><span class="kw">fn </span>send_to_github_api(<span class="kw-2">&</span><span class=
-"self">self</span>, req: reqwest::blocking::RequestBuilder) -&gt; serde_json::Value;
+    </span><span class="kw">fn </span>send_to_github_api(<span class="kw-2">&amp;</span><span class="self">self</span>, req: reqwest::blocking::RequestBuilder) -&gt; serde_json::Value;
 
     <span class="doccomment">/// Upload to github
     ///
@@ -683,15 +626,13 @@
     /// The RequestBuilder is created somewhere in the library crate.
     /// The client can be passed to the library. It will not reveal the secret_token.
     /// This is basically an async fn, but use of `async fn` in public traits is discouraged...
-    </span><span class="kw">fn </span>upload_to_github(<span class="kw-2">&</span><span class=
-"self">self</span>, req: reqwest::RequestBuilder) -&gt; <span class="kw">impl </span>std::future::Future&lt;Output = serde_json::Value&gt; + Send;
+    </span><span class="kw">fn </span>upload_to_github(<span class="kw-2">&amp;</span><span class="self">self</span>, req: reqwest::RequestBuilder) -&gt; <span class="kw">impl </span>std::future::Future&lt;Output = serde_json::Value&gt; + Send;
 }
 
 <span class="doccomment">/// Has git remote
 </span><span class="kw">pub fn </span>git_has_remote() -&gt; bool {
     <span class="comment">// git remote returns only "origin" if exists or nothing if it does not exist
-    </span><span class="kw">let </span>output = std::process::Command::new(<span class="string">"git"</span>).arg(<span class=
-"string">"remote"</span>).output().unwrap();
+    </span><span class="kw">let </span>output = std::process::Command::new(<span class="string">"git"</span>).arg(<span class="string">"remote"</span>).output().unwrap();
     <span class="comment">// return
     </span>String::from_utf8(output.stdout).unwrap() != <span class="string">""
 </span>}
@@ -699,8 +640,7 @@
 <span class="doccomment">/// Has git upstream
 </span><span class="kw">pub fn </span>git_has_upstream() -&gt; bool {
     <span class="comment">// git branch -vv returns upstream branches in angle brackets []
-    </span><span class="kw">let </span>output = std::process::Command::new(<span class="string">"git"</span>).arg(<span class=
-"string">"branch"</span>).arg(<span class="string">"-vv"</span>).output().unwrap();
+    </span><span class="kw">let </span>output = std::process::Command::new(<span class="string">"git"</span>).arg(<span class="string">"branch"</span>).arg(<span class="string">"-vv"</span>).output().unwrap();
     <span class="comment">// return
     </span>String::from_utf8(output.stdout).unwrap().contains(<span class="string">"["</span>)
 }
@@ -708,25 +648,21 @@
 <span class="doccomment">/// Interactive ask to create a new remote GitHub repository
 ///
 /// Use a function pointer to send_to_github_api() to avoid passing the secret_token.
-</span><span class="kw">pub fn </span>new_remote_github_repository(github_client: <span class="kw-2">&</span><span class=
-"kw">impl </span>SendToGitHubApi) -&gt; <span class="prelude-ty">Option</span>&lt;()&gt; {
+</span><span class="kw">pub fn </span>new_remote_github_repository(github_client: <span class="kw-2">&amp;</span><span class="kw">impl </span>SendToGitHubApi) -&gt; <span class="prelude-ty">Option</span>&lt;()&gt; {
     <span class="comment">// early error if Repository contains the placeholder "github_owner" or does not contain the true github_owner
     </span><span class="kw">let </span>cargo_toml = cl::CargoToml::read();
     <span class="kw">let </span>package_name = cargo_toml.package_name();
     <span class="comment">// the second fragment of URL can be the github_owner (authenticated_user) or organization
     </span><span class="kw">let </span>github_owner_or_organization = cargo_toml
         .github_owner()
-        .unwrap_or_else(|| <span class="macro">panic!</span>(<span class=
-"string">"{RED}ERROR: Element Repository in Cargo.toml does not contain the github_owner!{RESET}"</span>));
+        .unwrap_or_else(|| <span class="macro">panic!</span>(<span class="string">"{RED}ERROR: Element Repository in Cargo.toml does not contain the github_owner!{RESET}"</span>));
     <span class="kw">if </span>github_owner_or_organization == <span class="string">"github_owner" </span>{
-        <span class="macro">panic!</span>(<span class=
-"string">"{RED}Error: The placeholder 'github_owner' in Cargo.toml/repository is not changed to the real github_owner or GitHub Organization.{RESET}"</span>)
+        <span class="macro">panic!</span>(<span class="string">"{RED}Error: The placeholder 'github_owner' in Cargo.toml/repository is not changed to the real github_owner or GitHub Organization.{RESET}"</span>)
     }
 
     <span class="comment">// get authenticated user from Github
     </span><span class="kw">let </span>json_value = github_client.send_to_github_api(github_api_get_authenticated_user());
-    <span class="kw">let </span><span class="prelude-val">Some</span>(authenticated_user_login) = json_value.get(<span class=
-"string">"login"</span>) <span class="kw">else </span>{
+    <span class="kw">let </span><span class="prelude-val">Some</span>(authenticated_user_login) = json_value.get(<span class="string">"login"</span>) <span class="kw">else </span>{
         <span class="macro">panic!</span>(<span class="string">"{RED}ERROR: Unrecognized Authenticated on GitHub from secret_token.{RESET}"</span>);
     };
     <span class="kw">let </span>authenticated_user_login = authenticated_user_login.as_str().unwrap();
@@ -735,25 +671,20 @@
         <span class="comment">// this repository is a User Repository
     </span>} <span class="kw">else </span>{
         <span class="comment">// check if it is a GitHub Organization
-        </span><span class="kw">let </span>json_value = github_client.send_to_github_api(github_api_get_organization(<span class=
-"kw-2">&</span>github_owner_or_organization));
-        <span class="kw">let </span><span class="prelude-val">Some</span>(_organization_login) = json_value.get(<span class=
-"string">"login"</span>) <span class="kw">else </span>{
-            <span class="macro">panic!</span>(<span class=
-"string">"{RED}ERROR: Unrecognized Organization on GitHub: {github_owner_or_organization}.{RESET}"</span>);
+        </span><span class="kw">let </span>json_value = github_client.send_to_github_api(github_api_get_organization(<span class="kw-2">&amp;</span>github_owner_or_organization));
+        <span class="kw">let </span><span class="prelude-val">Some</span>(_organization_login) = json_value.get(<span class="string">"login"</span>) <span class="kw">else </span>{
+            <span class="macro">panic!</span>(<span class="string">"{RED}ERROR: Unrecognized Organization on GitHub: {github_owner_or_organization}.{RESET}"</span>);
         };
     }
 
     <span class="kw">if </span>!git_has_remote() {
         <span class="kw">let </span>description = cargo_toml
             .package_description()
-            .unwrap_or_else(|| <span class="macro">panic!</span>(<span class=
-"string">"{RED}ERROR: Element Description in Cargo.toml does not exist!{RESET}"</span>));
+            .unwrap_or_else(|| <span class="macro">panic!</span>(<span class="string">"{RED}ERROR: Element Description in Cargo.toml does not exist!{RESET}"</span>));
 
         <span class="comment">// ask interactive
         </span><span class="macro">println!</span>(<span class="string">"    {BLUE}This project does not have a remote GitHub repository.{RESET}"</span>);
-        <span class="kw">let </span>answer = inquire::Text::new(<span class="kw-2">&</span><span class="macro">format!</span>(<span class=
-"string">"{BLUE}Do you want to create a new remote GitHub repository? (y/n){RESET}"</span>))
+        <span class="kw">let </span>answer = inquire::Text::new(<span class="kw-2">&amp;</span><span class="macro">format!</span>(<span class="string">"{BLUE}Do you want to create a new remote GitHub repository? (y/n){RESET}"</span>))
             .prompt()
             .unwrap();
         <span class="kw">if </span>answer.to_lowercase() != <span class="string">"y" </span>{
@@ -764,11 +695,9 @@
 
         </span><span class="kw">let </span>json_value = <span class="kw">if </span>github_owner_or_organization == authenticated_user_login {
             <span class="comment">// new User repository
-            </span><span class="kw">let </span>json_value = github_client.send_to_github_api(github_api_user_repository_new(<span class=
-"kw-2">&</span>github_owner_or_organization, <span class="kw-2">&</span>package_name, <span class="kw-2">&</span>description));
+            </span><span class="kw">let </span>json_value = github_client.send_to_github_api(github_api_user_repository_new(<span class="kw-2">&amp;</span>github_owner_or_organization, <span class="kw-2">&amp;</span>package_name, <span class="kw-2">&amp;</span>description));
             <span class="comment">// early exit on error
-            </span><span class="kw">if let </span><span class="prelude-val">Some</span>(error_message) = json_value.get(<span class=
-"string">"message"</span>) {
+            </span><span class="kw">if let </span><span class="prelude-val">Some</span>(error_message) = json_value.get(<span class="string">"message"</span>) {
                 <span class="macro">eprintln!</span>(<span class="string">"{RED}{error_message}{RESET}"</span>);
                 <span class="kw">if let </span><span class="prelude-val">Some</span>(errors) = json_value.get(<span class="string">"errors"</span>) {
                     <span class="kw">let </span>errors = errors.as_array().unwrap();
@@ -778,17 +707,14 @@
                         }
                     }
                 }
-                <span class="macro">panic!</span>(<span class=
-"string">"{RED}Call to GitHub API github_api_user_repository_new returned an error.{RESET}"</span>)
+                <span class="macro">panic!</span>(<span class="string">"{RED}Call to GitHub API github_api_user_repository_new returned an error.{RESET}"</span>)
             }
             json_value
         } <span class="kw">else </span>{
             <span class="comment">// new Organization repository
-            </span><span class="kw">let </span>json_value = github_client.send_to_github_api(github_api_organization_repository_new(<span class=
-"kw-2">&</span>github_owner_or_organization, <span class="kw-2">&</span>package_name, <span class="kw-2">&</span>description));
+            </span><span class="kw">let </span>json_value = github_client.send_to_github_api(github_api_organization_repository_new(<span class="kw-2">&amp;</span>github_owner_or_organization, <span class="kw-2">&amp;</span>package_name, <span class="kw-2">&amp;</span>description));
             <span class="comment">// early exit on error
-            </span><span class="kw">if let </span><span class="prelude-val">Some</span>(error_message) = json_value.get(<span class=
-"string">"message"</span>) {
+            </span><span class="kw">if let </span><span class="prelude-val">Some</span>(error_message) = json_value.get(<span class="string">"message"</span>) {
                 <span class="macro">eprintln!</span>(<span class="string">"{RED}{error_message}{RESET}"</span>);
                 <span class="kw">if let </span><span class="prelude-val">Some</span>(errors) = json_value.get(<span class="string">"errors"</span>) {
                     <span class="kw">let </span>errors = errors.as_array().unwrap();
@@ -798,39 +724,33 @@
                         }
                     }
                 }
-                <span class="macro">panic!</span>(<span class=
-"string">"{RED}Call to GitHub API github_api_organization_repository_new returned an error.{RESET}"</span>)
+                <span class="macro">panic!</span>(<span class="string">"{RED}Call to GitHub API github_api_organization_repository_new returned an error.{RESET}"</span>)
             }
             json_value
         };
 
         <span class="comment">// get just the name, description and html_url from json
-        </span><span class="macro">println!</span>(<span class="string">"{YELLOW}name: {}{RESET}"</span>, json_value.get(<span class=
-"string">"name"</span>).unwrap().as_str().unwrap());
-        <span class="macro">println!</span>(<span class="string">"{YELLOW}description: {}{RESET}"</span>, json_value.get(<span class=
-"string">"description"</span>).unwrap().as_str().unwrap());
+        </span><span class="macro">println!</span>(<span class="string">"{YELLOW}name: {}{RESET}"</span>, json_value.get(<span class="string">"name"</span>).unwrap().as_str().unwrap());
+        <span class="macro">println!</span>(<span class="string">"{YELLOW}description: {}{RESET}"</span>, json_value.get(<span class="string">"description"</span>).unwrap().as_str().unwrap());
         <span class="kw">let </span>repo_html_url = json_value.get(<span class="string">"html_url"</span>).unwrap().as_str().unwrap().to_string();
-        <span class="macro">println!</span>(<span class="string">"{YELLOW}url: {}{RESET}"</span>, <span class="kw-2">&</span>repo_html_url);
+        <span class="macro">println!</span>(<span class="string">"{YELLOW}url: {}{RESET}"</span>, <span class="kw-2">&amp;</span>repo_html_url);
 
         <span class="comment">// add this GitHub repository to origin remote over SSH (use sshadd for passphrase)
-        </span>cl::ShellCommandLimitedDoubleQuotesSanitizer::new(<span class=
-"string">r#"git remote add origin "git@github.com:{github_owner_or_organization}/{name}.git" "#</span>)
+        </span>cl::ShellCommandLimitedDoubleQuotesSanitizer::new(<span class="string">r#"git remote add origin "git@github.com:{github_owner_or_organization}/{name}.git" "#</span>)
             .unwrap()
-            .arg(<span class="string">"{github_owner_or_organization}"</span>, <span class="kw-2">&</span>github_owner_or_organization)
+            .arg(<span class="string">"{github_owner_or_organization}"</span>, <span class="kw-2">&amp;</span>github_owner_or_organization)
             .unwrap()
-            .arg(<span class="string">"{name}"</span>, <span class="kw-2">&</span>package_name)
+            .arg(<span class="string">"{name}"</span>, <span class="kw-2">&amp;</span>package_name)
             .unwrap()
             .run()
             .unwrap();
     }
 
     <span class="kw">if </span>!git_has_upstream() {
-        cl::run_shell_command(<span class="string">"git push -u origin main"</span>).unwrap_or_else(|e| <span class="macro">panic!</span>(<span class=
-"string">"{e}"</span>));
+        cl::run_shell_command(<span class="string">"git push -u origin main"</span>).unwrap_or_else(|e| <span class="macro">panic!</span>(<span class="string">"{e}"</span>));
 
         <span class="comment">// the docs pages are created with a GitHub action
-        </span><span class="kw">let </span>_json = github_client.send_to_github_api(github_api_create_a_github_pages_site(<span class=
-"kw-2">&</span>github_owner_or_organization, <span class="kw-2">&</span>package_name));
+        </span><span class="kw">let </span>_json = github_client.send_to_github_api(github_api_create_a_github_pages_site(<span class="kw-2">&amp;</span>github_owner_or_organization, <span class="kw-2">&amp;</span>package_name));
     }
 
     <span class="prelude-val">Some</span>(())
@@ -846,8 +766,7 @@
 /// I want to avoid GitHub API at every git push. I will store the old description and topics
 /// in the file automation_tasks_rs/.old_metadata.json
 /// So I can compare first locally and only when they differ call the Github API.
-</span><span class="kw">pub fn </span>description_and_topics_to_github(github_client: <span class="kw-2">&</span><span class=
-"kw">impl </span>SendToGitHubApi) {
+</span><span class="kw">pub fn </span>description_and_topics_to_github(github_client: <span class="kw-2">&amp;</span><span class="kw">impl </span>SendToGitHubApi) {
     <span class="kw">let </span>cargo_toml = cl::CargoToml::read();
     <span class="kw">let </span>repo_name = cargo_toml.package_name();
     <span class="kw">let </span>github_owner_or_organization = cargo_toml.github_owner().unwrap();
@@ -862,11 +781,9 @@
 
     <span class="comment">// read data from automation_tasks_rs/.old_metadata.json
     </span><span class="kw">let </span><span class="kw-2">mut </span>is_old_metadata_different = <span class="bool-val">true</span>;
-    <span class="kw">if let </span><span class="prelude-val">Ok</span>(old_metadata) = std::fs::read_to_string(<span class=
-"string">"automation_tasks_rs/.old_metadata.json"</span>) {
-        <span class="kw">if let </span><span class="prelude-val">Ok</span>(old_metadata) = serde_json::from_str::&lt;OldMetadata&gt;(<span class=
-"kw-2">&</span>old_metadata) {
-            <span class="kw">if </span>old_metadata.old_description == description &amp;& old_metadata.old_keywords == keywords {
+    <span class="kw">if let </span><span class="prelude-val">Ok</span>(old_metadata) = std::fs::read_to_string(<span class="string">"automation_tasks_rs/.old_metadata.json"</span>) {
+        <span class="kw">if let </span><span class="prelude-val">Ok</span>(old_metadata) = serde_json::from_str::&lt;OldMetadata&gt;(<span class="kw-2">&amp;</span>old_metadata) {
+            <span class="kw">if </span>old_metadata.old_description == description &amp;&amp; old_metadata.old_keywords == keywords {
                 is_old_metadata_different = <span class="bool-val">false</span>;
             }
         }
@@ -874,8 +791,7 @@
 
     <span class="kw">if </span>is_old_metadata_different {
         <span class="comment">// get data from GitHub
-        </span><span class="kw">let </span>json = github_client.send_to_github_api(github_api_get_repository(<span class=
-"kw-2">&</span>github_owner_or_organization, <span class="kw-2">&</span>repo_name));
+        </span><span class="kw">let </span>json = github_client.send_to_github_api(github_api_get_repository(<span class="kw-2">&amp;</span>github_owner_or_organization, <span class="kw-2">&amp;</span>repo_name));
 
         <span class="comment">// get just the description and topis from json
         </span><span class="kw">let </span>gh_description = json.get(<span class="string">"description"</span>).unwrap().as_str().unwrap();
@@ -884,8 +800,7 @@
 
         <span class="comment">// are description and topics both equal?
         </span><span class="kw">if </span>gh_description != description {
-            <span class="kw">let </span>_json = github_client.send_to_github_api(github_api_update_description(<span class=
-"kw-2">&</span>github_owner_or_organization, <span class="kw-2">&</span>repo_name, <span class="kw-2">&</span>description));
+            <span class="kw">let </span>_json = github_client.send_to_github_api(github_api_update_description(<span class="kw-2">&amp;</span>github_owner_or_organization, <span class="kw-2">&amp;</span>repo_name, <span class="kw-2">&amp;</span>description));
         }
 
         <span class="comment">// all elements must be equal, but not necessary in the same order
@@ -910,15 +825,13 @@
         </span>};
 
         <span class="kw">if </span>!topics_is_equal {
-            <span class="kw">let </span>_json = github_client.send_to_github_api(github_api_replace_all_topics(<span class=
-"kw-2">&</span>github_owner_or_organization, <span class="kw-2">&</span>repo_name, <span class="kw-2">&</span>keywords));
+            <span class="kw">let </span>_json = github_client.send_to_github_api(github_api_replace_all_topics(<span class="kw-2">&amp;</span>github_owner_or_organization, <span class="kw-2">&amp;</span>repo_name, <span class="kw-2">&amp;</span>keywords));
             <span class="comment">// write into automation_tasks_rs/.old_metadata.json file
             </span><span class="kw">let </span>old_metadata = OldMetadata {
                 old_description: description,
                 old_keywords: keywords,
             };
-            std::fs::write(<span class="string">"automation_tasks_rs/.old_metadata.json"</span>, serde_json::to_string_pretty(<span class=
-"kw-2">&</span>old_metadata).unwrap()).unwrap();
+            std::fs::write(<span class="string">"automation_tasks_rs/.old_metadata.json"</span>, serde_json::to_string_pretty(<span class="kw-2">&amp;</span>old_metadata).unwrap()).unwrap();
         }
     }
 }
@@ -949,7 +862,7 @@
 }
 
 <span class="doccomment">/// GitHub api get organization
-</span><span class="kw">pub fn </span>github_api_get_organization(organization: <span class="kw-2">&</span>str) -&gt; reqwest::blocking::RequestBuilder {
+</span><span class="kw">pub fn </span>github_api_get_organization(organization: <span class="kw-2">&amp;</span>str) -&gt; reqwest::blocking::RequestBuilder {
     <span class="comment">/*
         https://docs.github.com/en/rest/orgs/orgs?apiVersion=2022-11-28#get-an-organization
 
@@ -964,8 +877,7 @@
         "id": 1,
         }
     */
-    </span><span class="kw">let </span>repos_url = <span class="macro">format!</span>(<span class=
-"string">"https://api.github.com/orgs/{organization}"</span>);
+    </span><span class="kw">let </span>repos_url = <span class="macro">format!</span>(<span class="string">"https://api.github.com/orgs/{organization}"</span>);
     <span class="comment">// return
     </span>reqwest::blocking::Client::new()
         .get(repos_url.as_str())
@@ -975,8 +887,7 @@
 }
 
 <span class="doccomment">/// GitHub api get repository
-</span><span class="kw">pub fn </span>github_api_get_repository(github_owner_or_organization: <span class="kw-2">&</span>str, repo_name: <span class=
-"kw-2">&</span>str) -&gt; reqwest::blocking::RequestBuilder {
+</span><span class="kw">pub fn </span>github_api_get_repository(github_owner_or_organization: <span class="kw-2">&amp;</span>str, repo_name: <span class="kw-2">&amp;</span>str) -&gt; reqwest::blocking::RequestBuilder {
     <span class="comment">/*
         https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#get-a-repository
 
@@ -984,10 +895,9 @@
         -H "Accept: application/vnd.github+json" \
         -H "Authorization: Bearer &lt;YOUR-TOKEN&gt;" \
         -H "X-GitHub-Api-Version: 2022-11-28" \
-        https://api.github.com/repos/OWNER/REPO
+        https://api.github.com/repos/github_owner/REPO
     */
-    </span><span class="kw">let </span>repos_url = <span class="macro">format!</span>(<span class=
-"string">"https://api.github.com/repos/{github_owner_or_organization}/{repo_name}"</span>);
+    </span><span class="kw">let </span>repos_url = <span class="macro">format!</span>(<span class="string">"https://api.github.com/repos/{github_owner_or_organization}/{repo_name}"</span>);
     <span class="comment">// return
     </span>reqwest::blocking::Client::new()
         .get(repos_url.as_str())
@@ -998,8 +908,7 @@
 
 <span class="doccomment">/// Create a new github User repository
 /// TODO: slightly different API call for organization repository. How to distinguish user and organization?
-</span><span class="kw">pub fn </span>github_api_user_repository_new(github_owner: <span class="kw-2">&</span>str, name: <span class=
-"kw-2">&</span>str, description: <span class="kw-2">&</span>str) -&gt; reqwest::blocking::RequestBuilder {
+</span><span class="kw">pub fn </span>github_api_user_repository_new(github_owner: <span class="kw-2">&amp;</span>str, name: <span class="kw-2">&amp;</span>str, description: <span class="kw-2">&amp;</span>str) -&gt; reqwest::blocking::RequestBuilder {
     <span class="comment">/*
     https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#create-a-repository-for-the-authenticated-user
 
@@ -1048,8 +957,7 @@
 }
 
 <span class="doccomment">/// Create a new github organization repository
-</span><span class="kw">pub fn </span>github_api_organization_repository_new(organization: <span class="kw-2">&</span>str, name: <span class=
-"kw-2">&</span>str, description: <span class="kw-2">&</span>str) -&gt; reqwest::blocking::RequestBuilder {
+</span><span class="kw">pub fn </span>github_api_organization_repository_new(organization: <span class="kw-2">&amp;</span>str, name: <span class="kw-2">&amp;</span>str, description: <span class="kw-2">&amp;</span>str) -&gt; reqwest::blocking::RequestBuilder {
     <span class="comment">/*
     https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#create-a-repository-for-the-authenticated-user
 
@@ -1076,8 +984,7 @@
     ...
     }
     */
-    </span><span class="kw">let </span>repos_url = <span class="macro">format!</span>(<span class=
-"string">"https://api.github.com/orgs/{organization}/repos"</span>);
+    </span><span class="kw">let </span>repos_url = <span class="macro">format!</span>(<span class="string">"https://api.github.com/orgs/{organization}/repos"</span>);
     <span class="kw">let </span>body = <span class="macro">serde_json::json!</span>({
         <span class="string">"name"</span>: name,
         <span class="string">"description"</span>: description,
@@ -1101,8 +1008,7 @@
 }
 
 <span class="doccomment">/// GitHub api update description
-</span><span class="kw">pub fn </span>github_api_update_description(github_owner_or_organization: <span class="kw-2">&</span>str, repo_name: <span class=
-"kw-2">&</span>str, description: <span class="kw-2">&</span>str) -&gt; reqwest::blocking::RequestBuilder {
+</span><span class="kw">pub fn </span>github_api_update_description(github_owner_or_organization: <span class="kw-2">&amp;</span>str, repo_name: <span class="kw-2">&amp;</span>str, description: <span class="kw-2">&amp;</span>str) -&gt; reqwest::blocking::RequestBuilder {
     <span class="comment">/*
     https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#update-a-repository
 
@@ -1111,7 +1017,7 @@
     -H "Accept: application/vnd.github+json" \
     -H "Authorization: Bearer &lt;YOUR-TOKEN&gt;" \
     -H "X-GitHub-Api-Version: 2022-11-28" \
-    https://api.github.com/repos/OWNER/REPO \
+    https://api.github.com/repos/github_owner/REPO \
     -d '{
         "name":"Hello-World",
         "description":"This is your first repository",
@@ -1133,8 +1039,7 @@
     ...
     }
     */
-    </span><span class="kw">let </span>repos_url = <span class="macro">format!</span>(<span class=
-"string">"https://api.github.com/repos/{github_owner_or_organization}/{repo_name}"</span>);
+    </span><span class="kw">let </span>repos_url = <span class="macro">format!</span>(<span class="string">"https://api.github.com/repos/{github_owner_or_organization}/{repo_name}"</span>);
     <span class="kw">let </span>body = <span class="macro">serde_json::json!</span>({
         <span class="string">"description"</span>: description,
     });
@@ -1149,8 +1054,7 @@
 }
 
 <span class="doccomment">/// GitHub API replace all topics
-</span><span class="kw">pub fn </span>github_api_replace_all_topics(github_owner_or_organization: <span class="kw-2">&</span>str, repo_name: <span class=
-"kw-2">&</span>str, topics: <span class="kw-2">&</span>Vec&lt;String&gt;) -&gt; reqwest::blocking::RequestBuilder {
+</span><span class="kw">pub fn </span>github_api_replace_all_topics(github_owner_or_organization: <span class="kw-2">&amp;</span>str, repo_name: <span class="kw-2">&amp;</span>str, topics: <span class="kw-2">&amp;</span>Vec&lt;String&gt;) -&gt; reqwest::blocking::RequestBuilder {
     <span class="comment">/*
     https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#replace-all-repository-topics
     curl -L \
@@ -1158,11 +1062,10 @@
       -H "Accept: application/vnd.github+json" \
       -H "Authorization: Bearer &lt;YOUR-TOKEN&gt;" \
       -H "X-GitHub-Api-Version: 2022-11-28" \
-      https://api.github.com/repos/OWNER/REPO/topics \
+      https://api.github.com/repos/github_owner/REPO/topics \
       -d '{"names":["cat","atom","electron","api"]}'
      */
-    </span><span class="kw">let </span>repos_url = <span class="macro">format!</span>(<span class=
-"string">"https://api.github.com/repos/{github_owner_or_organization}/{repo_name}/topics"</span>);
+    </span><span class="kw">let </span>repos_url = <span class="macro">format!</span>(<span class="string">"https://api.github.com/repos/{github_owner_or_organization}/{repo_name}/topics"</span>);
     <span class="kw">let </span>body = <span class="macro">serde_json::json!</span>({
         <span class="string">"names"</span>: topics,
     });
@@ -1177,8 +1080,7 @@
 }
 
 <span class="doccomment">/// GitHub API create-a-github-pages-site
-</span><span class="kw">pub fn </span>github_api_create_a_github_pages_site(github_owner_or_organization: <span class=
-"kw-2">&</span>str, repo_name: <span class="kw-2">&</span>str) -&gt; reqwest::blocking::RequestBuilder {
+</span><span class="kw">pub fn </span>github_api_create_a_github_pages_site(github_owner_or_organization: <span class="kw-2">&amp;</span>str, repo_name: <span class="kw-2">&amp;</span>str) -&gt; reqwest::blocking::RequestBuilder {
     <span class="comment">/*
         https://docs.github.com/en/rest/pages/pages?apiVersion=2022-11-28#create-a-github-pages-site
         curl -L \
@@ -1186,7 +1088,7 @@
         -H "Accept: application/vnd.github+json" \
         -H "Authorization: Bearer &lt;YOUR-TOKEN&gt;" \
         -H "X-GitHub-Api-Version: 2022-11-28" \
-        https://api.github.com/repos/OWNER/REPO/pages \
+        https://api.github.com/repos/github_owner/REPO/pages \
         -d '
     {
         "source": {
@@ -1196,8 +1098,7 @@
         }
     }'
          */
-    </span><span class="kw">let </span>repos_url = <span class="macro">format!</span>(<span class=
-"string">"https://api.github.com/repos/{github_owner_or_organization}/{repo_name}/pages"</span>);
+    </span><span class="kw">let </span>repos_url = <span class="macro">format!</span>(<span class="string">"https://api.github.com/repos/{github_owner_or_organization}/{repo_name}/pages"</span>);
     <span class="kw">let </span>body = <span class="macro">serde_json::json!</span>({
         <span class="string">"build_type"</span>: <span class="string">"workflow"</span>,
         <span class="string">"source"</span>: {
@@ -1216,19 +1117,14 @@
 }
 
 <span class="doccomment">/// Upload asset to github release  
-</span><span class="kw">pub fn </span>github_api_upload_asset_to_release(github_client: <span class="kw-2">&</span><span class=
-"kw">impl </span>SendToGitHubApi, github_owner_or_organization: <span class="kw-2">&</span>str, repo: <span class="kw-2">&</span>str, release_id: <span class=
-"kw-2">&</span>str, path_to_file: <span class="kw-2">&</span>str) {
+</span><span class="kw">pub fn </span>github_api_upload_asset_to_release(github_client: <span class="kw-2">&amp;</span><span class="kw">impl </span>SendToGitHubApi, github_owner_or_organization: <span class="kw-2">&amp;</span>str, repo: <span class="kw-2">&amp;</span>str, release_id: <span class="kw-2">&amp;</span>str, path_to_file: <span class="kw-2">&amp;</span>str) {
     <span class="macro">println!</span>(<span class="string">"    {YELLOW}Uploading file to GitHub release: {path_to_file}{RESET}"</span>);
-    <span class="kw">let </span>file = camino::Utf8Path::new(<span class="kw-2">&</span>path_to_file);
+    <span class="kw">let </span>file = camino::Utf8Path::new(<span class="kw-2">&amp;</span>path_to_file);
     <span class="kw">let </span>file_name = file.file_name().unwrap();
 
-    <span class="kw">let </span>release_upload_url = <span class="macro">format!</span>(<span class=
-"string">"https://uploads.github.com/repos/{github_owner_or_organization}/{repo}/releases/{release_id}/assets"</span>);
-    <span class="kw">let </span><span class="kw-2">mut </span>release_upload_url = &lt;url::Url <span class=
-"kw">as </span>std::str::FromStr&gt;::from_str(<span class="kw-2">&</span>release_upload_url).unwrap();
-    release_upload_url.set_query(<span class="prelude-val">Some</span>(<span class="macro">format!</span>(<span class="string">"{}={}"</span>, <span class=
-"string">"name"</span>, file_name).as_str()));
+    <span class="kw">let </span>release_upload_url = <span class="macro">format!</span>(<span class="string">"https://uploads.github.com/repos/{github_owner_or_organization}/{repo}/releases/{release_id}/assets"</span>);
+    <span class="kw">let </span><span class="kw-2">mut </span>release_upload_url = &lt;url::Url <span class="kw">as </span>std::str::FromStr&gt;::from_str(<span class="kw-2">&amp;</span>release_upload_url).unwrap();
+    release_upload_url.set_query(<span class="prelude-val">Some</span>(<span class="macro">format!</span>(<span class="string">"{}={}"</span>, <span class="string">"name"</span>, file_name).as_str()));
     <span class="kw">let </span>file_size = std::fs::metadata(file).unwrap().len();
     <span class="macro">println!</span>(<span class="string">"    {YELLOW}It can take some time to upload. File size: {file_size}. Wait...{RESET}"</span>);
     <span class="comment">// region: async code made sync locally
@@ -1250,9 +1146,7 @@
 </span>}
 
 <span class="doccomment">/// Create new release on Github
-</span><span class="kw">pub fn </span>github_api_create_new_release(github_owner_or_organization: <span class="kw-2">&</span>str, repo: <span class=
-"kw-2">&</span>str, tag_name_version: <span class="kw-2">&</span>str, name: <span class="kw-2">&</span>str, branch: <span class=
-"kw-2">&</span>str, body_md_text: <span class="kw-2">&</span>str) -&gt; reqwest::blocking::RequestBuilder {
+</span><span class="kw">pub fn </span>github_api_create_new_release(github_owner_or_organization: <span class="kw-2">&amp;</span>str, repo: <span class="kw-2">&amp;</span>str, tag_name_version: <span class="kw-2">&amp;</span>str, name: <span class="kw-2">&amp;</span>str, branch: <span class="kw-2">&amp;</span>str, body_md_text: <span class="kw-2">&amp;</span>str) -&gt; reqwest::blocking::RequestBuilder {
     <span class="comment">/*
     https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#create-a-release
     Request like :
@@ -1261,7 +1155,7 @@
     -H "Accept: application/vnd.github+json" \
     -H "Authorization: Bearer &lt;YOUR-TOKEN&gt;"\
     -H "X-GitHub-Api-Version: 2022-11-28" \
-    https://api.github.com/repos/OWNER/REPO/releases \
+    https://api.github.com/repos/github_owner/REPO/releases \
     -d '
     {
         "tag_name":"v1.0.0",
@@ -1279,8 +1173,7 @@
     ...
     }
     */
-    </span><span class="kw">let </span>releases_url = <span class="macro">format!</span>(<span class=
-"string">"https://api.github.com/repos/{github_owner_or_organization}/{repo}/releases"</span>);
+    </span><span class="kw">let </span>releases_url = <span class="macro">format!</span>(<span class="string">"https://api.github.com/repos/{github_owner_or_organization}/{repo}/releases"</span>);
     <span class="kw">let </span>body = <span class="macro">serde_json::json!</span>({
         <span class="string">"tag_name"</span>: tag_name_version,
         <span class="string">"target_commitish"</span>:branch,
@@ -1299,9 +1192,4 @@
         .header(<span class="string">"User-Agent"</span>, <span class="string">"cargo_auto_lib"</span>)
         .body(body)
 }
-</code></pre>
-      </div>
-    </section>
-  </main>
-</body>
-</html>
+</code></pre></div></section></main></body></html>

@@ -1,201 +1,494 @@
+./docs/cargo_auto_github_lib/utils_mod/index.html
+Document: "2" is not a file!
+
+line 1 column 2295 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2295 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2311 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2607 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2607 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2624 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1800 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/fn.git_has_upstream.html
+Document: "2" is not a file!
+
+line 1 column 2167 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2167 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2183 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2496 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2496 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2513 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1774 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/fn.git_has_remote.html
+Document: "2" is not a file!
+
+line 1 column 2163 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2163 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2179 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2490 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2490 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2507 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1770 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/fn.github_api_update_description.html
+Document: "2" is not a file!
+
+line 1 column 2193 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2193 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2209 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2535 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2535 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2552 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1800 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/fn.github_api_get_organization.html
+Document: "2" is not a file!
+
+line 1 column 2189 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2189 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2205 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2529 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2529 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2546 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1796 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/trait.SendToGitHubApi.html
+Document: "2" is not a file!
+
+line 1 column 2771 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2771 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2787 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 3099 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 3099 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 3116 - Warning: discarding unexpected </rustdoc-toolbar>
+line 9 column 199 - Warning: missing </summary> before <section>
+line 9 column 658 - Warning: discarding unexpected </summary>
+line 13 column 60 - Warning: missing </summary> before <section>
+line 16 column 460 - Warning: discarding unexpected </summary>
+line 1 column 1803 - Warning: trimming empty <button>
+line 4 column 1 - Warning: trimming empty <span>
+line 9 column 199 - Warning: trimming empty <summary>
+line 13 column 60 - Warning: trimming empty <summary>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/fn.github_api_upload_asset_to_release.html
+Document: "2" is not a file!
+
+line 1 column 2199 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2199 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2215 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2546 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2546 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2563 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1806 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/fn.github_api_get_authenticated_user.html
+Document: "2" is not a file!
+
+line 1 column 2201 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2201 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2217 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2547 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2547 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2564 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1808 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/fn.github_api_create_a_github_pages_site.html
+Document: "2" is not a file!
+
+line 1 column 2209 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2209 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2225 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2559 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2559 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2576 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1816 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/auto_github_api_mod/fn.github_api_user_repository_new.html
+Document: "2" is not a file!
+
+line 1 column 2473 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2473 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2489 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2870 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2870 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2887 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1963 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/auto_github_api_mod/fn.git_has_upstream.html
+Document: "2" is not a file!
+
+line 1 column 2335 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2335 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2351 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2718 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2718 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2735 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1825 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/auto_github_api_mod/fn.git_has_remote.html
+Document: "2" is not a file!
+
+line 1 column 2331 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2331 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2347 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2712 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2712 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2729 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1821 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/auto_github_api_mod/fn.github_api_update_description.html
+Document: "2" is not a file!
+
+line 1 column 2361 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2361 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2377 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2757 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2757 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2774 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1851 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/auto_github_api_mod/fn.github_api_get_organization.html
+Document: "2" is not a file!
+
+line 1 column 2357 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2357 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2373 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2751 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2751 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2768 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1847 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/auto_github_api_mod/trait.SendToGitHubApi.html
+Document: "2" is not a file!
+
+line 1 column 2843 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2843 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2859 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 3225 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 3225 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 3242 - Warning: discarding unexpected </rustdoc-toolbar>
+line 9 column 199 - Warning: missing </summary> before <section>
+line 9 column 661 - Warning: discarding unexpected </summary>
+line 13 column 60 - Warning: missing </summary> before <section>
+line 16 column 460 - Warning: discarding unexpected </summary>
+line 1 column 1854 - Warning: trimming empty <button>
+line 4 column 1 - Warning: trimming empty <span>
+line 9 column 199 - Warning: trimming empty <summary>
+line 13 column 60 - Warning: trimming empty <summary>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/auto_github_api_mod/fn.github_api_upload_asset_to_release.html
+Document: "2" is not a file!
+
+line 1 column 2367 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2367 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2383 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2768 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2768 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2785 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1857 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/auto_github_api_mod/fn.github_api_get_authenticated_user.html
+Document: "2" is not a file!
+
+line 1 column 2369 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2369 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2385 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2769 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2769 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2786 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1859 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/auto_github_api_mod/fn.github_api_create_a_github_pages_site.html
+Document: "2" is not a file!
+
+line 1 column 2377 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2377 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2393 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2781 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2781 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2798 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1867 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/auto_github_api_mod/fn.github_api_organization_repository_new.html
+Document: "2" is not a file!
+
+line 1 column 2384 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2384 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2400 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2789 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2789 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2806 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1874 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/auto_github_api_mod/fn.description_and_topics_to_github.html
+Document: "2" is not a file!
+
+line 1 column 2388 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2388 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2404 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2787 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2787 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2804 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1878 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/auto_github_api_mod/fn.new_remote_github_repository.html
+Document: "2" is not a file!
+
+line 1 column 2387 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2387 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2403 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2782 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2782 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2799 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1877 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/auto_github_api_mod/index.html
+Document: "2" is not a file!
+
+line 1 column 2779 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2779 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2795 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 3101 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 3101 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 3118 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1986 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/auto_github_api_mod/fn.github_api_get_repository.html
+Document: "2" is not a file!
+
+line 1 column 2353 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2353 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2369 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2745 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2745 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2762 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1843 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/auto_github_api_mod/fn.github_api_create_new_release.html
+Document: "2" is not a file!
+
+line 1 column 2360 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2360 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2376 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2756 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2756 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2773 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1850 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/auto_github_api_mod/fn.github_api_replace_all_topics.html
+Document: "2" is not a file!
+
+line 1 column 2361 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2361 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2377 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2757 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2757 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2774 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1851 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/fn.description_and_topics_to_github.html
+Document: "2" is not a file!
+
+line 1 column 2220 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2220 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2236 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2565 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2565 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2582 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1827 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/all.html
+Document: "2" is not a file!
+
+line 1 column 2338 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2338 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2354 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 1731 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/fn.new_remote_github_repository.html
+Document: "2" is not a file!
+
+line 1 column 2219 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2219 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2235 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2560 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2560 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2577 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1826 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/index.html
+Document: "2" is not a file!
+
+line 1 column 3016 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 3016 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 3032 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 3249 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 3249 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 3266 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1762 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/fn.github_api_get_repository.html
+Document: "2" is not a file!
+
+line 1 column 2185 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2185 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2201 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2523 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2523 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2540 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1792 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/fn.github_api_create_new_release.html
+Document: "2" is not a file!
+
+line 1 column 2192 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2192 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2208 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2534 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2534 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2551 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1799 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/cargo_auto_github_lib/fn.github_api_replace_all_topics.html
+Document: "2" is not a file!
+
+line 1 column 2193 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2193 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2209 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2535 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2535 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2552 - Warning: discarding unexpected </rustdoc-toolbar>
+line 1 column 1800 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
 ./docs/help.html
 Document: "2" is not a file!
 
-line 1 column 2091 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/src/cargo_auto_github_lib/utils_mod.rs.html
-Document: "2" is not a file!
+line 1 column 2330 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2330 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2346 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 1688 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
 
-line 3 column 54 - Warning: trimming empty <span>
-./docs/src/cargo_auto_github_lib/lib.rs.html
-Document: "2" is not a file!
-
-line 3 column 54 - Warning: trimming empty <span>
-./docs/src/cargo_auto_github_lib/auto_github_api_mod.rs.html
-Document: "2" is not a file!
-
-line 3 column 54 - Warning: trimming empty <span>
 ./docs/settings.html
 Document: "2" is not a file!
 
-line 1 column 2089 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
+line 1 column 2332 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2332 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2348 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 1686 - Warning: trimming empty <button>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/src/cargo_auto_github_lib/utils_mod.rs.html
+Document: "2" is not a file!
+
+line 1 column 1970 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 1970 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 1986 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2076 - Warning: <div> isn't allowed in <h1> elements
+line 1 column 2123 - Warning: discarding unexpected </div>
+line 1 column 2146 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2146 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2163 - Warning: discarding unexpected </rustdoc-toolbar>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/src/cargo_auto_github_lib/lib.rs.html
+Document: "2" is not a file!
+
+line 1 column 1958 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 1958 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 1974 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2064 - Warning: <div> isn't allowed in <h1> elements
+line 1 column 2111 - Warning: discarding unexpected </div>
+line 1 column 2128 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2128 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2145 - Warning: discarding unexpected </rustdoc-toolbar>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
+./docs/src/cargo_auto_github_lib/auto_github_api_mod.rs.html
+Document: "2" is not a file!
+
+line 1 column 1990 - Error: <rustdoc-search> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 1990 - Warning: discarding unexpected <rustdoc-search>
+line 1 column 2006 - Warning: discarding unexpected </rustdoc-search>
+line 1 column 2096 - Warning: <div> isn't allowed in <h1> elements
+line 1 column 2143 - Warning: discarding unexpected </div>
+line 1 column 2176 - Error: <rustdoc-toolbar> is not recognized! Did you mean to enable the custom-tags option?
+line 1 column 2176 - Warning: discarding unexpected <rustdoc-toolbar>
+line 1 column 2193 - Warning: discarding unexpected </rustdoc-toolbar>
+This document has errors that must be fixed before
+using HTML Tidy to generate a tidied up version.
+
 ./docs/index.html
 Document: "2" is not a file!
 
 line 1 column 1 - Warning: missing <!DOCTYPE> declaration
 line 1 column 1 - Warning: inserting missing 'title' element
-./docs/cargo_auto_github_lib/all.html
-Document: "2" is not a file!
-
-line 1 column 2139 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/fn.github_api_replace_all_topics.html
-Document: "2" is not a file!
-
-line 1 column 2208 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/trait.SendToGitHubApi.html
-Document: "2" is not a file!
-
-line 10 column 199 - Warning: missing </summary> before <section>
-line 10 column 658 - Warning: discarding unexpected </summary>
-line 14 column 60 - Warning: missing </summary> before <section>
-line 17 column 460 - Warning: discarding unexpected </summary>
-line 1 column 2211 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-line 5 column 1 - Warning: trimming empty <span>
-line 10 column 199 - Warning: trimming empty <summary>
-line 14 column 60 - Warning: trimming empty <summary>
-./docs/cargo_auto_github_lib/fn.github_api_update_description.html
-Document: "2" is not a file!
-
-line 1 column 2208 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/fn.github_api_create_a_github_pages_site.html
-Document: "2" is not a file!
-
-line 1 column 2224 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/fn.github_api_upload_asset_to_release.html
-Document: "2" is not a file!
-
-line 1 column 2216 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/fn.github_api_get_repository.html
-Document: "2" is not a file!
-
-line 1 column 2200 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/fn.github_api_get_organization.html
-Document: "2" is not a file!
-
-line 1 column 2204 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/fn.github_api_get_authenticated_user.html
-Document: "2" is not a file!
-
-line 1 column 2216 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/fn.description_and_topics_to_github.html
-Document: "2" is not a file!
-
-line 1 column 2235 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/fn.github_api_create_new_release.html
-Document: "2" is not a file!
-
-line 1 column 2207 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/utils_mod/index.html
-Document: "2" is not a file!
-
-line 1 column 2223 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/fn.git_has_remote.html
-Document: "2" is not a file!
-
-line 1 column 2178 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/fn.git_has_upstream.html
-Document: "2" is not a file!
-
-line 1 column 2182 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/index.html
-Document: "2" is not a file!
-
-line 1 column 2170 - Warning: trimming empty <button>
-line 3 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/auto_github_api_mod/fn.github_api_replace_all_topics.html
-Document: "2" is not a file!
-
-line 1 column 2274 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/auto_github_api_mod/fn.github_api_user_repository_new.html
-Document: "2" is not a file!
-
-line 1 column 2386 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/auto_github_api_mod/trait.SendToGitHubApi.html
-Document: "2" is not a file!
-
-line 10 column 199 - Warning: missing </summary> before <section>
-line 10 column 661 - Warning: discarding unexpected </summary>
-line 14 column 60 - Warning: missing </summary> before <section>
-line 17 column 460 - Warning: discarding unexpected </summary>
-line 1 column 2277 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-line 5 column 1 - Warning: trimming empty <span>
-line 10 column 199 - Warning: trimming empty <summary>
-line 14 column 60 - Warning: trimming empty <summary>
-./docs/cargo_auto_github_lib/auto_github_api_mod/fn.github_api_update_description.html
-Document: "2" is not a file!
-
-line 1 column 2274 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/auto_github_api_mod/fn.github_api_create_a_github_pages_site.html
-Document: "2" is not a file!
-
-line 1 column 2290 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/auto_github_api_mod/fn.github_api_upload_asset_to_release.html
-Document: "2" is not a file!
-
-line 1 column 2282 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/auto_github_api_mod/fn.github_api_get_repository.html
-Document: "2" is not a file!
-
-line 1 column 2266 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/auto_github_api_mod/fn.github_api_get_organization.html
-Document: "2" is not a file!
-
-line 1 column 2270 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/auto_github_api_mod/fn.github_api_get_authenticated_user.html
-Document: "2" is not a file!
-
-line 1 column 2282 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/auto_github_api_mod/fn.description_and_topics_to_github.html
-Document: "2" is not a file!
-
-line 1 column 2301 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/auto_github_api_mod/fn.github_api_create_new_release.html
-Document: "2" is not a file!
-
-line 1 column 2273 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/auto_github_api_mod/fn.github_api_organization_repository_new.html
-Document: "2" is not a file!
-
-line 1 column 2297 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/auto_github_api_mod/fn.git_has_remote.html
-Document: "2" is not a file!
-
-line 1 column 2244 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/auto_github_api_mod/fn.git_has_upstream.html
-Document: "2" is not a file!
-
-line 1 column 2248 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/auto_github_api_mod/index.html
-Document: "2" is not a file!
-
-line 1 column 2409 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/auto_github_api_mod/fn.new_remote_github_repository.html
-Document: "2" is not a file!
-
-line 1 column 2300 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
-./docs/cargo_auto_github_lib/fn.new_remote_github_repository.html
-Document: "2" is not a file!
-
-line 1 column 2234 - Warning: trimming empty <button>
-line 2 column 81 - Warning: trimming empty <span>
