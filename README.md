@@ -8,8 +8,7 @@
 **Library for cargo-auto `automation tasks written in rust language` with functions for GitHub.**  
 ***version: 1.1.9 date: 2025-03-09 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/automation-tasks-rs/cargo_auto_github_lib)***
 
- ![maintained](https://img.shields.io/badge/maintained-green)
- ![ready-for-use](https://img.shields.io/badge/ready_for_use-green)
+ ![obsolete](https://img.shields.io/badge/obsolete-red)
  ![rust](https://img.shields.io/badge/rust-orange)
  ![cargo-auto](https://img.shields.io/badge/cargo_auto-orange)
 
@@ -28,6 +27,11 @@
 
 Hashtags: #rustlang #buildtool #developmenttool #github  
 My projects on Github are more like a tutorial than a finished product: [bestia-dev tutorials](https://github.com/bestia-dev/tutorials_rust_wasm).
+
+## OBSOLETE
+
+This will not be a separate crate anymore. This will be a module file that the developer copy-paste into his source code.  
+I decided that the developer must have complete control over this code in its own project.
 
 ## Try it
 
