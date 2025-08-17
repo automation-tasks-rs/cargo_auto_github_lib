@@ -14,6 +14,7 @@ description = "OBSOLETE: Library for cargo-auto -automation tasks written in rus
 repository = "https://github.com/automation-tasks-rs/cargo_auto_github_lib"
 readme = "README.md"
 license = "MIT"
+# Keyword must be only one word: lowercase letters, hyphens(-) or numbers, less then 35 characters, at most 5 keywords per crate
 keywords = ["maintained","ready-for-use", "rust","cargo-auto"]
 categories = ["development-tools::build-utils"]
 # publish as a cargo tool. Only this files.
